@@ -51,7 +51,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex gap-3">
                 <button className="px-3 py-1 text-sm rounded-md text-[#FF553E]">Login</button>
-                <button className="px-3 py-2 text-sm rounded-lg bg-gray-600 text-white">Sign up</button>
+                <button className="text-sm px-4 py-2 rounded-full bg-gray-600 text-white">Sign up</button>
               </div>
 
               {/* Hamburger for mobile */}

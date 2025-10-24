@@ -99,53 +99,12 @@ const Hero = () => {
       <br className='block sm:hidden'/>
       <div className='h-[80%] px-4 sm:px-6 lg:px-8" lg:px-8"'>
 
-        {/* Left Images */}
-        {/* <img className='absolute hidden lg:block" left-0 top-[20%]' src={"/assets/mobile-screen-1.svg"} alt='mobile-screen-1' /> */}
-        {/* <div className='absolute left-[15%] top-[10%] border' style={{height: "200px", width: "200px"}}></div> */}
-        {/* <img className='absolute left-[20%] top-[13%] scale-50' src={"/assets/Alarm_Clock.svg"} alt='Alarm Clock' /> */}
-        <img className='absolute right-[-1%] top-[0%] scale-50' src={"/assets/banner-vector.svg"} alt='Alarm Clock' />
-        <img className='absolute hidden md:block right-[30%] bottom-[35%] scale-50' src={"/assets/clipboard-vector.svg"} alt='Alarm Clock' />
-        {/* <img className='absolute right-[30%] bottom-[40%] scale-50' src={"/assets/clipboard.jpg"} alt='Alarm Clock' /> */}
-        <img className='absolute hidden md:block left-[30%] bottom-[45%] scale-50' src={"/assets/kite-vector.svg"} alt='Alarm Clock' />
-
         {/* Center Content */}
         <div className="flex justify-center items-center w-full h-full">
           <div className="relative max-w-4xl mx-auto text-left sm:text-center ">
-            <img className='absolute hidden md:block left-[-20%] w-1/5 top-[-60%]' src={"/assets/alarm-vector.svg"} alt='Alarm Clock' />
-            <motion.img
-              className="absolute hidden sm:block left-[-5%] w-1/5 top-[-50%] pointer-events-none"
-              src="/assets/Alarm_Clock.svg"
-              alt="Alarm Clock"
-              variants={variants}
-              initial="idle"
-              // animate immediately on mount unless user prefers reduced motion
-              animate={shouldReduce ? 'idle' : 'ring'}
-              style={{ transformOrigin: '50% 70%' }}
-              draggable={false}
-            />
-            <motion.img
-              className="absolute block sm:hidden right-[12%] w-1/5 top-[-30%] pointer-events-none"
-              src="/assets/Alarm_Clock.svg"
-              alt="Alarm Clock"
-              variants={variants}
-              initial="idle"
-              // animate immediately on mount unless user prefers reduced motion
-              animate={shouldReduce ? 'idle' : 'ring'}
-              style={{ transformOrigin: '50% 70%' }}
-              draggable={false}
-            />
             <h1 className="font-sans font-extrabold z-20 text-3xl md:text-4xl leading-tight text-gray-900">
               A Collaborative <br className='block sm:hidden'/> Time <br className="hidden sm:block" /> 
-              <span className="relative inline-block">
-                <img
-                  src={"/assets/shape.svg"}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute left-1/4 top-[90%] -translate-x-1/2 -translate-y-1/2 w-18 h-18  md:w-28 md:h-18 pointer-events-none"
-                />
-                <span className="relative pr-1.5">Tracking</span>
-              </span>
-              That You Need
+              
             </h1>
 
 

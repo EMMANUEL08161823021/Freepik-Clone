@@ -62,10 +62,10 @@ export default function WorkFlow({
         <div className="max-w-5xl mx-auto">
             <div className="flex items-center justify-between px-2 mb-4">
                 <h2 className="text-2xl font-semibold text-gray-900">Boost your professional workflow and productivity</h2>
-                <div className="flex gap-2">
+                {/* <div className="flex gap-2">
                     <button onClick={prev} className="w-9 h-9 rounded-full bg-black/60 text-gray-900 flex items-center justify-center">‹</button>
                     <button onClick={next} className="w-9 h-9 rounded-full bg-black/60 text-gray-900 flex items-center justify-center">›</button>
-                </div>
+                </div> */}
             </div>
 
             {/* viewport */}

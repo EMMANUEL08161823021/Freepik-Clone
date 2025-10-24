@@ -116,10 +116,15 @@ const Questions = () => {
             </div>
             <br/>
             <br/>
-            <div className='text-center p-3 border'>
-                <p className='text-xs text-gray-900'>Your vision, elvated</p>
+            <div className='text-center p-3 flex flex-col gap-3 border'>
+                <p className='text-xs text-gray-900'>Your vision, elevated</p>
 
-                <button>Get started for free icon</button>
+                <div>
+                    <button className="px-4 py-2 cursor-pointer rounded-full bg-gray-600 text-white text-sm font-medium shadow hover:bg-gray-600 transition-all duration-200">
+                        Get started for free
+                    </button>
+                </div>
+
             </div>
             <br/>
             <br/>
