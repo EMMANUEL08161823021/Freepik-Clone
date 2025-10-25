@@ -21,14 +21,13 @@ const Features = () => {
     <section className="w-full">
         <br/>
         <br/>
-        <div className="px-2 mx-auto w-full sm:max-w-xl overflow-hidden md:max-w-5xl">
-            <div className="flex items-center justify-between">
+        <div className="px-4 mx-auto w-full overflow-hidden md:max-w-5xl">
+            <div className="flex flex-col-reverse md:flex-row  md:items-center justify-between">
 
                 <h2 className="text-2xl py-2 font-semibold text-gray-900">
                 The Features you need, the Simplicity you want
                 </h2>
                 <div>
-
                 <button className="text-xs p-2 whitespace-nowrap border border-gray-500 rounded-full">How to start with AI</button>
                 </div>
             </div>
@@ -42,11 +41,11 @@ const Features = () => {
                         - no-scrollbar utility used to hide scrollbars visually
                     */}
                     <TabsList
-                    className="flex flex-row md:flex-col w-[100%] md:w-48 shrink-0 space-x-2 md:space-x-0 md:space-y-1 p-2 rounded-md bg-gray-50
-                            h-full md:h-[50vh]"
+                    className="flex whitespace-nowrap overflow-x-auto no-scrollbar flex-row md:flex-col w-[100%] md:w-48 shrink-0 space-x-2 md:space-x-0 md:space-y-1 py-2 rounded-md bg-gray-50
+                            h-full md:h-[55vh]"
                     role="tablist"
                     >
-                        <div>
+                        <div className="max-w-full">
                             <TabsTrigger value="social">Social Media</TabsTrigger>
                             <TabsTrigger value="advert">Advertising</TabsTrigger>
                             <TabsTrigger value="creation">Video Creation</TabsTrigger>

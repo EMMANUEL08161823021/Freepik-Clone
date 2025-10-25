@@ -37,7 +37,7 @@ const Creative = () => {
     <section className="">
         <br/>
         <br/>
-        <div className="px-2">
+        <div className="px-4">
             <Tabs defaultValue="social">
                 <h2 className="text-2xl py-3 font-semibold text-gray-900">All in a single Creative Suite</h2>
                 {/* Tabs header - centered and limited width */}

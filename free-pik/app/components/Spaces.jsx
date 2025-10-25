@@ -5,28 +5,31 @@ import Image from 'next/image'
 const Spaces = () => {
   return (
         <section className=" text-gray-900">
-            <div className="max-w-5xl mx-auto px-2">
+            <div className="max-w-5xl mx-auto px-4">
                 {/* logos */}
-                <div className="flex items-center justify-center gap-8 opacity-40 mb-8">
+                <div className="flex flex-wrap items-center justify-center gap-8 opacity-40 mb-8">
                 {/* Replace these with real svg/img logos */}
-                <span className="text-sm tracking-wide">Google</span>
-                <span className="text-sm tracking-wide">MyBank</span>
-                <span className="text-sm tracking-wide">HelloFresh</span>
-                <span className="text-sm tracking-wide">CocaCola</span>
-                <span className="text-sm tracking-wide">Ogilvy</span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/google.svg"} alt='google'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/nubank.svg"} alt='google'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/hello-fresh.svg"} alt='google'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/coca-cola.svg"} alt='google'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/ogilvy.svg"} alt='Ogilvy'/></span>
                 </div>
 
                 {/* heading */}
-                <h2 className="text-left font-light leading-tight">
-                <span className="font-semibold">You bring the vision.</span>{" "}
-                <span className="font-normal">We help you go further.</span>{" "}
-                <span className="font-semibold text-gray-300">Join <span className="text-indigo-300">700,000</span> creative teams, marketers, and designers worldwide.</span>
+                <h2 className="text-left font-semibold leading-tight">
+                <span className='text-xl'>You bring the vision. We help you go further. </span>
+                <span className="text-gray-500 text-xl">Join 700,000 creative teams, marketers, and designers worldwide.</span>
                 </h2>
 
+                <br/>
+                <br/>
+                <br/>
+
                 {/* hero */}
-                <div className="mt-12">
-                <div className="relative rounded-2xl overflow-hidden bg-gray-50 shadow-2xl">
-                    <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="">
+                <div className="relative  rounded-2xl overflow-hidden bg-gray-50 shadow-xl">
+                    <div className="grid grid-cols-2">
                     {/* left text panel (over background) */}
                     <div className="relative px-6 py-12 md:py-20 md:px-14 flex items-center">
                         {/* subtle blurred background using same image (desktop shows it behind text) */}
@@ -44,7 +47,7 @@ const Spaces = () => {
 
                         <div className="max-w-xl">
                         <h3 className="text-3xl sm:text-4xl font-semibold mb-4">Introducing Spaces</h3>
-                        <p className="text-sm sm:text-base text-gray-300 mb-6">
+                        <p className="text-sm sm:text-base text-gray-500 mb-6">
                             An infinite, collaborative canvas to create and automate multi-step workflows.
                         </p>
 

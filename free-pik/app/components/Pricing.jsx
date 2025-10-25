@@ -5,7 +5,7 @@ const Pricing = () => {
     <section>
         <br/>
         <br/>
-        <div className='max-w-5xl px-2 mx-auto text-center'>
+        <div className='max-w-5xl px-4 mx-auto text-center'>
             <h2 className="text-2xl py-3 font-semibold text-gray-900 text-left">Plans that cover your needs</h2>
             <div className='flex flex-col gap-3 md:flex-row'>
                 <div className='border text-left p-3'>

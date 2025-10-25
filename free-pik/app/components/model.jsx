@@ -20,9 +20,9 @@ const Model = () => {
     <section className="">
       <br/>
       <br/>
-      <div className="px-2 mx-auto max-w-5xl">
+      <div className="px-4 mx-auto max-w-5xl">
         <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ullam voluptates modi.
+          All the top GenAI models—plus Magnific, recently acquired by Freepik
         </h2>
 
         {/* Brand row */}
@@ -126,13 +126,15 @@ const Model = () => {
             </TabsContent>
           </div>
           {/* Tabs header - horizontal, scrollable on small screens */}
-          <TabsList className="flex gap-2 overflow-x-auto no-scrollbar flex-wrap h-full pb-2 mb-4">
+          <TabsList className="flex whitespace-nowrap overflow-x-auto no-scrollbar gap-2 flex-wrap h-full pb-2 mb-4">
+            <div className="max-w-full">
             <TabsTrigger value="social">Social Media</TabsTrigger>
             <TabsTrigger value="advert">Advertising</TabsTrigger>
             <TabsTrigger value="creation">Video Creation</TabsTrigger>
             <TabsTrigger value="photography">Photography</TabsTrigger>
             <TabsTrigger value="branding">Branding</TabsTrigger>
             <TabsTrigger value="printed">Printed Materials</TabsTrigger>
+            </div>
           </TabsList>
         </Tabs>
       </div>

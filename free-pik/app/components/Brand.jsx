@@ -32,7 +32,7 @@ const Brand = ({ speed = 18, height = 120 }) => {
 
   return (
     <section>
-        <div className="w-full md:max-w-5xl overflow-hidden mx-auto">
+        <div className="w-full px-4 md:max-w-5xl overflow-hidden mx-auto">
             <div className="relative">
             {/* Motion track: translate X from 0 -> -50% to scroll one full set */}
             <motion.div

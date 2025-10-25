@@ -99,13 +99,13 @@ const Hero = () => {
     <section className="h-[100vh]">
 
         <br className='block'/>
-        <div className="flex flex-col px-2 md:px-0 justify-center ">
+        <div className="flex flex-col px-4 md:px-0 justify-center ">
 
             {/* Center Content */}
             <div className="flex justify-center items-center">
                 <div className="max-w-4xl mx-auto text-center">
-                    <button className="px-4 flex gap-2 items-center mx-auto py-1 rounded-full border border-gray-600 text-gray-900 text-xs font-medium shadow hover:bg-gray-600 hover:text-white transition-all duration-200">
-                        Limited time <span style={{fontSize: "8px"}} className='border py-1 px-2 text-white rounded-full bg-gray-500'>50% OFF</span>
+                    <button className="px-4 flex gap-2 items-center mx-auto py-1 rounded-full border border-gray-600 text-gray-900 text-xs font-medium shadow hover:bg-gray-600 hover:text-gray-900 transition-all duration-200">
+                        Limited time <span style={{fontSize: "8px"}} className='border py-1 px-2 text-gray-900 rounded-full bg-gray-500'>50% OFF</span>
                     </button>
 
                     <h1 className="mt-4 font-bold z-20 text-3xl md:text-4xl leading-tight text-gray-900">
@@ -119,7 +119,7 @@ const Hero = () => {
                     </p>
 
                     <div className="mt-4">
-                    <button className="px-4 py-2 rounded-full bg-gray-600 text-white text-xs font-medium shadow hover:bg-gray-600 transition-all duration-200">
+                    <button className="px-4 py-2 rounded-full bg-gray-600 text-gray-900 text-xs font-medium shadow hover:bg-gray-600 transition-all duration-200">
                         Get Started for free
                     </button>
                     </div>
@@ -149,13 +149,21 @@ const Hero = () => {
                         />
                     </div>
                     {/* Center Image */}
-                    <Image
+                   <video
                     width={500}
                     height={300}
-                    src="/assets/person.jpg"
-                    alt="center"
                     className="rounded-xl z-10 object-cover shadow-lg"
-                    />
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    aria-hidden="true" // mark decorative so screen-readers ignore it; remove/change if it's meaningful content
+                    >
+                    <source src="/assets/v4-home-video-with-logos.webm" type="video/webm" />
+                    <source src="/assets/v4-home-video-with-logos.mp4" type="video/mp4" />
+                    </video>
+
                     {/* right side */}
                     <div className="absolute hidden md:block top-[-25%] right-[-65%] z-30">
                         <Image

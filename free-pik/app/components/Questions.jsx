@@ -43,7 +43,7 @@ const Questions = () => {
         <section className="bg-gray-50">
             <br/>
             <br/>
-            <div className="max-w-5xl px-2 mx-auto text-left">
+            <div className="max-w-5xl px-4 mx-auto text-left">
             {/* Title */}
             <motion.h2
                 initial={{ opacity: 0, y: -20 }}
@@ -120,7 +120,7 @@ const Questions = () => {
                 <p className='text-xs text-gray-900'>Your vision, elevated</p>
 
                 <div>
-                    <button className="px-4 py-2 cursor-pointer rounded-full bg-gray-600 text-white text-sm font-medium shadow hover:bg-gray-600 transition-all duration-200">
+                    <button className="px-4 py-2 cursor-pointer rounded-full bg-gray-600 text-gray-900 text-sm font-medium shadow hover:bg-gray-600 transition-all duration-200">
                         Get started for free
                     </button>
                 </div>

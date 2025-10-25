@@ -32,7 +32,7 @@ const gfsDidot = localFont({
 export default function Home() {
   return (
     // apply className so children inherit the font
-    <main className={gfsDidot.className}>
+    <main className={`${gfsDidot.className} bg-gray-100`}>
       <Navbar/>
       <Hero/>
       <Spaces/>

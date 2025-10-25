@@ -151,7 +151,7 @@ export default function Search({
         {/* <button
           type="button"
           onClick={() => onSearch(value.trim())}
-          className="ml-2 hidden rounded-md bg-indigo-600 px-3 py-2 text-sm text-white hover:bg-indigo-700 md:inline-flex"
+          className="ml-2 hidden rounded-md bg-indigo-600 px-3 py-2 text-sm text-gray-900 hover:bg-indigo-700 md:inline-flex"
           aria-label="Submit search"
         >
           Search

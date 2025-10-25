@@ -131,7 +131,7 @@ export default function Result({  imgs = defaultImgs, cardHeight = 350, cardSize
     <section className="overflow-hidden">
         <br/>
         <br/>
-        <div className="flex flex-col px-2">
+        <div className="flex flex-col px-4">
             <br/>
             <div className="w-full mx-auto">
                 <div className="max-w-5xl mx-auto  flex items-center justify-between mb-4">
