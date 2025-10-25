@@ -173,7 +173,7 @@ export default function Result({  imgs = defaultImgs, cardHeight = 350, cardSize
                 // active visual index is the middle-copy index that equals index
                 const isActive = i === index;
                 return (
-                  <div className="flex flex-col gap-3">
+                  <motion.div className="flex flex-col gap-3">
                     <div
                       key={i}
                       className={`flex flex-col flex-shrink-0 rounded-xl overflow-hidden border ${isActive ? "shadow-lg" : "shadow-sm"}`}
@@ -198,7 +198,7 @@ export default function Result({  imgs = defaultImgs, cardHeight = 350, cardSize
                       />
                       </div>
                       <p className={` ${isActive ? 'flex' : 'opacity-0'} text-xs`}>{src.text}</p>
-                  </div>
+                  </motion.div>
                 );
                 })}
             </motion.div>

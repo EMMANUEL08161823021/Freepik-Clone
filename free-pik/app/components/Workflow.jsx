@@ -98,7 +98,7 @@ export default function WorkFlow({
                     <motion.div
                     key={card.key ?? `${slideIndex}-${idx}`}
                     layout
-                    className={`relative rounded-xl overflow-hidden border ${isActive ? "shadow-2xl" : "shadow-md"}`}
+                    className={`relative rounded-xl border border-red-600 overflow-hidden ${isActive ? "shadow-2xl" : "shadow-md"}`}
                     style={{
                         flex: flexStyle,
                         minWidth: 0,
@@ -117,7 +117,7 @@ export default function WorkFlow({
                     >
                     {/* collapsed look: narrow vertical thumbnail, rotated label */}
                     {collapsed ? (
-                        <div className="w-full h-full relative bg-cover bg-center" style={{ backgroundImage: `url(${card.src})` }}>
+                        <div className="w-full h-full border border-blue-600 relative bg-cover bg-center" style={{ backgroundImage: `url(${card.src})` }}>
                         <div
                             style={{
                             position: "absolute",
@@ -133,7 +133,7 @@ export default function WorkFlow({
                         </div>
                     ) : (
                         // normal or expanded card
-                        <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                        <div className="border border-green-600" style={{ position: "relative", width: "100%", height: "100%" }}>
                         <div
                             style={{
                             position: "absolute",
@@ -152,6 +152,7 @@ export default function WorkFlow({
                             background: !isActive ? "linear-gradient(to top, rgba(0,0,0,0.25), rgba(0,0,0,0))" : "linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.12) 35%, rgba(0,0,0,0) 100%)",
                             }}
                         />
+                        {/* linear-gradient(to top, rgba(0,0,0,0.25), rgba(0,23,223,134)) */}
 
                         {isActive ? (
                             <div className="relative z-10 h-full flex items-center">
