@@ -41,8 +41,8 @@ const Creative = () => {
             <Tabs defaultValue="social">
                 <h2 className="text-2xl py-3 font-semibold text-gray-900">All in a single Creative Suite</h2>
                 {/* Tabs header - centered and limited width */}
-                <TabsList className={"flex w-full h-full overflow-scroll no-scrollbar"}>
-                  <div>
+                <TabsList className={"flex whitespace-nowrap justify-start overflow-x-auto no-scrollbar w-full h-full"}>
+                  <div className="max-w-full md:flex border gap-4">
                     <TabsTrigger value="social">Social Media</TabsTrigger>
                     <TabsTrigger value="advert">Advertising</TabsTrigger>
                     <TabsTrigger value="creation">Video Creation</TabsTrigger>

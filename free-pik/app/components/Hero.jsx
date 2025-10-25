@@ -105,7 +105,7 @@ const Hero = () => {
             <div className="flex justify-center items-center">
                 <div className="max-w-4xl mx-auto text-center">
                     <button className="px-4 flex gap-2 items-center mx-auto py-1 rounded-full border border-gray-600 text-gray-900 text-xs font-medium shadow hover:bg-gray-600 hover:text-gray-900 transition-all duration-200">
-                        Limited time <span style={{fontSize: "8px"}} className='border py-1 px-2 text-gray-900 rounded-full bg-gray-500'>50% OFF</span>
+                        Limited time <span style={{fontSize: "8px"}} className='border py-1 px-2 text-white rounded-full bg-gray-500'>50% OFF</span>
                     </button>
 
                     <h1 className="mt-4 font-bold z-20 text-3xl md:text-4xl leading-tight text-gray-900">
@@ -119,7 +119,7 @@ const Hero = () => {
                     </p>
 
                     <div className="mt-4">
-                    <button className="px-4 py-2 rounded-full bg-gray-600 text-gray-900 text-xs font-medium shadow hover:bg-gray-600 transition-all duration-200">
+                    <button className="px-4 py-2 rounded-full bg-gray-600 text-white text-xs font-medium shadow hover:bg-gray-600 transition-all duration-200">
                         Get Started for free
                     </button>
                     </div>

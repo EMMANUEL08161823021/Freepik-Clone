@@ -36,14 +36,28 @@ const Model = () => {
           <div className="space-y-6">
             <TabsContent value="social" className="p-0">
               <div className="rounded-lg overflow-hidden border">
-                <Image
+                <video
+                  width={1000}
+                  height={350}
+                  className="rounded-xl z-10 object-cover shadow-lg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-hidden="true" // mark decorative so screen-readers ignore it; remove/change if it's meaningful content
+                >
+                  <source src="/assets/magnific-upscaler-video.webm" type="video/webm" />
+                  <source src="/assets/magnific-upscaler-video.mp4" type="video/mp4" />
+                </video>
+                {/* <Image
                   src={socials[0].image || placeholder}
                   alt="social placeholder"
                   width={1000}
                   height={400}
                   className="object-cover w-full h-auto block"
                   priority
-                />
+                /> */}
                 <div className="p-4">
                   <p className="text-sm text-gray-700">{socials[0].text}</p>
                 </div>
@@ -52,13 +66,27 @@ const Model = () => {
 
             <TabsContent value="advert" className="p-0">
               <div className="rounded-lg overflow-hidden border">
-                <Image
+                <video
+                  width={1000}
+                  height={350}
+                  className="rounded-xl z-10 object-cover shadow-lg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-hidden="true" // mark decorative so screen-readers ignore it; remove/change if it's meaningful content
+                >
+                  <source src="/assets/magnific-upscaler-video.webm" type="video/webm" />
+                  <source src="/assets/magnific-upscaler-video.mp4" type="video/mp4" />
+                </video>
+                {/* <Image
                   src={socials[0].image || placeholder}
                   alt="advert placeholder"
                   width={1000}
                   height={400}
                   className="object-cover w-full h-auto block"
-                />
+                /> */}
                 <div className="p-4">
                   <p className="text-sm text-gray-700">{socials[1].text}</p>
                 </div>
@@ -67,13 +95,27 @@ const Model = () => {
 
             <TabsContent value="creation" className="p-0">
               <div className="rounded-lg overflow-hidden border">
-                <Image
+                <video
+                  width={1000}
+                  height={350}
+                  className="rounded-xl z-10 object-cover shadow-lg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-hidden="true" // mark decorative so screen-readers ignore it; remove/change if it's meaningful content
+                >
+                  <source src="/assets/magnific-upscaler-video.webm" type="video/webm" />
+                  <source src="/assets/magnific-upscaler-video.mp4" type="video/mp4" />
+                </video>
+                {/* <Image
                   src={socials[0].image || placeholder}
                   alt="creation placeholder"
                   width={1000}
                   height={400}
                   className="object-cover w-full h-auto block"
-                />
+                /> */}
                 <div className="p-4">
                   <p className="text-sm text-gray-700">{socials[2].text}</p>
                 </div>
@@ -82,13 +124,27 @@ const Model = () => {
 
             <TabsContent value="photography" className="p-0">
               <div className="rounded-lg overflow-hidden border">
-                <Image
+                <video
+                  width={1000}
+                  height={350}
+                  className="rounded-xl z-10 object-cover shadow-lg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-hidden="true" // mark decorative so screen-readers ignore it; remove/change if it's meaningful content
+                >
+                  <source src="/assets/magnific-upscaler-video.webm" type="video/webm" />
+                  <source src="/assets/magnific-upscaler-video.mp4" type="video/mp4" />
+                </video>
+                {/* <Image
                   src={socials[0].image || placeholder}
                   alt="photography placeholder"
                   width={1000}
                   height={400}
                   className="object-cover w-full h-auto block"
-                />
+                /> */}
                 <div className="p-4">
                   <p className="text-sm text-gray-700">{socials[3].text}</p>
                 </div>
@@ -97,13 +153,27 @@ const Model = () => {
 
             <TabsContent value="branding" className="p-0">
               <div className="rounded-lg overflow-hidden border">
-                <Image
+                <video
+                  width={1000}
+                  height={350}
+                  className="rounded-xl z-10 object-cover shadow-lg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-hidden="true" // mark decorative so screen-readers ignore it; remove/change if it's meaningful content
+                >
+                  <source src="/assets/magnific-upscaler-video.webm" type="video/webm" />
+                  <source src="/assets/magnific-upscaler-video.mp4" type="video/mp4" />
+                </video>
+                {/* <Image
                   src={placeholder}
                   alt="branding placeholder"
                   width={1000}
                   height={400}
                   className="object-cover w-full h-auto block"
-                />
+                /> */}
                 <div className="p-4">
                   <p className="text-sm text-gray-700">{socials[4].text}</p>
                 </div>
@@ -112,13 +182,29 @@ const Model = () => {
 
             <TabsContent value="printed" className="p-0">
               <div className="rounded-lg overflow-hidden border">
-                <Image
+                
+                <video
+                 width={1000}
+                  height={350}
+                  className="rounded-xl z-10 object-cover shadow-lg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-hidden="true" // mark decorative so screen-readers ignore it; remove/change if it's meaningful content
+                >
+                  <source src="/assets/magnific-upscaler-video.webm" type="video/webm" />
+                  <source src="/assets/magnific-upscaler-video.mp4" type="video/mp4" />
+                </video>
+
+                {/* <Image
                   src={placeholder}
                   alt="printed placeholder"
                   width={1000}
                   height={400}
                   className="object-cover w-full h-auto block"
-                />
+                /> */}
                 <div className="p-4">
                   <p className="text-sm text-gray-700">Printed materials placeholder content.</p>
                 </div>

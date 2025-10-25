@@ -67,7 +67,7 @@ export default function Navbar() {
                 <div className="hidden sm:flex gap-3">
                     <Search placeholder="Search assets or start creating..." onSearch={handleSearch} suggestions={exampleSuggestions} />                
                     {/* <button className="px-3 py-1 text-sm rounded-md text-[#FF553E]">Login</button> */}
-                    <button className="text-xs px-4 py-2 whitespace-nowrap rounded-full bg-gray-600 text-gray-900">Sign in</button>
+                    <button className="text-xs px-4 py-2 whitespace-nowrap rounded-full bg-gray-600 text-white">Sign in</button>
                 </div>
 
                 {/* Hamburger for mobile */}

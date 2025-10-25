@@ -41,11 +41,11 @@ const Features = () => {
                         - no-scrollbar utility used to hide scrollbars visually
                     */}
                     <TabsList
-                    className="flex whitespace-nowrap overflow-x-auto no-scrollbar flex-row md:flex-col w-[100%] md:w-48 shrink-0 space-x-2 md:space-x-0 md:space-y-1 py-2 rounded-md bg-gray-50
+                    className="flex border justify-start whitespace-nowrap overflow-x-auto no-scrollbar flex-row md:flex-col w-[100%] md:w-48 shrink-0 space-x-2 md:space-x-0 md:space-y-1 py-2 rounded-md bg-gray-50
                             h-full md:h-[55vh]"
                     role="tablist"
                     >
-                        <div className="max-w-full">
+                        <div className="max-w-full border md:flex md:flex-col">
                             <TabsTrigger value="social">Social Media</TabsTrigger>
                             <TabsTrigger value="advert">Advertising</TabsTrigger>
                             <TabsTrigger value="creation">Video Creation</TabsTrigger>

@@ -26,7 +26,7 @@ const makeSvgDataUrl = (name, color) => {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 };
 
-const Brand = ({ speed = 18, height = 120 }) => {
+const Brand = ({ speed = 25, height = 120 }) => {
   // Duplicate logos array to create a seamless looping track
   const track = [...logos, ...logos];
 
@@ -45,10 +45,10 @@ const Brand = ({ speed = 18, height = 120 }) => {
                 {track.map((l, i) => (
                 <div
                     key={`${l.name}-${i}`}
-                    className="flex-shrink-0 border flex items-center justify-center px-4"
+                    className="flex-shrink-0 flex items-center justify-center px-4"
                     style={{ width: 160, height: "auto" }}
                 >
-                    <div className="w-full" style={{ height: "70px" }}>
+                    <div className="w-full" style={{ height: "50px" }}>
                     <Image
                         src={makeSvgDataUrl(l.name, l.color)}
                         alt={l.name}
