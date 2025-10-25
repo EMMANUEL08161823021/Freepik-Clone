@@ -1,6 +1,8 @@
 "use client"
 import React, { useRef, useState, useEffect } from 'react'
 import { motion, useReducedMotion, useInView  } from 'framer-motion'
+import Image from 'next/image'
+
 const variants = {
   idle: { x: 0, y: 0, rotate: 0 },
   ring: {
@@ -94,59 +96,80 @@ const Hero = () => {
     show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 120, damping: 16 } },
   }
   return (
-    <section className="h-[120vh] relative overflow-hidden flex flex-col justify-center items-center">
+    <section className="h-[100vh]">
 
-      <br className='block sm:hidden'/>
-      <div className='h-[80%] px-4 sm:px-6 lg:px-8" lg:px-8"'>
+        <br className='block'/>
+        <div className="flex flex-col px-2 md:px-0 justify-center ">
 
-        {/* Center Content */}
-        <div className="flex justify-center items-center w-full h-full">
-          <div className="relative max-w-4xl mx-auto text-left sm:text-center ">
-            <h1 className="font-sans font-extrabold z-20 text-3xl md:text-4xl leading-tight text-gray-900">
-              A Collaborative <br className='block sm:hidden'/> Time <br className="hidden sm:block" /> 
-              
-            </h1>
+            {/* Center Content */}
+            <div className="flex justify-center items-center">
+                <div className="max-w-4xl mx-auto text-center">
+                    <button className="px-4 flex gap-2 items-center mx-auto py-1 rounded-full border border-gray-600 text-gray-900 text-xs font-medium shadow hover:bg-gray-600 hover:text-white transition-all duration-200">
+                        Limited time <span style={{fontSize: "8px"}} className='border py-1 px-2 text-white rounded-full bg-gray-500'>50% OFF</span>
+                    </button>
+
+                    <h1 className="mt-4 font-bold z-20 text-3xl md:text-4xl leading-tight text-gray-900">
+                    Creative work, <br className='block sm:hidden'/> reimagined <br className="hidden sm:block" /> 
+                    
+                    </h1>
 
 
-            <p className="mt-4 text-gray-600 text-sm max-w-2xl mx-auto">
-              Simplify team timekeeping with accurate reports, effortless timers, intuitive controls, and clear insights to boost daily productivity consistently.
-            </p>
+                    <p className="mt-4 text-gray-600 text-sm max-w-2xl mx-auto">
+                    Simplify team timekeeping with accurate reports, effortless timers, intuitive.
+                    </p>
 
-            <div className="mt-8">
-              <button className="px-8 py-3 rounded-full bg-gray-600 text-white text-sm font-medium shadow hover:bg-gray-600 transition-all duration-200">
-                Start 14 Days Trial
-              </button>
+                    <div className="mt-4">
+                    <button className="px-4 py-2 rounded-full bg-gray-600 text-white text-xs font-medium shadow hover:bg-gray-600 transition-all duration-200">
+                        Get Started for free
+                    </button>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div className="w-full flex justify-center mt-4 h-[50vh] ">
+                {/* small top-left stack */}
+
+                <div className="relative  flex justify-center mx-auto z-10">
+
+                    {/* center-left (bigger) */}    
+                    <div className="absolute hidden md:flex top-[-10%] left-[-35%] gap-10  flex-col items-center   z-5">
+                        <Image
+                        width={200}
+                        height={70}
+                        src="/assets/person-1.jpg"
+                        alt="small one"
+                        className="rounded-xl z-5v object-cover"
+                        />
+                        <Image
+                        width={100}
+                        height={200}
+                        src="/assets/person-2.jpg"
+                        alt="small two"
+                        className="rounded-xl object-cover shadow"
+                        />
+                    </div>
+                    {/* Center Image */}
+                    <Image
+                    width={500}
+                    height={300}
+                    src="/assets/person.jpg"
+                    alt="center"
+                    className="rounded-xl z-10 object-cover shadow-lg"
+                    />
+                    {/* right side */}
+                    <div className="absolute hidden md:block top-[-25%] right-[-65%] z-30">
+                        <Image
+                        width={300}
+                        height={300}
+                        src="/assets/person.jpg"
+                        alt="right"
+                        className="rounded-xl object-cover shadow"
+                        />
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        {/* Right Image */}
-        <img className='absolute hidden lg:block" right-[3%] top-[40%]' src={"/assets/mobile-screen-2.svg"} alt='mobile-screen-2' />
-      </div>
-      <div className="bg-white h-auto w-full p-6 flex  justify-center">
-        <motion.div
-          ref={ref}
-          className="flex flex-col md:flex-row justify-center gap-6 max-w-4xl w-full border-black rounded-lg p-4"
-          variants={container}
-          initial="hidden"
-          animate={inView ? 'show' : 'hidden'}
-        >
-          <motion.div className="flex-1 text-center p-4" variants={card} role="group" aria-label="Active users">
-            <h1 className="text-3xl font-bold text-gray-900">{formatToKPlus(n1)}</h1>
-            <p className="text-sm text-gray-500">Active Users</p>
-          </motion.div>
-
-          <motion.div className="flex-1 text-center p-4" variants={card} role="group" aria-label="Downloads">
-            <h1 className="text-3xl font-bold text-gray-900">{formatToKPlus(n2)}</h1>
-            <p className="text-sm text-gray-500">Downloads</p>
-          </motion.div>
-
-          <motion.div className="flex-1 text-center p-4" variants={card} role="group" aria-label="Customers">
-            <h1 className="text-3xl font-bold text-gray-900">{formatToKPlus(n3)}</h1>
-            <p className="text-sm text-gray-500">Customers</p>
-          </motion.div>
-        </motion.div>
-      </div>
     </section>
   )
 }

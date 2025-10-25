@@ -1,111 +1,143 @@
+"use client";
 import React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
 import Image from "next/image";
+import Brand from "./Brand";
 
-const socials = [
-  {
-    image: "",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores eos magnisimilique deserunt!",
-  },
-  {
-    image: "",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores eos magnisimilique deserunt!",
-  },
-  {
-    image: "",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores eos magnisimilique deserunt!",
-  },
-  {
-    image: "",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores eos magnisimilique deserunt!",
-  },
-  {
-    image: "",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores eos magnisimilique deserunt!",
-  },
+const socials = new Array(5).fill({
+  image: "/assets/person.jpg",
+  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores eos magnisimilique deserunt!",
+});
 
-];
+// inline SVG placeholder data-URI
+const placeholderSvg = encodeURIComponent(
+  "<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='400'><rect width='100%' height='100%' fill='%23e5e7eb'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24'>Image</text></svg>"
+);
+const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
 
 const Model = () => {
-  // lightweight inline SVG placeholder (encoded at runtime)
-  const placeholderSvg = encodeURIComponent(
-    "<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='360'><rect width='100%' height='100%' fill='%23e5e7eb'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24'>Image</text></svg>"
-  );
-  const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
-
   return (
     <section className="">
-        <br/>
-        <br/>
-        <div className="px-2">
-            <Tabs defaultValue="social">
-                <h2 className="text-2xl py-3 font-semibold text-gray-900">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ullam voluptates modi.</h2>
-                {/* Tabs header - centered and limited width */}
+      <br/>
+      <br/>
+      <div className="px-2 mx-auto max-w-5xl">
+        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ullam voluptates modi.
+        </h2>
 
-                <TabsContent value="social" className="p-0">
-                    <div className="">
-                        <img src={placeholder} alt="image"/>
-                        {/* <h3 className="text-lg font-semibold mb-2">Branding</h3>
-                        <p className="text-sm text-gray-600">Placeholder content for Branding.</p> */}
-                    </div>
-                </TabsContent>
-                
-
-                {/* other tabs: kept simple placeholders so tab header values match available content */}
-                <TabsContent value="advert">
-                    <div className="">
-                        <img src={placeholder} alt="image"/>
-                        {/* <h3 className="text-lg font-semibold mb-2">Advertising</h3>
-                        <p className="text-sm text-gray-600">Placeholder content for Advertising.</p> */}
-                    </div>
-                </TabsContent>
-
-                <TabsContent value="creation">
-                    <div className="">
-                        <img src={placeholder} alt="image"/>
-                        {/* <h3 className="text-lg font-semibold mb-2">Video Creation</h3>
-                        <p className="text-sm text-gray-600">Placeholder content for Video Creation.</p> */}
-                    </div>
-                </TabsContent>
-
-                <TabsContent value="photography">
-                    <div className="">
-                        <img src={placeholder} alt="image"/>
-                        {/* <h3 className="text-lg font-semibold mb-2">Photography</h3>
-                        <p className="text-sm text-gray-600">Placeholder content for Photography.</p> */}
-                    </div>
-                </TabsContent>
-
-                <TabsContent value="branding">
-                    <div className="">
-                        <img src={placeholder} alt="image"/>
-                        {/* <h3 className="text-lg font-semibold mb-2">Branding</h3>
-                        <p className="text-sm text-gray-600">Placeholder content for Branding.</p> */}
-                    </div>
-                </TabsContent>
-
-                <TabsContent value="printed">
-                    <div className="">
-                        <img src={placeholder} alt="image"/>
-                        {/* <h3 className="text-lg font-semibold mb-2">Printed Materials</h3>
-                        <p className="text-sm text-gray-600">Placeholder content for Printed Materials.</p> */}
-                    </div>
-                </TabsContent>
-
-                <TabsList className={"border w-full h-full overflow-scroll no-scrollbar flex justify-around"}>
-                  <div>
-                    <TabsTrigger value="social">Social Media</TabsTrigger>
-                    <TabsTrigger value="advert">Advertising</TabsTrigger>
-                    <TabsTrigger value="creation">Video Creation</TabsTrigger>
-                    <TabsTrigger value="photography">Photography</TabsTrigger>
-                    <TabsTrigger value="branding">Branding</TabsTrigger>
-                    <TabsTrigger value="printed">Printed Materials</TabsTrigger>
-                  </div>
-                </TabsList>
-            </Tabs>
+        {/* Brand row */}
+        <div className="mb-6">
+          <Brand />
         </div>
-        <br/>
-        <br/>
+
+        <Tabs defaultValue="social">
+
+          {/* Tab contents */}
+          <div className="space-y-6">
+            <TabsContent value="social" className="p-0">
+              <div className="rounded-lg overflow-hidden border">
+                <Image
+                  src={socials[0].image || placeholder}
+                  alt="social placeholder"
+                  width={1000}
+                  height={400}
+                  className="object-cover w-full h-auto block"
+                  priority
+                />
+                <div className="p-4">
+                  <p className="text-sm text-gray-700">{socials[0].text}</p>
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="advert" className="p-0">
+              <div className="rounded-lg overflow-hidden border">
+                <Image
+                  src={socials[0].image || placeholder}
+                  alt="advert placeholder"
+                  width={1000}
+                  height={400}
+                  className="object-cover w-full h-auto block"
+                />
+                <div className="p-4">
+                  <p className="text-sm text-gray-700">{socials[1].text}</p>
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="creation" className="p-0">
+              <div className="rounded-lg overflow-hidden border">
+                <Image
+                  src={socials[0].image || placeholder}
+                  alt="creation placeholder"
+                  width={1000}
+                  height={400}
+                  className="object-cover w-full h-auto block"
+                />
+                <div className="p-4">
+                  <p className="text-sm text-gray-700">{socials[2].text}</p>
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="photography" className="p-0">
+              <div className="rounded-lg overflow-hidden border">
+                <Image
+                  src={socials[0].image || placeholder}
+                  alt="photography placeholder"
+                  width={1000}
+                  height={400}
+                  className="object-cover w-full h-auto block"
+                />
+                <div className="p-4">
+                  <p className="text-sm text-gray-700">{socials[3].text}</p>
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="branding" className="p-0">
+              <div className="rounded-lg overflow-hidden border">
+                <Image
+                  src={placeholder}
+                  alt="branding placeholder"
+                  width={1000}
+                  height={400}
+                  className="object-cover w-full h-auto block"
+                />
+                <div className="p-4">
+                  <p className="text-sm text-gray-700">{socials[4].text}</p>
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="printed" className="p-0">
+              <div className="rounded-lg overflow-hidden border">
+                <Image
+                  src={placeholder}
+                  alt="printed placeholder"
+                  width={1000}
+                  height={400}
+                  className="object-cover w-full h-auto block"
+                />
+                <div className="p-4">
+                  <p className="text-sm text-gray-700">Printed materials placeholder content.</p>
+                </div>
+              </div>
+            </TabsContent>
+          </div>
+          {/* Tabs header - horizontal, scrollable on small screens */}
+          <TabsList className="flex gap-2 overflow-x-auto no-scrollbar flex-wrap h-full pb-2 mb-4">
+            <TabsTrigger value="social">Social Media</TabsTrigger>
+            <TabsTrigger value="advert">Advertising</TabsTrigger>
+            <TabsTrigger value="creation">Video Creation</TabsTrigger>
+            <TabsTrigger value="photography">Photography</TabsTrigger>
+            <TabsTrigger value="branding">Branding</TabsTrigger>
+            <TabsTrigger value="printed">Printed Materials</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+      <br/>
+      <br/>
     </section>
   );
 };

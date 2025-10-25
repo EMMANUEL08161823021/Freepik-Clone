@@ -22,12 +22,19 @@ const Features = () => {
         <br/>
         <br/>
         <div className="px-2 mx-auto w-full sm:max-w-xl overflow-hidden md:max-w-5xl">
+            <div className="flex items-center justify-between">
 
-            <Tabs defaultValue="social">
-                {/* layout: column on mobile (tablist on top), row on md+ (left tabs, right content) */}
                 <h2 className="text-2xl py-2 font-semibold text-gray-900">
                 The Features you need, the Simplicity you want
                 </h2>
+                <div>
+
+                <button className="text-xs p-2 whitespace-nowrap border border-gray-500 rounded-full">How to start with AI</button>
+                </div>
+            </div>
+
+            <Tabs defaultValue="social">
+                {/* layout: column on mobile (tablist on top), row on md+ (left tabs, right content) */}
                 <div className="flex flex-col md:flex-row gap-6 items-start">
                     {/* TabsList:
                         - horizontal on mobile (scrollable)

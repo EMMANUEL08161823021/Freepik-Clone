@@ -13,6 +13,7 @@ import Features from "./components/Features";
 import Brand from "./components/Brand";
 import Navbar from "./constants/Navbar";
 import Hero from "./components/Hero";
+import Spaces from "./components/Spaces";
 
 // load the local font (next/font/local auto-optimizes & preloads)
 const gfsDidot = localFont({
@@ -34,7 +35,7 @@ export default function Home() {
     <main className={gfsDidot.className}>
       <Navbar/>
       <Hero/>
-      <Brand/>
+      <Spaces/>
       <Features/>
       <Model/>
       <Creative/>

@@ -32,11 +32,7 @@ const Brand = ({ speed = 18, height = 120 }) => {
 
   return (
     <section>
-        <br/>
-        <br/>
-        <div className="w-full md:max-w-5xl px-2 overflow-hidden mx-auto">
-            <h2 className="text-2xl py-3 font-semibold text-gray-900">Brands</h2>
-
+        <div className="w-full md:max-w-5xl overflow-hidden mx-auto">
             <div className="relative">
             {/* Motion track: translate X from 0 -> -50% to scroll one full set */}
             <motion.div
@@ -49,10 +45,10 @@ const Brand = ({ speed = 18, height = 120 }) => {
                 {track.map((l, i) => (
                 <div
                     key={`${l.name}-${i}`}
-                    className="flex-shrink-0 flex items-center justify-center px-4"
-                    style={{ width: 160 }}
+                    className="flex-shrink-0 border flex items-center justify-center px-4"
+                    style={{ width: 160, height: "auto" }}
                 >
-                    <div className="w-full" style={{ height }}>
+                    <div className="w-full" style={{ height: "70px" }}>
                     <Image
                         src={makeSvgDataUrl(l.name, l.color)}
                         alt={l.name}
@@ -71,8 +67,6 @@ const Brand = ({ speed = 18, height = 120 }) => {
             <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-white to-transparent" />
             </div>
         </div>
-        <br/>
-        <br/>
     </section>
   );
 };
