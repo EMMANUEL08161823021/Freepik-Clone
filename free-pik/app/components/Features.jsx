@@ -60,7 +60,7 @@ const Features = () => {
                     {/* --- MOBILE: carousel (visible on small screens only) --- */}
                     <TabsContent value="social" className="p-0">
                         <div className="md:hidden">
-                        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar">
+                        <div className="flex gap-4 overflow-x-auto no-scrollbar">
                             {socials.map((s) => (
                             <article
                                 key={s.id}

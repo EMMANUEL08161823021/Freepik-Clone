@@ -28,7 +28,7 @@ export default function WorkFlow({
     // more...
   ],
   cardsPerSlide = 4,
-  cardHeight = 420,
+  cardHeight = 500,
   collapsedWidth = 80,
   hoverGrow = 3,
   gap = 16,
@@ -189,14 +189,14 @@ export default function WorkFlow({
                 })}
 
                 {/* fill blanks if needed */}
-                {currentCards.length < cardsPerSlide &&
+                {/* {currentCards.length < cardsPerSlide &&
                 Array.from({ length: cardsPerSlide - currentCards.length }).map((_, k) => (
                     <div
                     key={`empty-${k}`}
                     className="rounded-lg overflow-hidden bg-gray-100"
                     style={{ flex: `1 1 0%`, height: "100%", minWidth: 0 }}
                     />
-                ))}
+                ))} */}
             </div>
             </div>
 

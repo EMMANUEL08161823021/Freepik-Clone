@@ -1,120 +1,172 @@
 "use client";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
 import Image from "next/image";
 
 /**
- * PeekFlexCarouselInfinite
- * - Fixed square cards
- * - Flex track with gap
- * - Infinite circular behavior via 3x duplication technique
+ * Responsive, infinite peek-flex carousel
+ *
+ * - duplicates slides 3x for circular illusion
+ * - measures container width and adapts card size / offsets for mobile
  *
  * Props:
- *  - imgs: array of image URLs
- *  - cardSize: px for both width & height (default 360)
- *  - gap: px between cards (default 16)
- *  - peek: px visible of each side card (default 60)
+ *  - imgs: array of { image, text } objects (image path public/)
+ *  - cardSize: preferred card width in px (desktop default)
+ *  - cardHeight: preferred card height in px (desktop default)
+ *  - gap: px gap
+ *  - peek: px visible at each side
  */
 
 const defaultImgs = [
-    {
-        image: "/assets/perso.jpg",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit iste blanditiis voluptas optio odio unde aspernatur necessitatibus laudantium perspiciatis maiores, quod nobis quos commodi asperiores tempora error, ab, aut alias?"
-    },
-    {
-        image: "/assets/persn-1.jpg",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit iste blanditiis voluptas optio odio unde aspernatur necessitatibus laudantium perspiciatis maiores, quod nobis quos commodi asperiores tempora error, ab, aut alias?"
-    },
-    {
-        image: "/assets/peon-2.jpg",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit iste blanditiis voluptas optio odio unde aspernatur necessitatibus laudantium perspiciatis maiores, quod nobis quos commodi asperiores tempora error, ab, aut alias?"
-    },
+  {
+    image: "/assets/perso.jpg",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  },
+  {
+    image: "/assets/persn-1.jpg",
+    text: "Another caption describing the slide content.",
+  },
+  {
+    image: "/assets/peon-2.jpg",
+    text: "Short note or teaser for the slide.",
+  },
 ];
 
 const clampIndex = (i, len) => ((i % len) + len) % len;
 
-export default function Result({  imgs = defaultImgs, cardHeight = 350, cardSize = 550,  gap = 16,  peek = 60,}) {
-
+export default function Result({
+  imgs = defaultImgs,
+  cardSize = 550, // preferred desktop card width
+  cardHeight = 350, // preferred desktop card height
+  gap = 16,
+  peek = 60,
+}) {
   const len = imgs.length;
-
   if (!len) return null;
 
-  // duplicate slides 3x to create a middle copy for circular illusion
-  const display = [...imgs, ...imgs, ...imgs];
+  // 3x duplicate for infinite illusion
+  const display = useMemo(() => [...imgs, ...imgs, ...imgs], [imgs]);
 
-  console.log("display:", display);
-  
-
-
-  const baseOffset = len; // index in the middle copy that maps to imgs[0]
-
-  console.log(baseOffset);
-  
-
-  // index points into display[] (start at middle copy)
+  const baseOffset = len; // start index in middle copy
   const [index, setIndex] = useState(baseOffset);
 
-  // motion value for x translate of the track
+  // motion x
   const x = useMotionValue(0);
 
-  // layout math (fixed)
-  const viewportWidth = cardSize + (2 * peek); // visible area width
-  const step = cardSize + gap; // distance between left edges of adjacent cards
-  const centerOffset = Math.round((viewportWidth - cardSize) / 2); // offset so active card is centered
+  // container measurement
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(0);
 
-  // compute target x to center slide at display-index i
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    // initial measurement
+    const update = () => setContainerWidth(Math.floor(el.clientWidth));
+    update();
+
+    // ResizeObserver for precise layout updates
+    let ro;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => update());
+      ro.observe(el);
+    } else {
+      // fallback
+      window.addEventListener("resize", update);
+    }
+
+    return () => {
+      if (ro) ro.disconnect();
+      else window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  // compute effective sizes responsive to container
+  // if containerWidth is 0 (not measured yet), fallback to the provided cardSize
+  const {
+    effectiveCardSize,
+    effectiveCardHeight,
+    step,
+    viewportWidth,
+    centerOffset,
+    isMobile,
+  } = useMemo(() => {
+    const cw = containerWidth || (cardSize + 2 * peek);
+    const mobileBreakpoint = 640;
+
+    const isMobile = cw < mobileBreakpoint;
+
+    // On narrow screens we let the card shrink so there is still a small peek on both sides.
+    // Compute max card width to leave peek px on each side:
+    const maxCard = Math.max(80, cw - peek * 2);
+    // don't exceed the designed cardSize
+    const effectiveCardSize = Math.min(cardSize, maxCard);
+
+    // cardHeight adapts a bit; preserve aspect ratio-ish or use provided cardHeight
+    // If container is narrow reduce height proportionally but never below 160px
+    const ratioHeight = Math.round((effectiveCardSize / cardSize) * cardHeight);
+    const effectiveCardHeight = Math.max(160, Math.min(cardHeight, ratioHeight));
+
+    // distance between left edges
+    const step = effectiveCardSize + gap;
+
+    // viewport width is the measured container width (we center within it)
+    const viewportWidth = cw;
+
+    // centerOffset to place the active card centered in viewport
+    const centerOffset = Math.round((viewportWidth - effectiveCardSize) / 2);
+
+    return { effectiveCardSize, effectiveCardHeight, step, viewportWidth, centerOffset, isMobile };
+  }, [containerWidth, cardSize, cardHeight, gap, peek]);
+
+  // compute target x to center display[i]
   const targetXForIndex = useCallback(
     (i) => -i * step + centerOffset,
     [step, centerOffset]
   );
 
-  // animate to target each time index changes (tween with known duration)
+  // animate to target index; also normalize wrapped indices back into middle copy
   useEffect(() => {
-    const target = targetXForIndex(index);
-    // use a tween so we can predict duration and schedule wrap-reset
-    const duration = 0.38;
-    const controls = animate(x, target, { type: "tween", duration, ease: [0.22, 1, 0.36, 1] });
+    // ensure values present
+    const tgt = targetXForIndex(index);
+    const duration = 0.42;
+    const controls = animate(x, tgt, { type: "tween", duration, ease: [0.22, 1, 0.36, 1] });
 
-    // schedule wrap normalization after animation completes
-    const normalization = setTimeout(() => {
-      // if we've marched into left or right copies, normalize back to middle copy
+    // after animation finishes, normalize if we're outside the middle copy
+    const tidy = setTimeout(() => {
+      // if we've gone into the right copy (>= 2*len), wrap to middle
       if (index >= 2 * len) {
         const wrapped = index - len;
         setIndex(wrapped);
-        // jump the motion value to the equivalent middle position without animation
         x.set(targetXForIndex(wrapped));
       } else if (index < len) {
+        // left copy
         const wrapped = index + len;
         setIndex(wrapped);
         x.set(targetXForIndex(wrapped));
       }
-    }, duration * 1000 + 30);
+    }, duration * 1000 + 40);
 
     return () => {
       controls.stop();
-      clearTimeout(normalization);
+      clearTimeout(tidy);
     };
   }, [index, len, x, targetXForIndex]);
 
-  // change index helper (moves in display[] coords)
-  const changeIndex = useCallback(
-    (delta) => setIndex((i) => i + delta),
-    []
-  );
+  const changeIndex = useCallback((delta) => setIndex((i) => i + delta), []);
 
-  // drag threshold (px)
-  const DRAG_THRESHOLD = Math.max(40, Math.round(cardSize * 0.12));
+  // drag threshold relative to card size
+  const DRAG_THRESHOLD = Math.max(28, Math.round(effectiveCardSize * 0.12));
 
+  // drag end snapping
   const onDragEnd = (event, info) => {
     const offset = info.offset.x;
     if (offset > DRAG_THRESHOLD) {
-      // dragged right -> previous visual slide
       changeIndex(-1);
     } else if (offset < -DRAG_THRESHOLD) {
-      // dragged left -> next visual slide
       changeIndex(1);
     } else {
-      // snap back to current index
+      // snap back
       animate(x, targetXForIndex(index), { type: "spring", stiffness: 300, damping: 30 });
     }
   };
@@ -124,103 +176,119 @@ export default function Result({  imgs = defaultImgs, cardHeight = 350, cardSize
     if (e.key === "ArrowRight") changeIndex(1);
   };
 
-  // click dots: map visible slides (middle copy) indexes to display indexes
+  // visible middle-copy indexes for dot navigation
   const visibleIndexes = [...Array(len).keys()].map((i) => baseOffset + i);
 
   return (
     <section className="overflow-hidden">
-        <br/>
-        <br/>
-        <div className="flex flex-col px-4">
-            <br/>
-            <div className="w-full mx-auto">
-                <div className="max-w-5xl mx-auto  flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-semibold text-gray-900">Drag or use arrows — circular carousel (infinite).</h2>
-                <div className="flex gap-2">
-                    <button onClick={() => changeIndex(-1)} className="p-2 bg-white rounded shadow">←</button>
-                    <button onClick={() => changeIndex(1)} className="p-2 bg-white rounded shadow">→</button>
-                </div>
-                </div>
+      <br />
+      <br />
+      <div className="flex flex-col px-4">
+        <div className="w-full mx-auto">
+          <div className="max-w-5xl mx-auto flex items-center justify-between mb-4">
+            <h2 className="text-2xl font-semibold text-gray-900">Made with Brand—real work, real results</h2>
+            <div className="flex gap-2">
+              <button onClick={() => changeIndex(-1)} className="p-2 bg-white rounded shadow" aria-label="Previous slide">
+                ←
+              </button>
+              <button onClick={() => changeIndex(1)} className="p-2 bg-white rounded shadow" aria-label="Next slide">
+                →
+              </button>
             </div>
-
-            <br/>
-
-            {/* viewport */}
-            <div
-            className="w-full mx-auto"
-            style={{ width: viewportWidth, height: cardHeight }}
-            tabIndex={0}
-            onKeyDown={onKeyDown}
-            role="region"
-            aria-roledescription="carousel"
-            aria-label="Peek flex carousel infinite"
-            >
-            {/* flex track (translated by motion.x) */}
-            <motion.div
-                className="flex items-center"
-                style={{
-                gap: `${gap}px`,
-                x,
-                height: cardHeight,
-                }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                onDragEnd={onDragEnd}
-                whileTap={{ cursor: "grabbing" }}
-            >
-                {display.map((src, i) => {
-                // compute whether this item corresponds to the "active" visual index
-                // active visual index is the middle-copy index that equals index
-                const isActive = i === index;
-                return (
-                  <motion.div className="flex flex-col gap-3">
-                    <div
-                      key={i}
-                      className={`flex flex-col flex-shrink-0 rounded-xl overflow-hidden border ${isActive ? "shadow-lg" : "shadow-sm"}`}
-                      style={{
-                          width: cardSize,
-                          height: cardHeight,
-                          // transform: isActive ? "scale(1)" : "scale(0.96)",
-                          transition: "transform 180ms ease",
-                      }}
-                      >
-                      <Image
-                          src={src.image}
-                          style={{
-                              background: "linear-gradient(to top, rgba(0,0,0,0.25), rgba(0,0,0,0))",
-
-                          }}
-                          alt={`Slide ${clampIndex(i - baseOffset, len) + 1}`}
-                          width={cardSize}
-                          height={cardHeight}
-                          className="object-cover w-full h-full"
-                          priority={isActive}
-                      />
-                      </div>
-                      <p className={` ${isActive ? 'flex' : 'opacity-0'} text-xs`}>{src.text}</p>
-                  </motion.div>
-                );
-                })}
-            </motion.div>
-            </div>
-
-            <br/>
-
-            {/* dots mapped to middle copy slides */}
-            <div className="mt-4 flex items-center justify-center gap-2">
-            {visibleIndexes.map((displayIdx, idx) => (
-                <button
-                key={idx}
-                onClick={() => setIndex(displayIdx)}
-                className={`w-2 h-2 rounded-full ${displayIdx === index ? "bg-gray-800" : "bg-gray-300"}`}
-                aria-label={`Go to slide ${idx + 1}`}
-                />
-            ))}
-            </div>
-            <br/>
+          </div>
         </div>
-        <br/>
-        <br/>
+
+        <br />
+
+        {/* responsive viewport — measured by containerRef */}
+        <div
+          ref={containerRef}
+          className="w-full mx-auto"
+          style={{
+            // use container width for viewport (containerWidth measured) — if not measured yet fallback to cardSize + peek*2
+            width: "100%",
+            maxWidth: `${Math.max(viewportWidth, effectiveCardSize + peek * 2)}px`,
+            height: effectiveCardHeight,
+          }}
+          tabIndex={0}
+          onKeyDown={onKeyDown}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Peek flex carousel infinite"
+        >
+          {/* track */}
+          <motion.div
+            className="flex items-center"
+            style={{
+              gap: `${gap}px`,
+              x,
+              height: effectiveCardHeight,
+              // allow visible overflow so peeks show
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            onDragEnd={onDragEnd}
+            whileTap={{ cursor: "grabbing" }}
+          >
+            {display.map((item, i) => {
+              // compute whether this item corresponds to the current visual active index
+              const isActive = i === index;
+              // compute the visual index into original imgs for aria label
+              const visualIndex = clampIndex(i - baseOffset, len);
+              return (
+                <motion.div
+                  key={`${i}-${visualIndex}`}
+                  className="flex flex-col gap-3 flex-shrink-0"
+                  style={{
+                    width: effectiveCardSize,
+                    minWidth: effectiveCardSize,
+                  }}
+                >
+                  <div
+                    className={`flex flex-col rounded-xl overflow-hidden border ${isActive ? "shadow-lg" : "shadow-sm"}`}
+                    style={{
+                      height: effectiveCardHeight,
+                      transition: "transform 180ms ease",
+                    }}
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label={`Slide ${visualIndex + 1} of ${len}`}
+                  >
+                    {/* use next/image for optimization */}
+                    <Image
+                      src={item.image}
+                      alt={`Slide ${visualIndex + 1}`}
+                      width={effectiveCardSize}
+                      height={effectiveCardHeight}
+                      className="object-cover w-full h-full"
+                      priority={isActive}
+                    />
+                  </div>
+
+                  <p className={`text-xs transition-opacity ${isActive ? "opacity-100" : "opacity-40"}`}>{item.text}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+
+        <br />
+
+        {/* dots */}
+        <div className="mt-4 flex items-center justify-center gap-2">
+          {visibleIndexes.map((displayIdx, idx) => (
+            <button
+              key={idx}
+              onClick={() => setIndex(displayIdx)}
+              className={`w-2 h-2 rounded-full ${displayIdx === index ? "bg-gray-800" : "bg-gray-300"}`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+        <br />
+      </div>
+      <br />
+      <br />
     </section>
   );
 }
