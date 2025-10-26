@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Search from "../components/ui/Search";
+import { CTAButton } from "../components/ui/button";
 
 const exampleSuggestions = [
   "React components",
@@ -67,7 +68,8 @@ export default function Navbar() {
                 <div className="hidden sm:flex gap-3">
                     <Search placeholder="Search assets or start creating..." onSearch={handleSearch} suggestions={exampleSuggestions} />                
                     {/* <button className="px-3 py-1 text-sm rounded-md text-[#FF553E]">Login</button> */}
-                    <button className="text-xs px-4 py-2 whitespace-nowrap rounded-full bg-gray-600 text-white">Sign in</button>
+                    <CTAButton className="!bg-white !text-black">Sign in</CTAButton>
+                    {/* <button className="text-xs px-4 py-2 whitespace-nowrap rounded-full bg-gray-600 text-white"></button> */}
                 </div>
 
                 {/* Hamburger for mobile */}

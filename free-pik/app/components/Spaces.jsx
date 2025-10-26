@@ -5,6 +5,8 @@ import Image from 'next/image'
 const Spaces = () => {
   return (
         <section className=" text-gray-900">
+            <br/>
+            <br/>
             <div className="w-full md:max-w-5xl mx-auto px-4">
                 {/* logos */}
                 <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 opacity-40 mb-8">
@@ -29,9 +31,9 @@ const Spaces = () => {
                 {/* hero */}
                 <div className="">
                 <div className="relative  rounded-2xl overflow-hidden bg-gray-50 shadow-xl">
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2">
                     {/* left text panel (over background) */}
-                    <div className="relative px-6 py-12 md:py-20 md:px-14 flex items-center">
+                    <div className="relative p-4 md:py-20 md:px-14 flex items-center">
                         {/* subtle blurred background using same image (desktop shows it behind text) */}
                         <div className="absolute inset-0 -z-10 md:block hidden">
                         <Image
@@ -46,7 +48,7 @@ const Spaces = () => {
                         </div>
 
                         <div className="max-w-xl">
-                        <h3 className="text-3xl sm:text-4xl font-semibold mb-4">Introducing Spaces</h3>
+                        <h3 className="text-2xl sm:text-4xl font-semibold mb-4">Introducing Spaces</h3>
                         <p className="text-sm sm:text-base text-gray-500 mb-6">
                             An infinite, collaborative canvas to create and automate multi-step workflows.
                         </p>

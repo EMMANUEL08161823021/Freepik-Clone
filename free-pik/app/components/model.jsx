@@ -212,7 +212,7 @@ const Model = () => {
             </TabsContent>
           </div>
           {/* Tabs header - horizontal, scrollable on small screens */}
-          <TabsList className="flex whitespace-nowrap overflow-x-auto no-scrollbar gap-2 flex-wrap h-full pb-2 mb-4">
+          <TabsList className="flex whitespace-nowrap overflow-x-auto no-scrollbar gap-2 flex-wrap h-full pb-2">
             <div className="max-w-full">
             <TabsTrigger value="social">Social Media</TabsTrigger>
             <TabsTrigger value="advert">Advertising</TabsTrigger>
