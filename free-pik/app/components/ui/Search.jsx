@@ -113,7 +113,7 @@ export default function Search({
 
       <div className="flex items-center gap-2">
         {/* Search icon */}
-        <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+        <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-foreground">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
           </svg>
@@ -128,7 +128,7 @@ export default function Search({
           onFocus={() => { if (filtered.length) setOpen(true); }}
           onKeyDown={onKeyDown}
           placeholder={placeholder}
-          className="w-full rounded-lg border border-gray-200 bg-white py-2 pl-10 pr-10 text-sm shadow-sm focus:outline-none focus:ring-2 focus:border-gray-400"
+          className="w-full rounded-lg border border-gray-200 bg-card py-2 pl-10 pr-10 text-sm shadow-sm focus:outline-none focus:ring-2 focus:border-gray-400"
           aria-autocomplete={suggestions?.length ? "list" : "none"}
           aria-controls="search-suggestions"
           aria-expanded={open}
@@ -151,7 +151,7 @@ export default function Search({
         {/* <button
           type="button"
           onClick={() => onSearch(value.trim())}
-          className="ml-2 hidden rounded-md bg-indigo-600 px-3 py-2 text-sm text-gray-900 hover:bg-indigo-700 md:inline-flex"
+          className="ml-2 hidden rounded-md bg-indigo-600 px-3 py-2 text-sm text-[#F3F4F6] hover:bg-indigo-700 md:inline-flex"
           aria-label="Submit search"
         >
           Search

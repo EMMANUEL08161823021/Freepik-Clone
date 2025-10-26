@@ -19,15 +19,15 @@ import Image from "next/image";
 
 const defaultImgs = [
   {
-    image: "/assets/perso.jpg",
+    image: "/assets/person.jpg",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
   },
   {
-    image: "/assets/persn-1.jpg",
+    image: "/assets/person-1.jpg",
     text: "Another caption describing the slide content.",
   },
   {
-    image: "/assets/peon-2.jpg",
+    image: "/assets/person-2.jpg",
     text: "Short note or teaser for the slide.",
   },
 ];
@@ -183,15 +183,15 @@ export default function Result({
     <section className="overflow-hidden">
       <br />
       <br />
-      <div className="flex flex-col px-4">
+      <div className="flex flex-col">
         <div className="w-full mx-auto">
-          <div className="max-w-5xl mx-auto flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-semibold text-gray-900">Made with Brand—real work, real results</h2>
+          <div className="max-w-5xl mx-auto px-4 flex items-center justify-between mb-4">
+            <h2 className="text-2xl font-semibold text-[#F3F4F6]">Made with Brand—real work, real results</h2>
             <div className="flex gap-2">
-              <button onClick={() => changeIndex(-1)} className="p-2 bg-white rounded shadow" aria-label="Previous slide">
+              <button onClick={() => changeIndex(-1)} className="p-2 bg-card rounded shadow" aria-label="Previous slide">
                 ←
               </button>
-              <button onClick={() => changeIndex(1)} className="p-2 bg-white rounded shadow" aria-label="Next slide">
+              <button onClick={() => changeIndex(1)} className="p-2 bg-card rounded shadow" aria-label="Next slide">
                 →
               </button>
             </div>

@@ -36,7 +36,7 @@ const Creative = () => {
         <div className="flex flex-col">
             <Tabs defaultValue="social">
               <div className="max-w-5xl px-4 mx-auto">
-                <h2 className="text-2xl py-3 font-semibold text-gray-900">All in a single Creative Suite</h2>
+                <h2 className="text-2xl py-3 font-semibold text-[#F3F4F6]">All in a single Creative Suite</h2>
                 {/* Tabs header - centered and limited width */}
                 <TabsList className={"flex whitespace-nowrap justify-start overflow-x-auto no-scrollbar h-full"}>
                   <div className="max-w-full md:flex gap-4">
@@ -57,7 +57,7 @@ const Creative = () => {
                     {socials.map((social, i) => (
                     <div
                       key={i}
-                      className="flex-shrink-0 w-[280px] h-[300px] rounded-xl overflow-hidden shadow-lg bg-white"
+                      className="flex-shrink-0 w-[280px] h-[300px] rounded-xl overflow-hidden shadow-lg bg-card"
                     >
                       <div className="relative w-full h-[200px]">
                         <Image
@@ -70,7 +70,7 @@ const Creative = () => {
                       </div>
 
                       <div className="p-3">
-                        <p className="text-xs">{social.text}</p>
+                        <p className="text-xs text">{social.text}</p>
                       </div>
                     </div>
                     ))}

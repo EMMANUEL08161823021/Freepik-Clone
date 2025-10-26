@@ -1,7 +1,7 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+/* @import "tw-animate-css"; */
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 
 @theme inline {
   --color-background: var(--background);
@@ -80,6 +80,7 @@ body {
   font-family: 'Didot', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
+/* Default theme variables (base) */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -115,6 +116,7 @@ body {
   --sidebar-ring: oklch(0.707 0.022 261.325);
 }
 
+/* Global dark defaults (applies whenever .dark is present on root) */
 .dark {
   --background: oklch(0.13 0.028 261.692);
   --foreground: oklch(0.985 0.002 247.839);
@@ -147,6 +149,90 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+/* -------------------------
+   Classic Theater palette (THEME OVERRIDES)
+   - using html[data-theme] to ensure higher specificity than :root
+   - also include :root[data-theme] for backwards compatibility
+   ------------------------- */
+
+/* Light (theater) theme */
+html[data-theme="theater"],
+:root[data-theme="theater"] {
+  /* base radii etc remain unchanged; only color variables changed */
+  --background: #0F1115;            /* page background (near-black) */
+  --foreground: #F3F4F6;            /* primary text (warm off-white) */
+  --card: #191C20;                  /* card / panel background */
+  --card-foreground: #F3F4F6;
+  --popover: #191C20;
+  --popover-foreground: #F3F4F6;
+
+  --primary: #D6862E;               /* gold / CTA */
+  --primary-foreground: #0F1115;    /* dark text on gold */
+  --secondary: #8B2A2A;             /* maroon accents */
+  --secondary-foreground: #F3F4F6;
+
+  --muted: #B7C1C7;
+  --muted-foreground: #9CA3AF;
+
+  --accent: #8B2A2A;
+  --accent-foreground: #F3F4F6;
+  --destructive: #C53030;
+
+  --border: rgba(255,255,255,0.06);
+  --input: rgba(255,255,255,0.04);
+  --ring: rgba(214,134,46,0.18);
+
+  --chart-1: #D6862E;
+  --chart-2: #8B2A2A;
+  --chart-3: #B7C1C7;
+  --chart-4: #FFD166;
+  --chart-5: #8F6B2F;
+
+  /* sidebar specifics (optional) */
+  --sidebar: #191C20;
+  --sidebar-foreground: #F3F4F6;
+  --sidebar-border: rgba(255,255,255,0.04);
+  --sidebar-ring: rgba(214,134,46,0.14);
+}
+
+/* Dark variant for the theater theme (when both .dark and data-theme are present) */
+html.dark[data-theme="theater"],
+:root.dark[data-theme="theater"] {
+  --background: #070709;            /* darker base */
+  --foreground: #F3F4F6;
+  --card: #0E0F12;
+  --card-foreground: #F3F4F6;
+  --popover: #0E0F12;
+  --popover-foreground: #F3F4F6;
+
+  --primary: #D6862E;
+  --primary-foreground: #071011;
+  --secondary: #7A2121;
+  --secondary-foreground: #F3F4F6;
+
+  --muted: #9DA9AE;
+  --muted-foreground: #7C8790;
+
+  --accent: #7A2121;
+  --accent-foreground: #F3F4F6;
+  --destructive: #B23A3A;
+
+  --border: rgba(255,255,255,0.06);
+  --input: rgba(255,255,255,0.03);
+  --ring: rgba(214,134,46,0.16);
+
+  --chart-1: #D6862E;
+  --chart-2: #7A2121;
+  --chart-3: #9DA9AE;
+  --chart-4: #FFD166;
+  --chart-5: #8F6B2F;
+
+  --sidebar: #0E0F12;
+  --sidebar-foreground: #F3F4F6;
+  --sidebar-border: rgba(255,255,255,0.06);
+  --sidebar-ring: rgba(214,134,46,0.14);
 }
 
 @layer base {

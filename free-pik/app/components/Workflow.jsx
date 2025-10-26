@@ -22,9 +22,9 @@ const chunk = (arr, size) => {
 export default function WorkFlow({
   imgs = [
     { src: "/assets/person.jpg", title: "Designers", subtitle: "", body: "Short body", ctaText: "View more" },
-    { src: "/images/sample-2.jpg", title: "Marketers", subtitle: "", body: "Create faster...", ctaText: "View more" },
-    { src: "/images/sample-3.jpg", title: "Filmmakers", subtitle: "", body: "Visual tools", ctaText: "View more" },
-    { src: "/images/sample-4.jpg", title: "Content creators", subtitle: "", body: "Content creation", ctaText: "View more" },
+    { src: "/assets/person-1.jpg", title: "Marketers", subtitle: "", body: "Create faster...", ctaText: "View more" },
+    { src: "/assets/person-2.jpg", title: "Filmmakers", subtitle: "", body: "Visual tools", ctaText: "View more" },
+    { src: "/assets/person.jpg", title: "Content creators", subtitle: "", body: "Content creation", ctaText: "View more" },
     // more...
   ],
   cardsPerSlide = 4,
@@ -61,16 +61,16 @@ export default function WorkFlow({
         <br/>
         <div className="max-w-5xl mx-auto">
             <div className="flex items-center justify-between px-4 mb-4">
-                <h2 className="text-2xl font-semibold text-gray-900">Boost your professional workflow and productivity</h2>
+                <h2 className="text-2xl font-semibold text-[#F3F4F6]">Boost your professional workflow and productivity</h2>
                 {/* <div className="flex gap-2">
-                    <button onClick={prev} className="w-9 h-9 rounded-full bg-black/60 text-gray-900 flex items-center justify-center">‹</button>
-                    <button onClick={next} className="w-9 h-9 rounded-full bg-black/60 text-gray-900 flex items-center justify-center">›</button>
+                    <button onClick={prev} className="w-9 h-9 rounded-full bg-black/60 text-[#F3F4F6] flex items-center justify-center">‹</button>
+                    <button onClick={next} className="w-9 h-9 rounded-full bg-black/60 text-[#F3F4F6] flex items-center justify-center">›</button>
                 </div> */}
             </div>
 
             {/* viewport */}
             <div
-            className="relative mx-auto overflow-hidden"
+            className="relative mx-auto px-4 overflow-hidden"
             style={{ height: cardHeight }}
             // clear active card when leaving the whole slide area
             onMouseLeave={() => setActiveCard(null)}
@@ -117,7 +117,7 @@ export default function WorkFlow({
                     >
                     {/* collapsed look: narrow vertical thumbnail, rotated label */}
                     {collapsed ? (
-                        <div className="w-full h-full relative bg-cover bg-center" style={{ backgroundImage: `url(${card.src})` }}>
+                        <div className="w-full h-full relative bg-white bg-center" style={{ backgroundImage: `url(${card.src})` }}>
                         <div
                             style={{
                             position: "absolute",
@@ -126,7 +126,7 @@ export default function WorkFlow({
                             transform: "translateY(-50%) rotate(-90deg)",
                             transformOrigin: "left center",
                             }}
-                            className="text-gray-900 text-sm font-medium"
+                            className="text-[#F3F4F6] text-sm font-medium"
                         >
                             {card.title}
                         </div>
@@ -156,9 +156,9 @@ export default function WorkFlow({
 
                         {isActive ? (
                             <div className="relative z-10 h-full flex items-center">
-                            <div className="px-6 py-8 text-gray-900 w-1/2">
-                                <h3 className="text-xl text-gray-900 md:text-2xl font-semibold mb-3">{card.title}</h3>
-                                <p className="text-base text-gray-900 opacity-90 mb-4">{card.body ?? card.subtitle}</p>
+                            <div className="px-6 py-8 text-[#F3F4F6] w-1/2">
+                                <h3 className="text-xl text-[#F3F4F6] md:text-2xl font-semibold mb-3">{card.title}</h3>
+                                <p className="text-base text-[#F3F4F6] opacity-90 mb-4">{card.body ?? card.subtitle}</p>
                                 {card.ctaText ? (
                                 <a href={card.ctaHref ?? "#"} className="inline-block bg-white border text-black px-4 py-2 rounded-full font-medium">
                                     {card.ctaText}
@@ -170,15 +170,15 @@ export default function WorkFlow({
                                 <div className="w-full h-[65%] rounded-md overflow-hidden bg-white/10 relative">
                                 <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${card.src})`, backgroundSize: "cover", backgroundPosition: "center" }} />
                                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-3 bg-black/60 px-3 py-2 rounded-md">
-                                    <button className="text-xs text-gray-900 px-2 py-1">Upscale</button>
-                                    <button className="text-xs text-gray-900 px-2 py-1">Resize</button>
-                                    <button className="text-xs text-gray-900 px-2 py-1">Background</button>
+                                    <button className="text-xs text-[#F3F4F6] px-2 py-1">Upscale</button>
+                                    <button className="text-xs text-[#F3F4F6] px-2 py-1">Resize</button>
+                                    <button className="text-xs text-[#F3F4F6] px-2 py-1">Background</button>
                                 </div>
                                 </div>
                             </div>
                             </div>
                         ) : (
-                            <div className="absolute left-4 top-4 text-gray-900 z-10">
+                            <div className="absolute left-4 top-4 text-[#F3F4F6] z-10">
                             <div className="text-sm font-medium">{card.title}</div>
                             </div>
                         )}

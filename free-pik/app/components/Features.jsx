@@ -2,6 +2,7 @@
 import React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
 import Image from "next/image";
+import CTAButton from "./ui/button";
 
 const socials = [
   { id: 1, platform: "Twitter", users: "350k", engagement: "4.5%", image: "" },
@@ -24,11 +25,11 @@ const Features = () => {
         <div className="px-4 mx-auto w-full overflow-hidden md:max-w-5xl">
             <div className="flex flex-col-reverse md:flex-row  md:items-center justify-between">
 
-                <h2 className="text-2xl py-2 font-semibold text-gray-900">
+                <h2 className="text-2xl py-2 font-semibold text-[#F3F4F6]">
                 The Features you need, the Simplicity you want
                 </h2>
                 <div>
-                <button className="text-xs p-2 whitespace-nowrap border border-gray-500 rounded-full">How to start with AI</button>
+                <CTAButton>How to start with AI</CTAButton>
                 </div>
             </div>
 
@@ -41,7 +42,7 @@ const Features = () => {
                         - no-scrollbar utility used to hide scrollbars visually
                     */}
                     <TabsList
-                    className="flex items-start justify-start whitespace-nowrap overflow-x-auto no-scrollbar flex-row md:flex-col w-[100%] md:w-48 shrink-0 space-x-2 md:space-x-0 md:space-y-1 rounded-md bg-gray-50
+                    className="flex items-start justify-start whitespace-nowrap overflow-x-auto no-scrollbar flex-row md:flex-col w-[100%] md:w-48 shrink-0 space-x-2 md:space-x-0 md:space-y-1 rounded-md bg-card
                             h-full md:h-[55vh]"
                     role="tablist"
                     >
@@ -64,7 +65,7 @@ const Features = () => {
                             {socials.map((s) => (
                             <article
                                 key={s.id}
-                                className="snap-center flex-shrink-0 w-[50%] sm:w-[70%] rounded-xl overflow-hidden shadow-sm bg-white"
+                                className="snap-center flex-shrink-0 w-[50%] sm:w-[70%] rounded-xl overflow-hidden shadow-sm bg-card"
                             >
                                 <div className="relative h-44">
                                 <Image
@@ -94,7 +95,7 @@ const Features = () => {
                                 {socials.map((s) => (
                                 <article
                                     key={s.id}
-                                    className="rounded-xl overflow-hidden shadow-lg bg-white flex flex-col"
+                                    className="rounded-xl overflow-hidden shadow-lg bg-card flex flex-col"
                                 >
                                     <div className="relative w-full h-48">
                                     <Image

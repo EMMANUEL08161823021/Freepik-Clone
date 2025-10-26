@@ -14,7 +14,7 @@ const Footer = () => {
                 aria-label="Footer navigation"
             >
                 <div>
-                    <h3 className='text-gray-900'>Products</h3>
+                    <h3 className='text-[#F3F4F6]'>Products</h3>
                     <ul className="flex flex-col gap-3 text-xs">
                     <a href="#" className="hover:text-blue-600"><li>Demos</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Ai Assistant</li></a>
@@ -28,7 +28,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h3 className='text-gray-900'>Get Started</h3>
+                    <h3 className='text-[#F3F4F6]'>Get Started</h3>
                     <ul className="flex flex-col gap-3 text-xs">
                     <a href="#" className="hover:text-blue-600"><li>Pricing</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Sell Content</li></a>
@@ -42,7 +42,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h3 className='text-gray-900'>Products</h3>
+                    <h3 className='text-[#F3F4F6]'>Products</h3>
                     <ul className="flex flex-col gap-3 text-xs">
                     <a href="#" className="hover:text-blue-600"><li>Demos</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Ai Assistant</li></a>
@@ -56,7 +56,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h3 className='text-gray-900'>Products</h3>
+                    <h3 className='text-[#F3F4F6]'>Products</h3>
                     <ul className="flex flex-col gap-3 text-xs">
                     <a href="#" className="hover:text-blue-600"><li className='list-none'>Linkedin</li></a>
                     <a href="#" className="hover:text-blue-600"><li className='list-none'>Facebook</li></a>

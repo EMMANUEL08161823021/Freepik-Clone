@@ -13,7 +13,7 @@ export const Tabs = ({ defaultValue, children }) => {
   const [activeTab, setActiveTab] = useState(defaultValue);
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      <div className="w-[100%] mx-auto">{children}</div>
+      <div className="w-[100%] md:max-w-5xl mx-auto">{children}</div>
     </TabsContext.Provider>
   );
 };
@@ -24,7 +24,7 @@ export const Tabs = ({ defaultValue, children }) => {
 export const TabsList = ({ children, className }) => {
   return (
     <div
-      className={`flex h-10 items-center justify-center rounded-md bg-gray-100 border text-gray-600 ${className || ""}`}
+      className={`flex h-10 items-center justify-center rounded-md bg-card border text-gray-600 ${className || ""}`}
     >
       {children}
     </div>

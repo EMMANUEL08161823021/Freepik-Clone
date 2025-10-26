@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useState } from "react";
+import CTAButton from "./ui/button";
 
 const plansData = [
   {
@@ -40,11 +41,11 @@ export default function Pricing() {
   const formatPrice = (n) => `$${n}`;
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12">
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">
               Plans that cover your needs
             </h2>
             <p className="mt-2 text-sm text-gray-600 max-w-2xl">
@@ -60,7 +61,7 @@ export default function Pricing() {
                 onClick={() => setBilling("monthly")}
                 aria-pressed={billing === "monthly"}
                 className={`px-3 py-1 rounded-full text-sm font-medium transition ${
-                  billing === "monthly" ? "bg-white shadow" : "text-gray-600"
+                  billing === "monthly" ? "bg-card shadow" : "text-gray-600"
                 }`}
               >
                 Monthly
@@ -69,7 +70,7 @@ export default function Pricing() {
                 onClick={() => setBilling("yearly")}
                 aria-pressed={billing === "yearly"}
                 className={`ml-1 px-3 py-1 rounded-full text-sm font-medium transition ${
-                  billing === "yearly" ? "bg-white shadow" : "text-gray-600"
+                  billing === "yearly" ? "bg-card shadow" : "text-gray-600"
                 }`}
               >
                 Yearly
@@ -88,26 +89,26 @@ export default function Pricing() {
             return (
               <article
                 key={p.id}
-                className={`relative border rounded-2xl p-6 flex flex-col shadow-sm bg-white hover:shadow-md transition ${
+                className={`relative border rounded-2xl p-6 flex flex-col shadow-sm bg-card hover:shadow-md transition ${
                   p.popular ? "ring-2 ring-indigo-200" : ""
                 }`}
                 aria-labelledby={`plan-${p.id}-title`}
               >
                 {p.popular && (
                   <div className="absolute -top-3 right-3">
-                    <span className="inline-block bg-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    <span className="inline-block bg-[#D6862E] text-white text-xs font-semibold px-3 py-1 rounded-full">
                       Most popular
                     </span>
                   </div>
                 )}
 
-                <h3 id={`plan-${p.id}-title`} className="text-lg font-semibold text-gray-900">
+                <h3 id={`plan-${p.id}-title`} className="text-lg font-semibold text-[#F3F4F6]">
                   {p.name}
                 </h3>
                 <p className="mt-1 text-sm text-gray-600">{p.description}</p>
 
                 <div className="mt-6 flex items-baseline gap-3">
-                  <div className="text-3xl font-extrabold text-gray-900">{formatPrice(price)}</div>
+                  <div className="text-3xl font-extrabold text-[#F3F4F6]">{formatPrice(price)}</div>
                   <div className="text-sm text-gray-500">{billing === "monthly" ? "/mo" : "/yr"}</div>
                 </div>
 
@@ -125,14 +126,14 @@ export default function Pricing() {
                 </div>
 
                 <div className="mt-auto">
-                  <button
-                    className={`w-full rounded-full px-4 py-2 text-sm font-semibold transition ${
-                      p.popular ? "bg-indigo-600 text-white hover:bg-indigo-700" : "border bg-white text-gray-900 hover:bg-gray-50"
-                    }`}
+                  <CTAButton
+                    variant={p.popular ? "primary" : "white"}
+                    className="w-full rounded-full px-4 py-2 text-sm font-semibold transition"
                     aria-label={`${p.cta} - ${p.name}`}
                   >
                     {p.cta}
-                  </button>
+                  </CTAButton>
+
 
                   <p className="mt-3 text-xs text-gray-500">
                     {p.id === "agency" ? "Custom contracts & invoices available." : "No credit card required for trial."}

@@ -63,8 +63,8 @@ const Badge = ({ children }) => (
 
 
 const StatsCard = ({ value, label }) => (
-  <div className="bg-white border rounded-lg p-4 text-center">
-    <div className="text-2xl font-extrabold text-gray-900">{value}</div>
+  <div className="bg-[#191C20] border rounded-lg p-4 text-center">
+    <div className="text-2xl font-extrabold text-[#F3F4F6]">{value}</div>
     <div className="mt-1 text-sm text-gray-600">{label}</div>
   </div>
 );
@@ -143,7 +143,7 @@ export default function Hero() {
   };
 
   return (
-    <section ref={ref} className="bg-white">
+    <section ref={ref} className="">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
         {/* Top area: badge, title, description, CTA */}
         <div className="max-w-3xl mx-auto text-center">
@@ -151,7 +151,7 @@ export default function Hero() {
             Limited time <span className="inline-block text-white text-[10px] px-2 py-1 rounded-full bg-gray-600">50% OFF</span>
           </Badge>
 
-          <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
+          <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-[#F3F4F6]">
             Creative work,
             <br className="sm:hidden" /> reimagined
           </h1>
@@ -160,9 +160,8 @@ export default function Hero() {
             Simplify team workflows with accurate reports, effortless timers, and intuitive collaboration — built for creative teams.
           </p>
 
-          <div className="mt-5 flex items-center justify-center gap-3">
+          <div className="mt-5 flex items-center justify-center">
             <CTAButton href="#">Get started for free</CTAButton>
-            <a href="#" className="text-sm text-gray-600 hover:underline hidden sm:inline">Contact sales</a>
           </div>
         </div>
 

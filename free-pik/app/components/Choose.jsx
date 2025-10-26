@@ -27,8 +27,8 @@ const Choose = () => {
   return (
     <section className="max-w-5xl px-4 mx-auto py-12">
       <div className="mb-6">
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
-          Why choose <span className="text-indigo-600">Lorem</span>?
+        <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">
+          Why choose <span className="text-[#D6862E]">Lorem</span>?
         </h2>
         <p className="mt-2 text-sm text-gray-600 max-w-2xl">
           We give creative teams one place to store assets, build on-brand templates, and publish across channels — so you can focus on ideas, not repetitive tasks.
@@ -39,18 +39,18 @@ const Choose = () => {
         {features.map((f, i) => (
           <article
             key={i}
-            className="border rounded-lg p-5 bg-white shadow-sm hover:shadow-md transition-shadow"
+            className="border rounded-lg p-5 bg-card shadow-sm hover:shadow-md transition-shadow"
             aria-labelledby={`feature-${i}-title`}
           >
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
-                <div className="text-indigo-600 font-extrabold text-2xl md:text-3xl">
+                <div className="text-[#D6862E] font-extrabold text-2xl md:text-3xl">
                   {f.stat}
                 </div>
               </div>
 
               <div>
-                <h3 id={`feature-${i}-title`} className="text-lg font-semibold text-gray-900">
+                <h3 id={`feature-${i}-title`} className="text-lg font-semibold text-[#F3F4F6]">
                   {f.title}
                 </h3>
                 <p className="mt-1 text-sm text-gray-600">{f.blurb}</p>

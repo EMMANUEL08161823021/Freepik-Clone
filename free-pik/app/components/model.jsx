@@ -21,7 +21,7 @@ const Model = () => {
       <br/>
       <br/>
       <div className="px-4 mx-auto max-w-5xl">
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
+        <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6] mb-4">
           All the top GenAI models—plus Magnific, recently acquired by Freepik
         </h2>
 
@@ -212,7 +212,7 @@ const Model = () => {
             </TabsContent>
           </div>
           {/* Tabs header - horizontal, scrollable on small screens */}
-          <TabsList className="flex whitespace-nowrap overflow-x-auto no-scrollbar gap-2 flex-wrap h-full pb-2">
+          <TabsList className="flex whitespace-nowrap overflow-x-auto no-scrollbar gap-2 flex-wrap h-full ">
             <div className="max-w-full">
             <TabsTrigger value="social">Social Media</TabsTrigger>
             <TabsTrigger value="advert">Advertising</TabsTrigger>

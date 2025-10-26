@@ -42,17 +42,17 @@ export default function Navbar() {
 
   return (
       <header className="w-[100%] flex justify-center h-16">
-        <div className="w-[100%] fixed bg-gray-50 top-0  z-50 px-4">
-          <div className="flex sm:max-w-xl md:max-w-5xl mx-auto justify-between items-center h-16">
+        <div className="w-[100%] fixed top-0 bg-background z-50 ">
+          <div className="flex sm:max-w-xl md:max-w-5xl mx-auto px-4 justify-between items-center h-16">
             {/* Logo + Brand */}
             <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                     {/* <img src={"/assets/logo.svg"} alt="logo"/> */}
-                    <h1 className="text-xl font-bold text-gray-900">Logo</h1>
+                    <h1 className="text-xl font-bold text-[#F3F4F6]">Logo</h1>
                 </div>
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-4">
-                <ul className="flex gap-4 text-sm">
+                <ul className="flex gap-4 text-[#F3F4F6] text-sm">
                     <a href="#"><li className="hover:text-blue-600">AI Suite</li></a>
                     <a href="#"><li className="hover:text-blue-600">Stock</li></a>
                     <a href="#"><li className="hover:text-blue-600">Resources</li></a>
@@ -68,7 +68,7 @@ export default function Navbar() {
                 <div className="hidden sm:flex gap-3">
                     <Search placeholder="Search assets or start creating..." onSearch={handleSearch} suggestions={exampleSuggestions} />                
                     {/* <button className="px-3 py-1 text-sm rounded-md text-[#FF553E]">Login</button> */}
-                    <CTAButton className="!bg-white !text-black">Sign in</CTAButton>
+                    <CTAButton>Sign in</CTAButton>
                     {/* <button className="text-xs px-4 py-2 whitespace-nowrap rounded-full bg-gray-600 text-white"></button> */}
                 </div>
 
@@ -78,7 +78,7 @@ export default function Navbar() {
                     aria-label={open ? "Close menu" : "Open menu"}
                     aria-expanded={open}
                     aria-controls="mobile-menu"
-                    className="md:hidden p-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#FF553E]"
+                    className="md:hidden p-2 rounded-md text-[#F3F4F6] focus:outline-none focus:ring-2 focus:ring-[#FF553E]"
                     onClick={() => setOpen((s) => !s)}
                 >
                     {/* simple hamburger icon */}
@@ -127,7 +127,7 @@ export default function Navbar() {
                 </div> */}
                 <button
                   aria-label="Close sidebar"
-                  className="p-2 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF553E]"
+                  className="p-2 text-[#F3F4F6] rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF553E]"
                   onClick={() => setOpen(false)}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +137,7 @@ export default function Navbar() {
               </div>
 
               <nav className="p-4">
-                <ul className="flex text-gray-900 text-sm flex-col gap-4">
+                <ul className="flex text-[#F3F4F6] text-sm flex-col gap-4">
                   <a href="#"><li className="text-lg">Demos</li></a>
                   <a href="#"><li className="text-lg">Features</li></a>
                   <a href="#"><li className="text-lg">Pricing</li></a>
@@ -145,9 +145,9 @@ export default function Navbar() {
                 </ul>
 
                 <div className="mt-6 flex flex-col gap-3">
-                  <button className="w-full px-4 py-2 text-sm text-gray-900 rounded-md border border-[#FF553E]">Login</button>
+                  <button className="w-full px-4 py-2 text-sm text-[#F3F4F6] rounded-md border border-[#FF553E]">Login</button>
                   
-                  <button className="w-full px-4 py-2 text-sm rounded-md bg-gray-600 text-gray-900">SignUp</button>
+                  <button className="w-full px-4 py-2 text-sm rounded-md bg-gray-600 text-[#F3F4F6]">SignUp</button>
                 </div>
 
                 {/* Optional small footer */}

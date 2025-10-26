@@ -1,10 +1,11 @@
 import React from 'react'
 
 import Image from 'next/image'
+import CTAButton from './ui/button'
 
 const Spaces = () => {
   return (
-        <section className=" text-gray-900">
+        <section className=" text-[#F3F4F6]">
             <br/>
             <br/>
             <div className="w-full md:max-w-5xl mx-auto px-4">
@@ -30,7 +31,7 @@ const Spaces = () => {
 
                 {/* hero */}
                 <div className="">
-                <div className="relative  rounded-2xl overflow-hidden bg-gray-50 shadow-xl">
+                <div className="relative  rounded-2xl overflow-hidden bg-card shadow-xl">
                     <div className="grid grid-cols-1 md:grid-cols-2">
                     {/* left text panel (over background) */}
                     <div className="relative p-4 md:py-20 md:px-14 flex items-center">
@@ -48,12 +49,19 @@ const Spaces = () => {
                         </div>
 
                         <div className="max-w-xl">
-                        <h3 className="text-2xl sm:text-4xl font-semibold mb-4">Introducing Spaces</h3>
+                        <h3 className="text-2xl sm:text-4xl text-foreground font-semibold mb-4">Introducing Spaces</h3>
                         <p className="text-sm sm:text-base text-gray-500 mb-6">
                             An infinite, collaborative canvas to create and automate multi-step workflows.
                         </p>
 
-                        <div className="flex items-center gap-3">
+                        <CTAButton>
+                            Try Spaces for free
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </CTAButton>
+
+                        {/* <div className="flex items-center gap-3">
                             <a
                             href="#"
                             className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm shadow hover:scale-[1.01] transition"
@@ -63,7 +71,7 @@ const Spaces = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                             </a>
-                        </div>
+                        </div> */}
                         </div>
                     </div>
 
