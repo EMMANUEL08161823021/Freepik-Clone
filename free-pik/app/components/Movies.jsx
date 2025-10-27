@@ -32,7 +32,7 @@ export default function Movies() {
 
       <Tabs defaultValue="now">
         <div className="flex flex-col md:flex-row gap-6 items-start">
-          <TabsList className="flex md:flex-col w-full md:w-48 bg-card rounded-md p-2 gap-2 h-full" role="tablist">
+          <TabsList className="flex md:flex-col w-full md:w-48 overflow-x-auto no-scrollbar bg-card rounded-md p-2 gap-2 h-full" role="tablist">
             <div className="w-full h-full flex flex-row md:flex-col items-start">
               <TabsTrigger value="now">Now Showing</TabsTrigger>
               <TabsTrigger value="coming">Coming Soon</TabsTrigger>
@@ -46,11 +46,11 @@ export default function Movies() {
             <TabsContent value="now" className="p-0">
               {/* Mobile carousel */}
               <div className="md:hidden">
-                <div className="flex gap-4 overflow-x-auto no-scrollbar">
+                <div className="flex gap-4 overflow-x-auto w-full no-scrollbar">
                   {movies.map((m) => (
-                    <article key={m.id} className="snap-center flex-shrink-0 w-[70%] sm:w-[60%] rounded-xl overflow-hidden bg-card shadow">
+                    <article key={m.id} className="snap-center flex-shrink-0 w-[50%] sm:w-[60%] rounded-xl overflow-hidden bg-card shadow">
                       <div className="relative h-72">
-                        <Image src={m.poster || placeholder} alt={m.title} fill sizes="(max-width: 600px) 100vw" style={{ objectFit: "cover" }} />
+                        <Image src={m.poster || placeholder}  alt={m.title} fill sizes="(max-width: 600px) 100vw" style={{ objectFit: "cover" }} />
                       </div>
                       <div className="p-3">
                         <h3 className="text-sm font-semibold">{m.title} <span className="text-xs text-gray-400">({m.year})</span></h3>
