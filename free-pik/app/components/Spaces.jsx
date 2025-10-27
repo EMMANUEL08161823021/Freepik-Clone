@@ -20,7 +20,7 @@ const Spaces = () => {
 
                 {/* heading */}
                 <h2 className="text-left font-semibold leading-tight">
-                <span className='text-xl'>Now playing in cinemas — <em>SPACES</em>. </span>
+                <span className='text-xl'>Now playing in cinemas — <em>HAVOC</em>. </span>
                 <span className="text-gray-500 text-xl">Experience the story that critics are calling "visually stunning and unexpectedly moving" on the big screen.</span>
                 </h2>
 
@@ -47,7 +47,7 @@ const Spaces = () => {
                         </div>
 
                         <div className="max-w-xl">
-                        <h3 className="text-2xl sm:text-4xl text-foreground font-semibold mb-4">SPACES — In Theaters Now</h3>
+                        <h3 className="text-2xl sm:text-4xl text-foreground font-semibold mb-4">HAVOC — In Theaters Now</h3>
                         <p className="text-sm sm:text-base text-gray-500 mb-6">
                             A cinematic journey where imagination becomes reality. Follow a band of creators as they uncover an infinite canvas that reshapes their lives, one bold idea at a time.
                         </p>
@@ -66,7 +66,7 @@ const Spaces = () => {
                     <div className="relative h-64 md:h-[420px]">
                         {/* full-size hero image (film poster) */}
                         <Image
-                        src="/assets/person.jpg"
+                        src="/assets/Havoc.jpg"
                         alt="film poster"
                         fill
                         style={{ objectFit: "cover" }}

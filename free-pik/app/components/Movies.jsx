@@ -5,17 +5,17 @@ import Image from "next/image";
 import CTAButton from "./ui/button";
 
 const movies = [
-  { id: 1, title: "SPACES", year: 2025, rating: "PG-13", score: "8.2", poster: "/assets/person.jpg", synopsis: "A cinematic journey where imagination becomes reality." },
-  { id: 2, title: "NEON SKIES", year: 2025, rating: "R", score: "7.9", poster: "", synopsis: "A sci-fi heist across floating cities." },
-  { id: 3, title: "SUMMER FLICK", year: 2025, rating: "PG", score: "6.8", poster: "", synopsis: "A coming-of-age story about first loves and old friends." },
-  { id: 4, title: "THE LAST FRAME", year: 2024, rating: "PG-13", score: "8.7", poster: "", synopsis: "A director races to finish his final masterpiece." },
-  { id: 5, title: "MIDNIGHT RUN", year: 2025, rating: "R", score: "7.5", poster: "", synopsis: "An edge-of-your-seat thriller that never lets go." },
+  { id: 1, title: "HAVOC", year: 2025, rating: "PG-13", score: "8.2", poster: "/assets/Havoc.jpg", synopsis: "A cinematic journey where imagination becomes reality." },
+  { id: 2, title: "SPARTACUS", year: 2025, rating: "R", score: "7.9", poster: "/assets/spartacus.jpg", synopsis: "A sci-fi heist across floating cities." },
+  { id: 3, title: "PEAKY BLINDERS", year: 2025, rating: "PG", score: "6.8", poster: "/assets/peaky-blinder.jpg", synopsis: "A coming-of-age story about first loves and old friends." },
+  { id: 4, title: "JOHN WICK", year: 2024, rating: "PG-13", score: "8.7", poster: "/assets/John-Wick.jpg", synopsis: "A director races to finish his final masterpiece." },
+  { id: 5, title: "BATMAN", year: 2025, rating: "R", score: "7.5", poster: "/assets/batman.jpg", synopsis: "An edge-of-your-seat thriller that never lets go." },
 ];
 
 const placeholderSvg = encodeURIComponent(
   "<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='1400'><rect width='100%' height='100%' fill='%23e5e7eb'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='36'>Poster</text></svg>"
 );
-const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
+// const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
 
 export default function Movies({ poster, title, placeholder = "/assets/default-image.svg" }) {
   const [imgSrc, setImgSrc] = useState(poster || placeholder);
@@ -51,7 +51,7 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
                   {movies.map((m) => (
                     <article key={m.id} className="snap-center flex-shrink-0 w-[50%] sm:w-[60%] rounded-xl overflow-hidden bg-card shadow">
                       <div className="relative h-72">
-                        <Image src={imgSrc} alt={m.title} fill sizes="(max-width: 600px) 100vw" style={{ objectFit: "cover" }} />
+                        <Image src={imgSrc} alt={title} fill sizes="(max-width: 600px) 100vw" style={{ objectFit: "cover" }} />
                       </div>
                       <div className="p-3">
                         <h3 className="text-sm font-semibold">{m.title} <span className="text-xs text-gray-400">({m.year})</span></h3>
@@ -74,7 +74,7 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
                   {movies.map((m) => (
                     <article key={m.id} className="rounded-xl overflow-hidden shadow-lg bg-card flex flex-col">
                       <div className="relative w-full h-72">
-                        <Image src={m.poster || placeholder} alt={title} fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
+                        <Image src={m.poster} alt={title} fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
                       </div>
                       <div className="p-4 flex-1 flex flex-col justify-between">
                         <div>

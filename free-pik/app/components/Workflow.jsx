@@ -21,7 +21,7 @@ const chunk = (arr, size) => {
 
 export default function WorkFlow({
   imgs = [
-    { src: "/assets/person.jpg", title: "Designers", subtitle: "", body: "Short body", ctaText: "View more" },
+    { src: "/assets/person.jpg", title: "Andy Whitfield", subtitle: "", body: "Short body", ctaText: "View more" },
     { src: "/assets/person-1.jpg", title: "Marketers", subtitle: "", body: "Create faster...", ctaText: "View more" },
     { src: "/assets/person-2.jpg", title: "Filmmakers", subtitle: "", body: "Visual tools", ctaText: "View more" },
     { src: "/assets/person.jpg", title: "Content creators", subtitle: "", body: "Content creation", ctaText: "View more" },
