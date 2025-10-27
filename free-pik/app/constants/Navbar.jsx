@@ -48,7 +48,8 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                     {/* <img src={"/assets/logo.svg"} alt="logo"/> */}
-                    <h1 className="text-xl font-bold text-[#F3F4F6]">Logo</h1>
+                    {/* <h1 className="text-xl font-bold text-[#F3F4F6]">Netflix</h1> */}
+                    <span className="text-xl font-bold text-primary">SPACES</span>
                 </div>
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-4">
@@ -69,7 +70,7 @@ export default function Navbar() {
                     <Search placeholder="Search assets or start creating..." onSearch={handleSearch} suggestions={exampleSuggestions} />                
                     {/* <button className="px-3 py-1 text-sm rounded-md text-[#FF553E]">Login</button> */}
                     <CTAButton>Sign in</CTAButton>
-                    {/* <button className="text-xs px-4 py-2 whitespace-nowrap rounded-full bg-gray-600 text-white"></button> */}
+                    {/* <button className="text-sm px-4 py-2 whitespace-nowrap rounded-full bg-gray-600 text-white"></button> */}
                 </div>
 
                 {/* Hamburger for mobile */}

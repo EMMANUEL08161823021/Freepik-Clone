@@ -265,7 +265,7 @@ export default function Result({
                     />
                   </div>
 
-                  <p className={`text-xs transition-opacity ${isActive ? "opacity-100" : "opacity-40"}`}>{item.text}</p>
+                  <p className={`text-sm transition-opacity ${isActive ? "opacity-100" : "opacity-40"}`}>{item.text}</p>
                 </motion.div>
               );
             })}

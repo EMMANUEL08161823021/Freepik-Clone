@@ -66,7 +66,7 @@
 //     <section className="py-8">
 //       <div className="max-w-5xl mx-auto px-4">
 //         <div className="flex items-center justify-between mb-4">
-//           <p className="text-xs text-gray-700 max-w-lg">
+//           <p className="text-sm text-gray-700 max-w-lg">
 //             Drag / swipe the images — main image sits in the center, neighbors peek in.
 //           </p>
 
@@ -288,7 +288,7 @@
 //       <section className="py-8">
 //         <div className="mx-auto px-4">
 //           <div className="flex items-center justify-between mb-4">
-//             <p className="text-xs text-gray-700 max-w-lg">Loading carousel…</p>
+//             <p className="text-sm text-gray-700 max-w-lg">Loading carousel…</p>
 //             <div className="flex gap-2">
 //               <button className="p-2 bg-white rounded shadow">←</button>
 //               <button className="p-2 bg-white rounded shadow">→</button>
@@ -314,7 +314,7 @@
 //     <section className="py-8">
 //       <div className="mx-auto px-4">
 //         <div className="flex items-center justify-between mb-4">
-//           <p className="text-xs text-gray-700 max-w-lg">Drag or use arrows. Side images peek.</p>
+//           <p className="text-sm text-gray-700 max-w-lg">Drag or use arrows. Side images peek.</p>
 //           <div className="flex gap-2">
 //             <button onClick={() => changeIndex(-1)} className="p-2 bg-white rounded shadow">←</button>
 //             <button onClick={() => changeIndex(1)} className="p-2 bg-white rounded shadow">→</button>

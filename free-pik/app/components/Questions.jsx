@@ -7,42 +7,41 @@ import CTAButton from "./ui/button";
 
 const faqs = [
   {
-    question: "What is Creative Studio Hub?",
+    question: "What is SPACES?",
     answer:
-      "Creative Studio Hub is a single workspace for teams to store assets, build templates, edit visuals and video, and publish across channels — designed to speed up production and reduce tool friction.",
+      "SPACES is a feature film — a visually ambitious story about creators and an infinite canvas that changes their lives. It blends spectacle with intimate character moments for a cinematic experience.",
   },
   {
-    question: "How does collaboration work?",
+    question: "When is SPACES playing in theaters?",
     answer:
-      "Projects support comments, version history, review requests and role-based permissions. Invite teammates, assign tasks, and approve assets without leaving the workspace.",
+      "SPACES is now playing in select theaters nationwide. Release dates vary by city — check showtimes at your local cinema or use the 'Buy Tickets' button to find screenings near you.",
   },
   {
-    question: "What file types and integrations are supported?",
+    question: "How can I buy tickets or get early access?",
     answer:
-      "We support common design and media formats (PNG, JPG, SVG, MP4, MOV, WAV, Lottie). Integrations include Figma import, cloud storage (S3/Drive/Dropbox), and social scheduling APIs for major platforms.",
+      "Use the Buy Tickets button to purchase single tickets, or choose a season pass for multiple screenings and special perks. Some theaters offer early access and advance screenings — availability depends on venue.",
   },
   {
-    question: "How do templates and repurposing work?",
+    question: "Are there age restrictions or content warnings?",
     answer:
-      "Create visual or video templates with placeholders. With one click you can repurpose a master asset into platform-ready sizes (9:16, 1:1, 16:9) and export variants for social, web or ads.",
+      "SPACES carries a PG-13 rating for thematic elements and brief intense sequences. Check local listings for any additional theater-specific age or content guidance.",
   },
   {
-    question: "How is my content protected and backed up?",
+    question: "Is there a trailer or behind-the-scenes footage?",
     answer:
-      "Assets are encrypted in transit and at rest, stored in redundant cloud storage, and versioned automatically. Team and enterprise plans include SSO/SSO provisioning and audit logs.",
+      "Yes — watch the official trailer and exclusive behind-the-scenes featurettes on the film's trailer page. Selected screenings will include a director's introduction or Q&A at participating venues.",
   },
   {
-    question: "Can I publish directly from the platform?",
+    question: "Can I book a private screening or group block?",
     answer:
-      "Yes — we offer scheduling and direct posting for supported platforms. Where direct posting isn’t available, you can export optimized assets or use a webhook to integrate with your publishing pipeline.",
+      "Private screenings, group bookings, and corporate packages are available through the box office. Contact the box office for pricing, availability, and custom experiences.",
   },
   {
-    question: "How does pricing work?",
+    question: "What COVID-19 / safety policies should I expect?",
     answer:
-      "We offer a freemium tier with limited storage and exports, monthly and yearly plans for individuals and teams, and custom enterprise pricing for SSO, SLAs and API-level access.",
+      "Theaters may have their own safety policies (masking, proof of vaccination, or capacity limits). We recommend checking the venue's website before attending for the latest guidance.",
   },
 ];
-
 
 export default function Questions() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -57,10 +56,10 @@ export default function Questions() {
           transition={{ duration: 0.5 }}
           className="text-2xl md:text-3xl font-semibold text-[#F3F4F6] mb-4"
         >
-          Frequently Asked Questions
+          Frequently Asked Questions — <span className="text-primary">SPACES</span>
         </motion.h2>
-        <p className="text-sm text-foreground mb-8">
-          Still curious? These common questions cover security, accessibility, and how to get started. If you don't find an answer, our support team is ready to help.
+        <p className="text-sm text-gray-400 mb-8">
+          Wondering about showtimes, tickets, or special screenings? These are the most common audience questions. If you need help, our box office team is ready to assist.
         </p>
 
         {/* FAQ list */}
@@ -85,9 +84,9 @@ export default function Questions() {
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className="w-full flex items-center justify-between px-5 py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
                 >
-                  <span className="font-medium text-gray-800">{faq.question}</span>
+                  <span className="font-medium text-gray-100">{faq.question}</span>
                   <ChevronDown
-                    className={`h-6 w-6 text-gray-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    className={`h-6 w-6 text-gray-300 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                     aria-hidden="true"
                   />
                 </button>
@@ -102,7 +101,7 @@ export default function Questions() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.28 }}
-                      className="px-5 pb-4 text-gray-700 text-sm leading-relaxed"
+                      className="px-5 pb-4 text-gray-400 text-sm leading-relaxed"
                     >
                       {faq.answer}
                     </motion.div>
@@ -116,39 +115,36 @@ export default function Questions() {
         {/* Stats row */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
           <article className="border rounded-lg p-4 bg-card">
-            <div className="text-indigo-600 font-extrabold text-2xl">700K+</div>
-            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Active Users</h4>
-            <p className="mt-1 text-sm text-gray-600">People using NeuroWallet to manage money more accessibly.</p>
+            <div className="text-primary font-extrabold text-2xl">$12.4M</div>
+            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Opening Weekend</h4>
+            <p className="mt-1 text-sm text-gray-400">Strong opening across major markets — box office highlights for SPACES.</p>
           </article>
 
           <article className="border rounded-lg p-4 bg-card">
-            <div className="text-indigo-600 font-extrabold text-2xl">99.9%</div>
-            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Uptime</h4>
-            <p className="mt-1 text-sm text-gray-600">Reliable service with enterprise-grade availability and backups.</p>
+            <div className="text-primary font-extrabold text-2xl">92%</div>
+            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Critics Score</h4>
+            <p className="mt-1 text-sm text-gray-400">Certified fresh — praised for visuals, score, and performances.</p>
           </article>
 
           <article className="border rounded-lg p-4 bg-card">
-            <div className="text-indigo-600 font-extrabold text-2xl">24/7</div>
-            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Support</h4>
-            <p className="mt-1 text-sm text-gray-600">Dedicated accessibility-first support and guided onboarding.</p>
+            <div className="text-primary font-extrabold text-2xl">1,200</div>
+            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Screens</h4>
+            <p className="mt-1 text-sm text-gray-400">Now showing in theatres across the region — check your local listings.</p>
           </article>
         </div>
 
         {/* CTA */}
         <div className="mt-10 rounded-lg border bg-card p-6 text-center">
-          <p className="text-sm text-gray-700 mb-4">Ready to try NeuroWallet? Start with a guided walkthrough and set up accessibility preferences in minutes.</p>
+          <p className="text-sm text-gray-300 mb-4">Ready for the full cinematic experience? Grab your tickets, watch the trailer, or request a private screening for your group.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <CTAButton>
-              Get started for free
+              Buy Tickets
             </CTAButton>
-            {/* <a
-              href="#"
-              className="inline-flex items-center justify-center rounded-full bg-gray-600 text-white px-5 py-2 text-sm font-semibold shadow hover:bg-indigo-700"
-            >
-              
-            </a> */}
-            <a href="#" className="text-sm text-gray-600 hover:underline">
-              Contact sales
+            <CTAButton variant="white">
+              Watch Trailer
+            </CTAButton>
+            <a href="#" className="text-sm text-gray-400 hover:underline">
+              Contact box office
             </a>
           </div>
         </div>

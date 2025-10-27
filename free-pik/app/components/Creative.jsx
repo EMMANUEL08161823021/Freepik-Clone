@@ -70,7 +70,7 @@ const Creative = () => {
                       </div>
 
                       <div className="p-3">
-                        <p className="text-xs text">{social.text}</p>
+                        <p className="text-sm text">{social.text}</p>
                       </div>
                     </div>
                     ))}

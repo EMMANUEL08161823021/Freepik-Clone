@@ -3,13 +3,13 @@ import localFont from "next/font/local";
 
 import Questions from "./components/Questions";
 import Pricing from "./components/Pricing";
-import Choose from "./components/Choose";
+import Choose from "./components/Stats";
 import Footer from "./constants/Footer";
 import Workflow from "./components/Workflow";
 import Result from "./components/Result";
 import Creative from "./components/Creative";
 import Model from "./components/model";
-import Features from "./components/Features";
+import Features from "./components/Movies";
 import Brand from "./components/Brand";
 import Navbar from "./constants/Navbar";
 import Hero from "./components/Hero";

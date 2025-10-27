@@ -55,7 +55,7 @@ function formatToKPlus(n) {
    Small presentational components
    ------------------------- */
 const Badge = ({ children }) => (
-  <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium bg-white shadow-sm">
+  <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium bg-white shadow-sm">
     <span className="text-gray-700">{children}</span>
   </span>
 );
@@ -146,37 +146,46 @@ export default function Hero() {
     <section ref={ref} className="">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
         {/* Top area: badge, title, description, CTA */}
-        <div className="max-w-3xl mx-auto text-center">
+       <div className="max-w-3xl mx-auto text-center">
           <Badge>
-            Limited time <span className="inline-block text-white text-[10px] px-2 py-1 rounded-full bg-gray-600">50% OFF</span>
+            Now streaming
+            <span className="inline-block text-[10px] px-2 py-1 ml-2 rounded-full bg-gray-600 text-white">New release</span>
           </Badge>
 
           <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-[#F3F4F6]">
-            Creative work,
-            <br className="sm:hidden" /> reimagined
+            Cinema, curated for you.
+            {/* <br className="sm:hidden" /> Discover the stories that stay with you. */}
           </h1>
 
-          <p className="mt-4 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-            Simplify team workflows with accurate reports, effortless timers, and intuitive collaboration — built for creative teams.
+          <p className="mt-4 text-sm sm:text-base text-gray-300 max-w-2xl mx-auto">
+            Stream exclusive films, premieres, and handpicked new releases — all in stunning quality, all in one place.          
           </p>
 
-          <div className="mt-5 flex items-center justify-center">
-            <CTAButton href="#">Get started for free</CTAButton>
+          <div className="mt-5 flex items-center justify-center gap-3">
+            <CTAButton href="#" aria-label="Watch featured film">Get started for free</CTAButton>
+            {/* <a
+              href="#lineup"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full border text-sm text-gray-200 hover:bg-white/5 transition"
+              aria-label="Browse lineup"
+            >
+              Browse lineup
+            </a> */}
           </div>
         </div>
+
 
         {/* Media region */}
         <div className="mt-8 flex justify-center">
           <div className="relative w-full max-w-4xl">
             {/* Left decorative stack (desktop only) */}
-            <div className="hidden md:flex flex-col gap-6 absolute -left-16 -top-8 z-10">
+            {/* <div className="hidden md:flex flex-col gap-6 absolute -left-16 -top-8 z-10">
               <div className="rounded-xl overflow-hidden w-[180px] h-[120px]">
                 <Image src="/assets/person-1.jpg" alt="" width={180} height={120} className="object-cover" aria-hidden="true" />
               </div>
               <div className="rounded-xl overflow-hidden w-[120px] h-[160px]">
                 <Image src="/assets/person-2.jpg" alt="" width={120} height={160} className="object-cover shadow" aria-hidden="true" />
               </div>
-            </div>
+            </div> */}
 
             {/* Center responsive video (lazy-load) */}
             <div className="mx-auto">
@@ -184,20 +193,34 @@ export default function Hero() {
             </div>
 
             {/* Right decorative (desktop only) */}
-            <div className="hidden md:block absolute -right-24 -top-16 z-10">
+            {/* <div className="hidden md:block absolute -right-24 -top-16 z-10">
               <div className="rounded-xl overflow-hidden w-[240px] h-[240px]">
                 <Image src="/assets/person.jpg" alt="" width={240} height={240} className="object-cover" aria-hidden="true" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         {/* Stats row */}
-        <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.12 } } }} className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-          <motion.div variants={cardVariants}><StatsCard value={formatToKPlus(n1)} label="Creators onboarded" /></motion.div>
-          <motion.div variants={cardVariants}><StatsCard value={formatToKPlus(n2)} label="Assets published" /></motion.div>
-          <motion.div variants={cardVariants}><StatsCard value={formatToKPlus(n3)} label="Projects delivered" /></motion.div>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={{ show: { transition: { staggerChildren: 0.12 } } }}
+          className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
+        >
+          <motion.div variants={cardVariants}>
+            <StatsCard value={formatToKPlus(n1)} label="Subscribers" />
+          </motion.div>
+
+          <motion.div variants={cardVariants}>
+            <StatsCard value={formatToKPlus(n2)} label="Titles available" />
+          </motion.div>
+
+          <motion.div variants={cardVariants}>
+            <StatsCard value={formatToKPlus(n3)} label="Hours streamed" />
+          </motion.div>
         </motion.div>
+
       </div>
     </section>
   );

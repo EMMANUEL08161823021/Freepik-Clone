@@ -4,32 +4,32 @@ import CTAButton from "./ui/button";
 
 const plansData = [
   {
-    id: "starter",
-    name: "Starter",
+    id: "standard",
+    name: "Standard",
     priceMonthly: 9,
     priceYearly: 90,
-    description: "For solo creators getting started with basic features.",
-    features: ["Up to 5 projects", "3GB storage", "Community support"],
-    cta: "Get Started",
+    description: "Perfect for solo viewers — comfortable seating and standard concessions.",
+    features: ["Standard seating", "Digital ticket", "Access to trailers"],
+    cta: "Buy Standard",
   },
   {
-    id: "pro",
-    name: "Pro",
+    id: "premium",
+    name: "Premium",
     priceMonthly: 29,
     priceYearly: 290,
-    description: "For freelancers and small teams that publish regularly.",
-    features: ["Unlimited projects", "50GB storage", "Team access", "Priority support"],
-    cta: "Start Pro",
+    description: "Upgraded seats, early access and a complimentary drink — ideal for date night.",
+    features: ["Premium seating", "Free drink", "Early access", "Priority entry"],
+    cta: "Get Premium",
     popular: true,
   },
   {
-    id: "agency",
-    name: "Agency",
+    id: "vip",
+    name: "VIP Package",
     priceMonthly: 99,
     priceYearly: 990,
-    description: "For agencies and teams that need scale, security and SLAs.",
-    features: ["All Pro features", "SSO / SAML", "Dedicated support", "Custom contracts"],
-    cta: "Contact Sales",
+    description: "The full cinematic experience — private lounge access, concierge booking and group perks.",
+    features: ["Lounge access", "Concierge booking", "Group discounts", "Exclusive screenings"],
+    cta: "Contact Box Office",
   },
 ];
 
@@ -46,16 +46,16 @@ export default function Pricing() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">
-              Plans that cover your needs
+              Choose how you want to experience <span className="text-primary">SPACES</span>
             </h2>
             <p className="mt-2 text-sm text-gray-600 max-w-2xl">
-              Simple, predictable pricing for individuals and teams. Switch between monthly and yearly billing to see savings.
+              Simple, transparent ticketing — pick a single-show ticket or save with a season pass. Compare options and choose what fits your night out.
             </p>
           </div>
 
-          {/* Billing toggle */}
+          {/* Ticket type toggle */}
           <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-600">Billing</span>
+            <span className="text-sm text-gray-600">Ticket Type</span>
             <div className="bg-gray-100 rounded-full p-1 flex items-center">
               <button
                 onClick={() => setBilling("monthly")}
@@ -64,7 +64,7 @@ export default function Pricing() {
                   billing === "monthly" ? "bg-card shadow" : "text-gray-600"
                 }`}
               >
-                Monthly
+                Single
               </button>
               <button
                 onClick={() => setBilling("yearly")}
@@ -73,11 +73,11 @@ export default function Pricing() {
                   billing === "yearly" ? "bg-card shadow" : "text-gray-600"
                 }`}
               >
-                Yearly
+                Season
               </button>
             </div>
             {billing === "yearly" && (
-              <div className="text-xs text-green-600 ml-3">Save 2 months</div>
+              <div className="text-sm text-green-600 ml-3">Save with season pass</div>
             )}
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function Pricing() {
               >
                 {p.popular && (
                   <div className="absolute -top-3 right-3">
-                    <span className="inline-block bg-[#D6862E] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    <span className="inline-block bg-[#D6862E] text-white text-sm font-semibold px-3 py-1 rounded-full">
                       Most popular
                     </span>
                   </div>
@@ -109,7 +109,7 @@ export default function Pricing() {
 
                 <div className="mt-6 flex items-baseline gap-3">
                   <div className="text-3xl font-extrabold text-[#F3F4F6]">{formatPrice(price)}</div>
-                  <div className="text-sm text-gray-500">{billing === "monthly" ? "/mo" : "/yr"}</div>
+                  <div className="text-sm text-gray-400">{billing === "monthly" ? "/ticket" : "/season"}</div>
                 </div>
 
                 <div className="mt-6 mb-4">
@@ -134,9 +134,8 @@ export default function Pricing() {
                     {p.cta}
                   </CTAButton>
 
-
-                  <p className="mt-3 text-xs text-gray-500">
-                    {p.id === "agency" ? "Custom contracts & invoices available." : "No credit card required for trial."}
+                  <p className="mt-3 text-sm text-gray-400">
+                    {p.id === "vip" ? "Custom VIP packages & group bookings available." : "No credit card required to reserve a ticket."}
                   </p>
                 </div>
               </article>
@@ -145,8 +144,8 @@ export default function Pricing() {
         </div>
 
         {/* small footer note */}
-        <div className="mt-6 text-center text-sm text-gray-500">
-          Prices shown in USD. Taxes may apply. Need a custom plan? <a href="#" className="text-indigo-600">Contact sales</a>.
+        <div className="mt-6 text-center text-sm text-gray-400">
+          Prices shown in USD. Booking fees and taxes may apply. Need group pricing or a private screening? <a href="#" className="text-indigo-600">Contact the box office</a>.
         </div>
       </div>
     </section>

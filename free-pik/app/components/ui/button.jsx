@@ -40,7 +40,7 @@ export const CTAButton = React.forwardRef(function CTAButton(
   };
 
   const sizes = {
-    sm: "text-sm px-3 py-1.5",
+    sm: "text-xs px-3 py-1.5",
     md: "text-sm px-4 py-2",
     lg: "text-base px-5 py-3",
   };

@@ -15,7 +15,7 @@ const Footer = () => {
             >
                 <div>
                     <h3 className='text-[#F3F4F6]'>Products</h3>
-                    <ul className="flex flex-col gap-3 text-xs">
+                    <ul className="flex flex-col gap-3 text-sm">
                     <a href="#" className="hover:text-blue-600"><li>Demos</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Ai Assistant</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Ai Image Generator</li></a>
@@ -29,7 +29,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <h3 className='text-[#F3F4F6]'>Get Started</h3>
-                    <ul className="flex flex-col gap-3 text-xs">
+                    <ul className="flex flex-col gap-3 text-sm">
                     <a href="#" className="hover:text-blue-600"><li>Pricing</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Sell Content</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Ai Image Generator</li></a>
@@ -43,7 +43,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <h3 className='text-[#F3F4F6]'>Products</h3>
-                    <ul className="flex flex-col gap-3 text-xs">
+                    <ul className="flex flex-col gap-3 text-sm">
                     <a href="#" className="hover:text-blue-600"><li>Demos</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Ai Assistant</li></a>
                     <a href="#" className="hover:text-blue-600"><li>Ai Image Generator</li></a>
@@ -57,7 +57,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <h3 className='text-[#F3F4F6]'>Products</h3>
-                    <ul className="flex flex-col gap-3 text-xs">
+                    <ul className="flex flex-col gap-3 text-sm">
                     <a href="#" className="hover:text-blue-600"><li className='list-none'>Linkedin</li></a>
                     <a href="#" className="hover:text-blue-600"><li className='list-none'>Facebook</li></a>
                     <a href="#" className="hover:text-blue-600"><li className='list-none'>Instagram</li></a>

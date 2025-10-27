@@ -170,9 +170,9 @@ export default function WorkFlow({
                                 <div className="w-full h-[65%] rounded-md overflow-hidden bg-white/10 relative">
                                 <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${card.src})`, backgroundSize: "cover", backgroundPosition: "center" }} />
                                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-3 bg-black/60 px-3 py-2 rounded-md">
-                                    <button className="text-xs text-[#F3F4F6] px-2 py-1">Upscale</button>
-                                    <button className="text-xs text-[#F3F4F6] px-2 py-1">Resize</button>
-                                    <button className="text-xs text-[#F3F4F6] px-2 py-1">Background</button>
+                                    <button className="text-sm text-[#F3F4F6] px-2 py-1">Upscale</button>
+                                    <button className="text-sm text-[#F3F4F6] px-2 py-1">Resize</button>
+                                    <button className="text-sm text-[#F3F4F6] px-2 py-1">Background</button>
                                 </div>
                                 </div>
                             </div>

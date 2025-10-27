@@ -24,7 +24,7 @@ export const Tabs = ({ defaultValue, children }) => {
 export const TabsList = ({ children, className }) => {
   return (
     <div
-      className={`flex h-10 items-center justify-center rounded-md bg-card border text-gray-600 ${className || ""}`}
+      className={`flex h-10 items-center justify-center rounded-md bg-card border text-gray-100 ${className || ""}`}
     >
       {children}
     </div>

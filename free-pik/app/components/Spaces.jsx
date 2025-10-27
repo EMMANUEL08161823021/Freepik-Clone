@@ -9,20 +9,19 @@ const Spaces = () => {
             <br/>
             <br/>
             <div className="w-full md:max-w-5xl mx-auto px-4">
-                {/* logos */}
+                {/* studio logos */}
                 <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 opacity-40 mb-8">
-                {/* Replace these with real svg/img logos */}
-                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/google.svg"} alt='google'/></span>
-                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/nubank.svg"} alt='google'/></span>
-                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/hello-fresh.svg"} alt='google'/></span>
-                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/coca-cola.svg"} alt='google'/></span>
-                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/ogilvy.svg"} alt='Ogilvy'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/google.svg"} alt='studio logo'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/nubank.svg"} alt='studio logo'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/hello-fresh.svg"} alt='studio logo'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/coca-cola.svg"} alt='studio logo'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/ogilvy.svg"} alt='studio logo'/></span>
                 </div>
 
                 {/* heading */}
                 <h2 className="text-left font-semibold leading-tight">
-                <span className='text-xl'>You bring the vision. We help you go further. </span>
-                <span className="text-gray-500 text-xl">Join 700,000 creative teams, marketers, and designers worldwide.</span>
+                <span className='text-xl'>Now playing in cinemas — <em>SPACES</em>. </span>
+                <span className="text-gray-500 text-xl">Experience the story that critics are calling "visually stunning and unexpectedly moving" on the big screen.</span>
                 </h2>
 
                 <br/>
@@ -41,52 +40,37 @@ const Spaces = () => {
                             width={300}
                             height={300}
                             src="/assets/person.jpg"
-                            alt="decorative background"
-                            // fill
+                            alt="film poster background"
                             style={{ objectFit: "cover", filter: "blur(8px) brightness(0.45)" }}
                             priority
                         />
                         </div>
 
                         <div className="max-w-xl">
-                        <h3 className="text-2xl sm:text-4xl text-foreground font-semibold mb-4">Introducing Spaces</h3>
+                        <h3 className="text-2xl sm:text-4xl text-foreground font-semibold mb-4">SPACES — In Theaters Now</h3>
                         <p className="text-sm sm:text-base text-gray-500 mb-6">
-                            An infinite, collaborative canvas to create and automate multi-step workflows.
+                            A cinematic journey where imagination becomes reality. Follow a band of creators as they uncover an infinite canvas that reshapes their lives, one bold idea at a time.
                         </p>
 
                         <CTAButton>
-                            Try Spaces for free
+                            Get Tickets
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </CTAButton>
 
-                        {/* <div className="flex items-center gap-3">
-                            <a
-                            href="#"
-                            className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm shadow hover:scale-[1.01] transition"
-                            >
-                            Try Spaces for free
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                            </a>
-                        </div> */}
                         </div>
                     </div>
 
                     {/* right image + mock UI */}
                     <div className="relative h-64 md:h-[420px]">
-                        {/* full-size hero image */}
+                        {/* full-size hero image (film poster) */}
                         <Image
                         src="/assets/person.jpg"
-                        alt="hero mock"
+                        alt="film poster"
                         fill
                         style={{ objectFit: "cover" }}
                         />
-
-                        {/* right-side mock UI card (positioned above the image) */}
-                        
 
                         {/* left gradient fade for polish */}
                         <div className="pointer-events-none absolute left-0 top-0 h-full w-14 bg-gradient-to-r from-black/80 to-transparent" />
