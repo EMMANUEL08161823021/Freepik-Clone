@@ -19,8 +19,8 @@ const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
 
 export default function Movies() {
   return (
-    <section className="w-full overflow-hidden px-4 mx-auto md:max-w-5xl text-[#F3F4F6]">
-      <div className="flex items-center justify-between py-6">
+    <section className="w-full overflow-hidden mx-auto md:max-w-5xl text-[#F3F4F6]">
+      <div className="flex items-center px-4 justify-between py-6">
         <div>
           <h2 className="text-2xl font-semibold">Latest Movies</h2>
           <p className="text-sm text-gray-400">Now playing · Coming soon · Top rated</p>
@@ -31,7 +31,7 @@ export default function Movies() {
       </div>
 
       <Tabs defaultValue="now">
-        <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="flex px-4 flex-col md:flex-row gap-6 items-start">
           <TabsList className="flex md:flex-col w-full md:w-48 overflow-x-auto no-scrollbar bg-card rounded-md p-2 gap-2 h-full" role="tablist">
             <div className="w-full h-full flex flex-row md:flex-col items-start">
               <TabsTrigger value="now">Now Showing</TabsTrigger>
@@ -41,7 +41,7 @@ export default function Movies() {
             </div>
           </TabsList>
 
-          <div className="flex-1">
+          <div className="md:flex-1 w-full">
             {/* --- NOW SHOWING --- */}
             <TabsContent value="now" className="p-0">
               {/* Mobile carousel */}
@@ -125,15 +125,15 @@ export default function Movies() {
 
             {/* --- TOP RATED --- */}
             <TabsContent value="top">
-              <div className="px-4">
+              <div className="w-full">
                 <h3 className="text-lg font-semibold mb-3">Top Rated</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {movies
                     .slice()
                     .sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
                     .map((m) => (
-                      <div key={m.id} className="flex gap-4 items-start bg-card p-3 rounded-md">
-                        <div className="relative w-24 h-32 rounded overflow-hidden">
+                      <div key={m.id} className="flex w-full gap-4 items-start bg-card p-3 rounded-md">
+                        <div className="relative w-[40%] h-32 rounded overflow-hidden">
                           <Image src={m.poster || placeholder} alt={m.title} fill style={{ objectFit: "cover" }} />
                         </div>
                         <div>
@@ -151,7 +151,7 @@ export default function Movies() {
 
             {/* --- GENRES (simple example) --- */}
             <TabsContent value="genres">
-              <div className="px-4">
+              <div className="">
                 <h3 className="text-lg font-semibold mb-3">Browse by Genre</h3>
                 <div className="flex gap-3 flex-wrap">
                   {['Action', 'Drama', 'Comedy', 'Sci-Fi', 'Horror'].map((g) => (

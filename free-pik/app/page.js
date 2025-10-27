@@ -8,7 +8,7 @@ import Footer from "./constants/Footer";
 import Workflow from "./components/Workflow";
 import Result from "./components/Result";
 import Creative from "./components/Creative";
-import Model from "./components/model";
+import Model from "./components/Scenes";
 import Features from "./components/Movies";
 import Brand from "./components/Brand";
 import Navbar from "./constants/Navbar";
@@ -19,20 +19,20 @@ import Spaces from "./components/Spaces";
 const gfsDidot = localFont({
   src: [
     {
-      path: "../public/fonts/GFSDidot-Regular.ttf",
+      path: "../public/fonts/Metropolis/Metropolis-Regular.otf",
       weight: "400",
       style: "normal",
     },
   ],
   display: "swap",
-  variable: "--font-gfsdidot",
+  variable: "--font-metropolis",
 });
 
 
 export default function Home() {
   return (
     // apply className so children inherit the font
-    <main className={`${gfsDidot.className} bg-[#0F1115]`}>
+    <main className={` ${gfsDidot.className} bg-[#0F1115]`}>
       <Navbar/>
       <Hero/>
       <Spaces/>

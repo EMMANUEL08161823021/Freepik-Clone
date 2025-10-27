@@ -10,7 +10,7 @@ const Spaces = () => {
             <br/>
             <div className="w-full md:max-w-5xl mx-auto px-4">
                 {/* studio logos */}
-                <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 opacity-40 mb-8">
+                <div className="flex flex-wrap items-center justify-center gap-8 opacity-40 mb-8">
                 <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/google.svg"} alt='studio logo'/></span>
                 <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/nubank.svg"} alt='studio logo'/></span>
                 <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/hello-fresh.svg"} alt='studio logo'/></span>

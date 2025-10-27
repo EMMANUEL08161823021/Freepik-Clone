@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import Image from "next/image";
 import Brand from "./Brand";
 
@@ -29,7 +29,7 @@ const reviews = [
   { critic: "Local Reviewer", quote: "Leaves you thinking long after the credits roll.", score: "A-" },
 ];
 
-export default function Model() {
+export default function Scenes() {
   return (
     <section className="">
       <br />

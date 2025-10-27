@@ -32,7 +32,7 @@ const Brand = ({ speed = 25, height = 120 }) => {
 
   return (
     <section>
-        <div className="w-full px-4 md:max-w-5xl overflow-hidden mx-auto">
+        <div className="w-full md:max-w-5xl overflow-hidden mx-auto">
             <div className="relative">
             {/* Motion track: translate X from 0 -> -50% to scroll one full set */}
             <motion.div
@@ -63,8 +63,8 @@ const Brand = ({ speed = 25, height = 120 }) => {
             </motion.div>
 
             {/* optional gradient fade on left/right for polish */}
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-white to-transparent" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-white to-transparent" />
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-black to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-black to-transparent" />
             </div>
         </div>
     </section>
