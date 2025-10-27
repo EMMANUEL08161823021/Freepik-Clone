@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import Image from "next/image";
 import CTAButton from "./ui/button";
 
 const movies = [
-  { id: 1, title: "SPACES", year: 2025, rating: "PG-13", score: "8.2", poster: "", synopsis: "A cinematic journey where imagination becomes reality." },
+  { id: 1, title: "SPACES", year: 2025, rating: "PG-13", score: "8.2", poster: "/assets/person.jpg", synopsis: "A cinematic journey where imagination becomes reality." },
   { id: 2, title: "NEON SKIES", year: 2025, rating: "R", score: "7.9", poster: "", synopsis: "A sci-fi heist across floating cities." },
   { id: 3, title: "SUMMER FLICK", year: 2025, rating: "PG", score: "6.8", poster: "", synopsis: "A coming-of-age story about first loves and old friends." },
   { id: 4, title: "THE LAST FRAME", year: 2024, rating: "PG-13", score: "8.7", poster: "", synopsis: "A director races to finish his final masterpiece." },
@@ -17,13 +17,14 @@ const placeholderSvg = encodeURIComponent(
 );
 const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
 
-export default function Movies() {
+export default function Movies({ poster, title, placeholder = "/assets/default-image.svg" }) {
+  const [imgSrc, setImgSrc] = useState(poster || placeholder);
   return (
-    <section className="w-full overflow-hidden mx-auto md:max-w-5xl text-[#F3F4F6]">
+    <section id="movies" className="w-full overflow-hidden mx-auto md:max-w-5xl text-[#F3F4F6]">
       <div className="flex items-center px-4 justify-between py-6">
         <div>
           <h2 className="text-2xl font-semibold">Latest Movies</h2>
-          <p className="text-sm text-gray-400">Now playing · Coming soon · Top rated</p>
+          <p className="text-sm hidden sm:block text-gray-400">Now playing · Coming soon · Top rated</p>
         </div>
         <div className="flex gap-2">
           <CTAButton>View All Showtimes</CTAButton>
@@ -50,7 +51,7 @@ export default function Movies() {
                   {movies.map((m) => (
                     <article key={m.id} className="snap-center flex-shrink-0 w-[50%] sm:w-[60%] rounded-xl overflow-hidden bg-card shadow">
                       <div className="relative h-72">
-                        <Image src={m.poster || placeholder}  alt={m.title} fill sizes="(max-width: 600px) 100vw" style={{ objectFit: "cover" }} />
+                        <Image src={imgSrc} alt={m.title} fill sizes="(max-width: 600px) 100vw" style={{ objectFit: "cover" }} />
                       </div>
                       <div className="p-3">
                         <h3 className="text-sm font-semibold">{m.title} <span className="text-xs text-gray-400">({m.year})</span></h3>
@@ -73,7 +74,7 @@ export default function Movies() {
                   {movies.map((m) => (
                     <article key={m.id} className="rounded-xl overflow-hidden shadow-lg bg-card flex flex-col">
                       <div className="relative w-full h-72">
-                        <Image src={m.poster || placeholder} alt={m.title} fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
+                        <Image src={m.poster || placeholder} alt={title} fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
                       </div>
                       <div className="p-4 flex-1 flex flex-col justify-between">
                         <div>

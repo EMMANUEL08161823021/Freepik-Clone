@@ -153,7 +153,7 @@ export default function Hero() {
           </Badge>
 
           <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-[#F3F4F6]">
-            Cinema, curated for you.
+            Cinema, <br className="sm:hidden" />curated for you.
             {/* <br className="sm:hidden" /> Discover the stories that stay with you. */}
           </h1>
 

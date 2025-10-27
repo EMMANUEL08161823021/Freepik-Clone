@@ -56,7 +56,7 @@ export default function WorkFlow({
   const currentCards = slides[slideIndex] ?? [];
 
   return (
-    <section>
+    <section id="casts">
         <br/>
         <br/>
         <div className="max-w-5xl mx-auto">
@@ -178,8 +178,8 @@ export default function WorkFlow({
                             </div>
                             </div>
                         ) : (
-                            <div className="absolute left-4 top-4 text-[#F3F4F6] z-10">
-                            <div className="text-sm font-medium">{card.title}</div>
+                            <div className="absolute left-4 top-4 text-black z-10">
+                            <div className="text-sm shadow shadow-accent-foreground font-medium">{card.title}</div>
                             </div>
                         )}
                         </div>

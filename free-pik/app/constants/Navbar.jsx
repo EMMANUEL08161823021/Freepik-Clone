@@ -51,11 +51,11 @@ export default function Navbar() {
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-4">
                 <ul className="flex gap-4 text-[#F3F4F6] text-sm">
-                    <a href="#"><li className="hover:text-blue-600">AI Suite</li></a>
-                    <a href="#"><li className="hover:text-blue-600">Stock</li></a>
-                    <a href="#"><li className="hover:text-blue-600">Resources</li></a>
-                    <a href="#"><li className="hover:text-blue-600">Pricing</li></a>
-                    <a href="#"><li className="hover:text-blue-600">Contact</li></a>
+                    <a href="#movies"><li className="hover:text-blue-600">Movies</li></a>
+                    <a href="#scenes"><li className="hover:text-blue-600">Scenes</li></a>
+                    <a href="#casts"><li className="hover:text-blue-600">Casts</li></a>
+                    <a href="#pricing"><li className="hover:text-blue-600">Pricing</li></a>
+                    {/* <a href="#"><li className="hover:text-blue-600">Contact</li></a> */}
                 </ul>
                 </nav>
             </div>

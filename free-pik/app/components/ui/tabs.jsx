@@ -24,7 +24,7 @@ export const Tabs = ({ defaultValue, children }) => {
 export const TabsList = ({ children, className }) => {
   return (
     <div
-      className={`flex h-10 items-center justify-center rounded-md bg-card border text-gray-100 ${className || ""}`}
+      className={`flex h-10 items-center my-3 justify-center rounded-md bg-card border text-gray-100 ${className || ""}`}
     >
       {children}
     </div>
@@ -44,7 +44,7 @@ export const TabsTrigger = ({ value, children, className, ...rest }) => {
       type="button"
       onClick={() => setActiveTab?.(value)}
       className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-2 text-sm font-medium transition-all ${
-        activeTab === value ? "bg-white text-black shadow-sm" : "bg-transparent text-gray-500 hover:text-black"
+        activeTab === value ? "bg-white text-black shadow-sm" : "bg-transparent text-gray-500 hover:text-white"
       } ${className || ""}`}
       {...rest} // safe to spread other allowed props like aria-* , id, etc.
     >

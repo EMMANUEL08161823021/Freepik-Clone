@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import Image from "next/image";
 import Brand from "./Brand";
@@ -29,9 +29,11 @@ const reviews = [
   { critic: "Local Reviewer", quote: "Leaves you thinking long after the credits roll.", score: "A-" },
 ];
 
-export default function Scenes() {
+export default function Scenes({photo, placeholder= "/assets/default-image.svg"}) {
+  const [imgSrc, setImgSrc] = useState(photo || placeholder);
+  
   return (
-    <section className="">
+    <section id="scenes" className="">
       <br />
       <br />
       <div className="px-4 mx-auto max-w-5xl">
@@ -53,7 +55,7 @@ export default function Scenes() {
                   <article key={s.id} className="rounded-lg overflow-hidden border bg-card shadow">
                     <div className="relative w-full h-48">
                       <Image
-                        src={s.image || placeholder}
+                        src={imgSrc}
                         alt={s.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 300px"
@@ -102,7 +104,7 @@ export default function Scenes() {
                   {cast.map((c) => (
                     <div key={c.name} className="flex flex-col items-center text-center">
                       <div className="relative w-28 h-28 rounded-full overflow-hidden">
-                        <Image src={c.photo || placeholder} alt={c.name} fill style={{ objectFit: "cover" }} />
+                        <Image src={imgSrc} alt={c.name} fill style={{ objectFit: "cover" }} />
                       </div>
                       <div className="mt-3">
                         <p className="font-semibold">{c.name}</p>

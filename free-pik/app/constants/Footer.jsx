@@ -2,12 +2,12 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="text-gray-700">
+    <footer className="text-gray-700 bg-primary">
         <br/>
         <br/>
         <div className="w-full sm:max-w-xl md:max-w-5xl mx-auto px-4 sm:px-6 lg:px-6">
 
-            <img src={"/assets/logo.svg"} alt="logo"/>
+            <img className="mb-4" height={70} width={90} src={"/assets/spaces-black.svg"} alt="logo"/>
             {/* Desktop Nav */}
             <nav
                 className="grid grid-cols-2 md:grid-cols-4 justify-between gap-4 items-center"

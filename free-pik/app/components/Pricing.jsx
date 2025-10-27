@@ -41,27 +41,27 @@ export default function Pricing() {
   const formatPrice = (n) => `$${n}`;
 
   return (
-    <section className="py-12">
+    <section id="pricing" className="py-12">
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">
               Choose how you want to experience <span className="text-primary">SPACES</span>
             </h2>
-            <p className="mt-2 text-sm text-gray-600 max-w-2xl">
+            <p className="mt-2 text-sm text-gray-400 max-w-2xl">
               Simple, transparent ticketing — pick a single-show ticket or save with a season pass. Compare options and choose what fits your night out.
             </p>
           </div>
 
           {/* Ticket type toggle */}
           <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-600">Ticket Type</span>
+            <span className="text-sm text-gray-400">Ticket Type</span>
             <div className="bg-gray-100 rounded-full p-1 flex items-center">
               <button
                 onClick={() => setBilling("monthly")}
                 aria-pressed={billing === "monthly"}
                 className={`px-3 py-1 rounded-full text-sm font-medium transition ${
-                  billing === "monthly" ? "bg-card shadow" : "text-gray-600"
+                  billing === "monthly" ? "bg-card shadow" : "text-gray-400"
                 }`}
               >
                 Single
@@ -70,14 +70,14 @@ export default function Pricing() {
                 onClick={() => setBilling("yearly")}
                 aria-pressed={billing === "yearly"}
                 className={`ml-1 px-3 py-1 rounded-full text-sm font-medium transition ${
-                  billing === "yearly" ? "bg-card shadow" : "text-gray-600"
+                  billing === "yearly" ? "bg-card shadow" : "text-gray-400"
                 }`}
               >
                 Season
               </button>
             </div>
             {billing === "yearly" && (
-              <div className="text-sm text-green-600 ml-3">Save with season pass</div>
+              <div className="text-sm text-green-600 ml-3">Season pass</div>
             )}
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function Pricing() {
                 <h3 id={`plan-${p.id}-title`} className="text-lg font-semibold text-[#F3F4F6]">
                   {p.name}
                 </h3>
-                <p className="mt-1 text-sm text-gray-600">{p.description}</p>
+                <p className="mt-1 text-sm text-gray-400">{p.description}</p>
 
                 <div className="mt-6 flex items-baseline gap-3">
                   <div className="text-3xl font-extrabold text-[#F3F4F6]">{formatPrice(price)}</div>
@@ -116,10 +116,10 @@ export default function Pricing() {
                   <ul role="list" className="space-y-3 text-sm text-gray-700">
                     {p.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <svg className="flex-none h-5 w-5 text-green-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <svg className="flex-none h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clipRule="evenodd" />
                         </svg>
-                        <span>{f}</span>
+                        <span className="text-gray-400">{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -145,7 +145,7 @@ export default function Pricing() {
 
         {/* small footer note */}
         <div className="mt-6 text-center text-sm text-gray-400">
-          Prices shown in USD. Booking fees and taxes may apply. Need group pricing or a private screening? <a href="#" className="text-indigo-600">Contact the box office</a>.
+          Prices shown in USD. Booking fees and taxes may apply. Need group pricing or a private screening? <a href="#" className="text-primary">Contact the box office</a>.
         </div>
       </div>
     </section>
