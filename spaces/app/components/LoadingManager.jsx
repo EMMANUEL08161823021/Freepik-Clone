@@ -13,7 +13,7 @@ export default function LoaderManager({ children }) {
   }, []);
 
   if (loading) {
-    return <Loading/>; // Your animated loader
+    return <Loading visible={loading} duration={1600} onFinish={() => setLoading(false)}/>; // Your animated loader
   }
 
   return <>{children}</>; // Show the rest of the site after loading
