@@ -3,6 +3,9 @@ import localFont from "next/font/local";
 
 import "../app/globals.css"
 
+import { Analytics } from "@vercel/analytics/next"
+
+import LoaderManager from "./components/LoadingManager";
 
 const metropolis = localFont({
   src: [
@@ -18,7 +21,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="theater">
       <body className={`${metropolis.variable} antialiased`}>
-        {children}
+        <LoaderManager>
+        {children}  
+        </LoaderManager>
+        <Analytics/>
       </body>
     </html>
   );

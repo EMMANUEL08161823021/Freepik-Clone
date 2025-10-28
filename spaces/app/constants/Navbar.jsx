@@ -46,20 +46,19 @@ export default function Navbar() {
           <div className="flex sm:max-w-xl md:max-w-5xl mx-auto px-4 justify-between items-center h-16">
             {/* Logo + Brand */}
             <div className="flex items-center gap-4">
-                <img className="" height={70} width={90} src={"/assets/spaces-gold.svg"} alt="logo"/>
-            
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-4">
+              <img className="" height={70} width={90} src={"/assets/spaces-gold.svg"} alt="logo"/>
+          
+              {/* Desktop Nav */}
+              <nav className="hidden md:flex items-center gap-4">
                 <ul className="flex gap-4 text-[#F3F4F6] text-sm">
-                    <a href="#movies"><li className="hover:text-blue-600">Movies</li></a>
-                    <a href="#scenes"><li className="hover:text-blue-600">Scenes</li></a>
-                    <a href="#casts"><li className="hover:text-blue-600">Casts</li></a>
-                    <a href="#pricing"><li className="hover:text-blue-600">Pricing</li></a>
-                    {/* <a href="#"><li className="hover:text-blue-600">Contact</li></a> */}
+                  <a href="#movies"><li className="hover:text-primary">Movies</li></a>
+                  <a href="#scenes"><li className="hover:text-primary">Scenes</li></a>
+                  <a href="#casts"><li className="hover:text-primary">Casts</li></a>
+                  <a href="#pricing"><li className="hover:text-primary">Pricing</li></a>
+                  {/* <a href="#"><li className="hover:text-primary">Contact</li></a> */}
                 </ul>
-                </nav>
+              </nav>
             </div>
-
 
             {/* Actions + Mobile Hamburger */}
             <div className="flex items-center gap-3">
@@ -136,10 +135,10 @@ export default function Navbar() {
 
               <nav className="p-4">
                 <ul className="flex text-[#F3F4F6] text-sm flex-col gap-4">
-                  <a href="#movies"><li className="hover:text-blue-600">Movies</li></a>
-                  <a href="#scenes"><li className="hover:text-blue-600">Scenes</li></a>
-                  <a href="#casts"><li className="hover:text-blue-600">Casts</li></a>
-                  <a href="#pricing"><li className="hover:text-blue-600">Pricing</li></a>
+                  <a href="#movies"><li className="hover:text-primary">Movies</li></a>
+                  <a href="#scenes"><li className="hover:text-primary">Scenes</li></a>
+                  <a href="#casts"><li className="hover:text-primary">Casts</li></a>
+                  <a href="#pricing"><li className="hover:text-primary">Pricing</li></a>
                 </ul>
 
                 <div className="mt-6 flex flex-col gap-3">
@@ -149,7 +148,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Optional small footer */}
-                <div className="mt-8 text-sm text-gray-500">© {new Date().getFullYear()} Saasto</div>
+                <div className="mt-8 text-sm text-gray-500">© {new Date().getFullYear()} SPACES</div>
               </nav>
             </motion.aside>
           )}

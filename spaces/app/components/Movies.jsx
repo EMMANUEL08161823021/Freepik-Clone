@@ -47,7 +47,7 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
           <p className="text-sm hidden sm:block text-gray-400">Now playing · Coming soon · Top rated</p>
         </div>
         <div className="flex gap-2">
-          <CTAButton>View All Showtimes</CTAButton>
+          <CTAButton className="text-xs px-3 py-1.5 md:text-sm md:px-4 md:py-2">View All Showtimes</CTAButton>
         </div>
       </div>
 
@@ -80,7 +80,6 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
                           quality={75} // tradeoff: 70-80 is usually great
                           style={{ objectFit: "cover" }}
                         />
-
                       </div>
                       <div className="p-3">
                         <h3 className="text-sm font-semibold">{m.title} <span className="text-xs text-gray-400">({m.year})</span></h3>

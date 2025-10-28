@@ -4,6 +4,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import Image from "next/image";
 import Brand from "./Brand";
 
+import { motion } from "framer-motion";
+
 const scenes = [
   { id: 1, title: "Opening Shot — The City at Dawn", time: "00:02:14", image: "/assets/scene1.jpg", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
   { id: 2, title: "Chase on the Skybridge", time: "00:28:07", image: "/assets/scene2.jpg", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
@@ -50,9 +52,14 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
           <div className="space-y-6">
             {/* SCENES */}
             <TabsContent value="scenes" className="p-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <motion.div                 
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {scenes.map((s) => (
-                  <article key={s.id} className="rounded-lg overflow-hidden border bg-card shadow">
+                  <motion.article
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: s * 0.06, duration: 0.36 }}
+                    key={s.id} className="rounded-lg overflow-hidden border bg-card shadow">
                     <div className="relative w-full h-48">
                       <Image
                         src={imgSrc}
@@ -71,9 +78,9 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
                         <span className="text-xs text-gray-400">Scene</span>
                       </div>
                     </div>
-                  </article>
+                  </motion.article>
                 ))}
-              </div>
+              </motion.div>
             </TabsContent>
 
             {/* TRAILER */}

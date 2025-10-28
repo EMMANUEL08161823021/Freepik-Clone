@@ -2,6 +2,8 @@
 import React, { useMemo, useState } from "react";
 import CTAButton from "./ui/button";
 
+import { motion } from "framer-motion";
+
 const plansData = [
   {
     id: "standard",
@@ -45,9 +47,13 @@ export default function Pricing() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">
+            <motion.h2 
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">
               Choose how you want to experience <span className="text-primary">SPACES</span>
-            </h2>
+            </motion.h2>
             <p className="mt-2 text-sm text-gray-400 max-w-2xl">
               Simple, transparent ticketing — pick a single-show ticket or save with a season pass. Compare options and choose what fits your night out.
             </p>
