@@ -8,8 +8,8 @@ const scenes = [
   { id: 1, title: "Opening Shot — The City at Dawn", time: "00:02:14", image: "/assets/scene1.jpg", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
   { id: 2, title: "Chase on the Skybridge", time: "00:28:07", image: "/assets/scene2.jpg", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
   { id: 3, title: "Quiet Confession", time: "01:02:33", image: "/assets/scene3.jpg", desc: "A tender exchange that changes the characters forever." },
-  { id: 4, title: "The Reveal", time: "01:25:10", image: "/assets/scene4.jpg", desc: "A twist that rewrites everything the audience thought they knew." },
-  { id: 5, title: "Finale — Lights Out", time: "01:48:55", image: "/assets/scene5.jpg", desc: "An emotionally charged finale that ties the film's themes together." },
+  // { id: 4, title: "The Reveal", time: "01:25:10", image: "/assets/scene4.jpg", desc: "A twist that rewrites everything the audience thought they knew." },
+  // { id: 5, title: "Finale — Lights Out", time: "01:48:55", image: "/assets/scene5.jpg", desc: "An emotionally charged finale that ties the film's themes together." },
 ];
 
 const placeholderSvg = encodeURIComponent(

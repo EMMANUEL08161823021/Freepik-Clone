@@ -38,7 +38,7 @@ export default function Home() {
       <Spaces/>
       <Features/>
       <Model/>
-      <Creative/>
+      {/* <Creative/> */}
       <Workflow />
       <Result centerRatio={0.5} />
       <Choose />

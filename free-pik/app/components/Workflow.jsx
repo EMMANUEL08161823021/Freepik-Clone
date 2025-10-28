@@ -21,14 +21,14 @@ const chunk = (arr, size) => {
 
 export default function WorkFlow({
   imgs = [
-    { src: "/assets/person.jpg", title: "Andy Whitfield", subtitle: "", body: "Short body", ctaText: "View more" },
-    { src: "/assets/person-1.jpg", title: "Marketers", subtitle: "", body: "Create faster...", ctaText: "View more" },
-    { src: "/assets/person-2.jpg", title: "Filmmakers", subtitle: "", body: "Visual tools", ctaText: "View more" },
-    { src: "/assets/person.jpg", title: "Content creators", subtitle: "", body: "Content creation", ctaText: "View more" },
+    { src: "/assets/tom.jpg", title: "Tom Hardy", subtitle: "", body: "Short body", ctaText: "View more" },
+    { src: "/assets/timothy.jpg", title: "Timothy Olyphant", subtitle: "", body: "Create faster...", ctaText: "View more" },
+    { src: "/assets/jessie.jpg", title: "Jessie Mie li", subtitle: "", body: "Visual tools", ctaText: "View more" },
+    { src: "/assets/forest.jpg", title: "Forest Whitaker", subtitle: "", body: "Content creation", ctaText: "View more" },
     // more...
   ],
   cardsPerSlide = 4,
-  cardHeight = 500,
+  cardHeight = 550,
   collapsedWidth = 80,
   hoverGrow = 3,
   gap = 16,
@@ -61,7 +61,7 @@ export default function WorkFlow({
         <br/>
         <div className="max-w-5xl mx-auto">
             <div className="flex items-center justify-between px-4 mb-4">
-                <h2 className="text-2xl font-semibold text-[#F3F4F6]">Boost your professional workflow and productivity</h2>
+                <h2 className="text-2xl font-semibold text-[#F3F4F6]">Main Characters in — <em>HAVOC</em></h2>
                 {/* <div className="flex gap-2">
                     <button onClick={prev} className="w-9 h-9 rounded-full bg-black/60 text-[#F3F4F6] flex items-center justify-center">‹</button>
                     <button onClick={next} className="w-9 h-9 rounded-full bg-black/60 text-[#F3F4F6] flex items-center justify-center">›</button>
@@ -140,7 +140,7 @@ export default function WorkFlow({
                             inset: 0,
                             backgroundImage: `url(${card.src})`,
                             backgroundSize: "cover",
-                            backgroundPosition: "center",
+                            backgroundPosition: "top",
                             }}
                             aria-hidden="true"
                         />
@@ -158,12 +158,12 @@ export default function WorkFlow({
                             <div className="relative z-10 h-full flex items-center">
                             <div className="px-6 py-8 text-[#F3F4F6] w-1/2">
                                 <h3 className="text-xl text-[#F3F4F6] md:text-2xl font-semibold mb-3">{card.title}</h3>
-                                <p className="text-base text-[#F3F4F6] opacity-90 mb-4">{card.body ?? card.subtitle}</p>
-                                {card.ctaText ? (
+                                {/* <p className="text-base text-[#F3F4F6] opacity-90 mb-4">{card.body ?? card.subtitle}</p> */}
+                                {/* {card.ctaText ? (
                                 <a href={card.ctaHref ?? "#"} className="inline-block bg-white border text-black px-4 py-2 rounded-full font-medium">
                                     {card.ctaText}
                                 </a>
-                                ) : null}
+                                ) : null} */}
                             </div>
 
                             <div className="w-1/2 flex items-center justify-center px-6">

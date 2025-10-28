@@ -1,5 +1,5 @@
 "use client";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import Image from "next/image";
 import CTAButton from "./ui/button";
@@ -16,6 +16,26 @@ const placeholderSvg = encodeURIComponent(
   "<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='1400'><rect width='100%' height='100%' fill='%23e5e7eb'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='36'>Poster</text></svg>"
 );
 // const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
+
+function ImageWithFallback({ src, alt, fallback = "/assets/default-image.svg", ...props }) {
+  const [current, setCurrent] = useState(src || fallback);
+
+  // update when src prop changes (important when mapping items)
+  useEffect(() => {
+    setCurrent(src || fallback);
+  }, [src, fallback]);
+
+  return (
+    <Image
+      src={current}
+      alt={alt}
+      onError={() => {
+        if (current !== fallback) setCurrent(fallback);
+      }}
+      {...props}
+    />
+  );
+}
 
 export default function Movies({ poster, title, placeholder = "/assets/default-image.svg" }) {
   const [imgSrc, setImgSrc] = useState(poster || placeholder);
@@ -35,10 +55,10 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
         <div className="flex px-4 flex-col md:flex-row gap-6 items-start">
           <TabsList className="flex md:flex-col w-full md:w-48 overflow-x-auto no-scrollbar bg-card rounded-md p-2 gap-2 h-full" role="tablist">
             <div className="w-full h-full flex flex-row md:flex-col items-start">
-              <TabsTrigger value="now">Now Showing</TabsTrigger>
-              <TabsTrigger value="coming">Coming Soon</TabsTrigger>
-              <TabsTrigger value="top">Top Rated</TabsTrigger>
-              <TabsTrigger value="genres">Genres</TabsTrigger>
+              <TabsTrigger className={"w-full"} value="now">Now Showing</TabsTrigger>
+              <TabsTrigger className={"w-full"} value="coming">Coming Soon</TabsTrigger>
+              <TabsTrigger className={"w-full"} value="top">Top Rated</TabsTrigger>
+              <TabsTrigger className={"w-full"} value="genres">Genres</TabsTrigger>
             </div>
           </TabsList>
 
@@ -48,10 +68,19 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
               {/* Mobile carousel */}
               <div className="md:hidden">
                 <div className="flex gap-4 overflow-x-auto w-full no-scrollbar">
-                  {movies.map((m) => (
+                  {movies.map((m, index) => (
                     <article key={m.id} className="snap-center flex-shrink-0 w-[50%] sm:w-[60%] rounded-xl overflow-hidden bg-card shadow">
                       <div className="relative h-72">
-                        <Image src={imgSrc} alt={title} fill sizes="(max-width: 600px) 100vw" style={{ objectFit: "cover" }} />
+                        <ImageWithFallback
+                          src={m.poster}
+                          alt={m.title}
+                          fill // or use width/height for better CLS control
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          loading={index === 0 ? "eager" : "lazy"} // only the first image eager if needed
+                          quality={75} // tradeoff: 70-80 is usually great
+                          style={{ objectFit: "cover" }}
+                        />
+
                       </div>
                       <div className="p-3">
                         <h3 className="text-sm font-semibold">{m.title} <span className="text-xs text-gray-400">({m.year})</span></h3>
@@ -71,10 +100,19 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
               {/* Desktop grid */}
               <div className="hidden md:block">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {movies.map((m) => (
+                  {movies.map((m, index) => (
                     <article key={m.id} className="rounded-xl overflow-hidden shadow-lg bg-card flex flex-col">
                       <div className="relative w-full h-72">
-                        <Image src={m.poster} alt={title} fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: "cover" }} />
+                        <ImageWithFallback
+                          src={m.poster}
+                          alt={m.title}
+                          fill // or use width/height for better CLS control
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          loading={index === 0 ? "eager" : "lazy"} // only the first image eager if needed
+                          quality={75} // tradeoff: 70-80 is usually great
+                          style={{ objectFit: "cover" }}
+                        />
+
                       </div>
                       <div className="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -104,10 +142,19 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
                 <p className="text-sm text-gray-400">Get early access to trailers, pre-sale tickets, and exclusive sneak peeks.</p>
 
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {movies.slice(0, 3).map((m) => (
+                  {movies.slice(0, 3).map((m, index) => (
                     <article key={m.id} className="rounded-xl overflow-hidden shadow bg-card">
                       <div className="relative h-64">
-                        <Image src={m.poster || placeholder} alt={m.title} fill sizes="(max-width: 768px) 100vw, 300px" style={{ objectFit: "cover" }} />
+                        <ImageWithFallback
+                          src={m.poster}
+                          alt={m.title}
+                          fill // or use width/height for better CLS control
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          loading={index === 0 ? "eager" : "lazy"} // only the first image eager if needed
+                          quality={75} // tradeoff: 70-80 is usually great
+                          style={{ objectFit: "cover" }}
+                        />
+
                       </div>
                       <div className="p-3">
                         <h4 className="font-semibold">{m.title}</h4>
@@ -132,10 +179,20 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
                   {movies
                     .slice()
                     .sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
-                    .map((m) => (
+                    .map((m, index) => (
                       <div key={m.id} className="flex w-full gap-4 items-start bg-card p-3 rounded-md">
                         <div className="relative w-[40%] h-32 rounded overflow-hidden">
-                          <Image src={m.poster || placeholder} alt={m.title} fill style={{ objectFit: "cover" }} />
+                          <ImageWithFallback
+                            src={m.poster}
+                            alt={m.title}
+                            fill // or use width/height for better CLS control
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            loading={index === 0 ? "eager" : "lazy"} // only the first image eager if needed
+                            quality={75} // tradeoff: 70-80 is usually great
+                            style={{ objectFit: "cover" }}
+                          />
+
+                          {/* <Image src={imgSrc} alt={m.title} fill style={{ objectFit: "cover" }} /> */}
                         </div>
                         <div>
                           <h4 className="font-semibold">{m.title}</h4>
@@ -161,10 +218,19 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
                 </div>
 
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {movies.map((m) => (
+                  {movies.map((m, index) => (
                     <article key={m.id} className="rounded-xl overflow-hidden shadow-lg bg-card">
                       <div className="relative h-64">
-                        <Image src={m.poster || placeholder} alt={m.title} fill sizes="(max-width: 768px) 100vw, 300px" style={{ objectFit: "cover" }} />
+                        <ImageWithFallback
+                          src={m.poster}
+                          alt={m.title}
+                          fill // or use width/height for better CLS control
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          loading={index === 0 ? "eager" : "lazy"} // only the first image eager if needed
+                          quality={75} // tradeoff: 70-80 is usually great
+                          style={{ objectFit: "cover" }}
+                        />
+
                       </div>
                       <div className="p-3">
                         <h4 className="font-semibold">{m.title}</h4>

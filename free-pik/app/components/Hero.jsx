@@ -1,10 +1,17 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useMemo } from "react";
-import { motion, useReducedMotion, useInView } from "framer-motion";
+import { motion, useReducedMotion, useInView, scale } from "framer-motion";
 import Image from "next/image";
 
 import { CTAButton } from "./ui/button";
+
+
+
+const videoVariants = {
+  hidden: {},
+  show: { opacity: 1, y: 400, scale: 1.5, transition: { type: 'spring', stiffness: 120, damping: 16 } },
+}
 
 /* -------------------------
    Small utility: count-up hook
@@ -65,7 +72,7 @@ const Badge = ({ children }) => (
 const StatsCard = ({ value, label }) => (
   <div className="bg-[#191C20] border rounded-lg p-4 text-center">
     <div className="text-2xl font-extrabold text-[#F3F4F6]">{value}</div>
-    <div className="mt-1 text-sm text-gray-600">{label}</div>
+    <div className="mt-1 text-sm text-gray-400">{label}</div>
   </div>
 );
 
@@ -80,6 +87,7 @@ const ResponsiveVideo = ({ poster = "/assets/video-poster.jpg", webm = "/assets/
   const inView = useInView(ref, { once: true, margin: "-25% 0px" });
   const shouldReduce = useReducedMotion();
   const [shouldLoad, setShouldLoad] = useState(false);
+  
 
   // load when in view OR if autoplay should be enabled on large screens immediately
   useEffect(() => {
@@ -102,7 +110,9 @@ const ResponsiveVideo = ({ poster = "/assets/video-poster.jpg", webm = "/assets/
       )}
 
       {shouldLoad && (
-        <video
+        <motion.video
+          // animate={inView ? 'show' : 'hidden'}
+          // variants={videoVariants}
           className="w-full h-full object-cover"
           autoPlay={!shouldReduce}
           muted
@@ -114,7 +124,7 @@ const ResponsiveVideo = ({ poster = "/assets/video-poster.jpg", webm = "/assets/
           <source src={webm} type="video/webm" />
           <source src={mp4} type="video/mp4" />
           {/* fallback message */}
-        </video>
+        </motion.video>
       )}
     </div>
   );

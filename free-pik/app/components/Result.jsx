@@ -20,15 +20,23 @@ import Image from "next/image";
 const defaultImgs = [
   {
     image: "/assets/person.jpg",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    text: "Real voices. Real Stories. Real Cinema.",
   },
   {
     image: "/assets/person-1.jpg",
-    text: "Another caption describing the slide content.",
+    text: "Discover why film fans can't get enough of us",
   },
   {
     image: "/assets/person-2.jpg",
-    text: "Short note or teaser for the slide.",
+    text: "The buzz around groundbreaking stories starts here.",
+  },
+  {
+    image: "/assets/person-2.jpg",
+    text: "Every review is a scene in our story.",
+  },
+  {
+    image: "/assets/person-2.jpg",
+    text: "Honest thoughts from the people who make and love movies.",
   },
 ];
 
@@ -186,7 +194,7 @@ export default function Result({
       <div className="flex flex-col">
         <div className="w-full mx-auto">
           <div className="max-w-5xl mx-auto px-4 flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-semibold text-[#F3F4F6]">Made with Brand—real work, real results</h2>
+            <h2 className="text-2xl font-semibold text-[#F3F4F6]">What Flimmakers and Viewers Say About — <span className="text-primary">SPACES</span></h2>
             <div className="flex gap-2">
               <button onClick={() => changeIndex(-1)} className="p-2 bg-card rounded shadow" aria-label="Previous slide">
                 ←
@@ -265,7 +273,7 @@ export default function Result({
                     />
                   </div>
 
-                  <p className={`text-sm transition-opacity ${isActive ? "opacity-100" : "opacity-40"}`}>{item.text}</p>
+                  <p className={`text-sm transition-opacity ${isActive ? "opacity-100" : "opacity-0"}`}>{item.text}</p>
                 </motion.div>
               );
             })}

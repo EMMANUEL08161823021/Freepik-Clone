@@ -215,5 +215,6 @@ html.dark[data-theme="theater"],
   }
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
   }
 }
