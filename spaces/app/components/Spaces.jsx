@@ -12,10 +12,10 @@ const Spaces = () => {
                 {/* studio logos */}
                 <div className="flex flex-wrap items-center justify-center gap-8 opacity-40 mb-8">
                 <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/google.svg"} alt='studio logo'/></span>
-                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/nubank.svg"} alt='studio logo'/></span>
-                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/hello-fresh.svg"} alt='studio logo'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/bloomberg.png"} alt='studio logo'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/microsoft-1.png"} alt='studio logo'/></span>
                 <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/coca-cola.svg"} alt='studio logo'/></span>
-                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/ogilvy.svg"} alt='studio logo'/></span>
+                <span className="text-sm tracking-wide"><Image className='object-cover' width={100} height={50} src={"/assets/netflix.png"} alt='studio logo'/></span>
                 </div>
 
                 {/* heading */}

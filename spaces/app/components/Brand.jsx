@@ -8,13 +8,14 @@ import { motion } from "framer-motion";
 
 // Seven simple SVG 'logos' encoded as data URIs. Replace `svg` values with your real logo URLs or imports.
 const logos = [
-  { name: "Brand One", color: "#0ea5e9" },
-  { name: "Brand Two", color: "#ef4444" },
-  { name: "Brand Three", color: "#10b981" },
-  { name: "Brand Four", color: "#f59e0b" },
-  { name: "Brand Five", color: "#7c3aed" },
-  { name: "Brand Six", color: "#ec4899" },
-  { name: "Brand Seven", color: "#06b6d4" },
+  { name: "Brand One", image: "/assets/google.svg" },
+  { name: "Brand Three", image: "/assets/microsoft.png" },
+  { name: "Brand Four", image: "/assets/coca-cola.svg" },
+  { name: "Brand Five", image: "/assets/netflix-1.png" },
+  { name: "Brand One", image: "/assets/google.svg" },
+  { name: "Brand Three", image: "/assets/microsoft.png" },
+  { name: "Brand Four", image: "/assets/coca-cola.svg" },
+  { name: "Brand Five", image: "/assets/netflix-1.png" },
 ];
 
 const makeSvgDataUrl = (name, color) => {
@@ -48,13 +49,13 @@ const Brand = ({ speed = 25, height = 120 }) => {
                     className="flex-shrink-0 flex items-center justify-center px-4"
                     style={{ width: 160, height: "auto" }}
                 >
-                    <div className="w-full" style={{ height: "50px" }}>
+                    <div className="w-full h-full" style={{ height: "50px" }}>
                     <Image
-                        src={makeSvgDataUrl(l.name, l.color)}
+                        src={l.image}
                         alt={l.name}
                         width={320}
-                        height={120}
-                        className="object-contain"
+                        height={70}
+                        className="object-cover"                        
                         priority={i < logos.length}
                     />
                     </div>

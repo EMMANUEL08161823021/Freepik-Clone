@@ -178,8 +178,8 @@ export default function WorkFlow({
                             </div>
                             </div>
                         ) : (
-                            <div className="absolute left-4 top-4 text-black z-10">
-                            <div className="text-sm shadow shadow-accent-foreground font-medium">{card.title}</div>
+                            <div className="absolute left-2 top-2 text-white bg-primary px-2 rounded-md z-10">
+                            <div className="text-sm font-medium">{card.title}</div>
                             </div>
                         )}
                         </div>

@@ -51,6 +51,10 @@
   display: none;            /* Chrome, Safari, Opera */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
 
 /* Default theme variables (base) */
