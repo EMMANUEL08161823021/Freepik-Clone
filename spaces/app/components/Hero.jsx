@@ -87,6 +87,13 @@ const ResponsiveVideo = ({ poster = "/assets/video-poster.jpg", webm = "/assets/
   const inView = useInView(ref, { once: true, margin: "-25% 0px" });
   const shouldReduce = useReducedMotion();
   const [shouldLoad, setShouldLoad] = useState(false);
+
+  const handleVideoReady = () => {
+    // dispatch a global event the LoaderManager is listening for
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("app:hero-ready"));
+    }
+  };
   
 
   // load when in view OR if autoplay should be enabled on large screens immediately
@@ -120,6 +127,7 @@ const ResponsiveVideo = ({ poster = "/assets/video-poster.jpg", webm = "/assets/
           playsInline
           preload="auto"
           aria-hidden="true"
+          onLoadedData={handleVideoReady} 
         >
           <source src={webm} type="video/webm" />
           <source src={mp4} type="video/mp4" />

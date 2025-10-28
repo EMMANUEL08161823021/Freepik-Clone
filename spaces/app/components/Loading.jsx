@@ -1,51 +1,44 @@
-// components/SiteLoaderCotton.jsx
+// components/CurtainOpen.jsx
 "use client";
 import React, { useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 /**
- * Cotton-like loader that reveals a logo.
+ * CurtainOpen
+ * - Two panels initially cover the center region and then open outwards to reveal the background and logo.
  *
  * Props:
- * - visible (bool) : whether loader is visible
- * - duration (ms)  : total animation time (default 1600)
- * - logo (string)  : path to logo svg/png
- * - onFinish()     : optional callback called after animation completes
+ * - visible (bool) : show loader/curtain
+ * - duration (ms)  : total open animation duration (default 1200)
+ * - logo (string)  : path to center logo (default '/assets/spaces-gold.svg')
+ * - panelLeftBg / panelRightBg: backgrounds for the panels (any CSS background or color)
+ * - revealBg (string): background shown after reveal (can be className color or image handled in parent)
+ * - onFinish() : optional callback fired after animation ends
  */
-export default function SiteLoaderCotton({
+export default function CurtainOpen({
   visible = true,
-  duration = 1600,
+  duration = 1200,
   logo = "/assets/spaces-gold.svg",
+  panelLeftBg = "linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.95))",
+  panelRightBg = "linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.95))",
+  revealBg = "bg-black",
   onFinish,
 }) {
-  const shouldReduce = useReducedMotion();
-  const D = Math.max(900, duration); // safety minimum
+  const reduce = useReducedMotion();
+  const D = Math.max(700, duration);
+  const sec = D / 1000;
 
   useEffect(() => {
     if (!visible) return;
     const t = setTimeout(() => {
       if (typeof onFinish === "function") onFinish();
-    }, D + 120);
+    }, D + 80);
     return () => clearTimeout(t);
   }, [visible, D, onFinish]);
 
-  // small "blobs" with starting positions (percent)
-  const blobs = [
-    { x: 12, y: 18, delay: 0.0, scale: 1.05 },
-    { x: 84, y: 28, delay: 0.06, scale: 1.0 },
-    { x: 24, y: 70, delay: 0.10, scale: 1.12 },
-    { x: 72, y: 72, delay: 0.14, scale: 1.02 },
-    { x: 50, y: 44, delay: 0.18, scale: 1.25 }, // center blob
-  ];
-
-  // key timing proportions
-  const totalSec = D / 1000;
-  // We use a single keyframe animation across the whole duration. Times array maps to [converge, hold, disperse].
-  const times = [0, 0.55, 1];
-
-  if (shouldReduce) {
-    // very simple fallback: fade logo in
+  // reduced motion fallback: simple fade
+  if (reduce) {
     return (
       <AnimatePresence>
         {visible && (
@@ -53,88 +46,93 @@ export default function SiteLoaderCotton({
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.35 } }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90"
+            className={`fixed inset-0 z-[9999] flex items-center justify-center`}
             aria-hidden={!visible}
           >
-            <Image src={logo} alt="logo" width={160} height={160} />
+            <Image src={logo} alt="logo" width={140} height={140} priority />
           </motion.div>
         )}
       </AnimatePresence>
     );
   }
 
+  // motion variants (panels start centered over middle 50% and then move out)
+  const leftVariant = {
+    initial: { left: "25%", width: "50%", opacity: 1 },
+    animate: {
+      left: "-55%", // move far left off-screen
+      width: "50%",
+      opacity: 1,
+      transition: { duration: sec, ease: [0.22, 1, 0.36, 1] },
+    },
+    exit: { opacity: 0 },
+  };
+
+  const rightVariant = {
+    initial: { left: "25%", width: "50%", opacity: 1 },
+    animate: {
+      left: "100%", // move far right off-screen
+      width: "50%",
+      opacity: 1,
+      transition: { duration: sec, ease: [0.22, 1, 0.36, 1] },
+    },
+    exit: { opacity: 0 },
+  };
+
+  const logoVariant = {
+    initial: { opacity: 0, scale: 0.98 },
+    animate: { opacity: 1, scale: 1, transition: { delay: sec * 0.5, duration: 0.45, ease: "easeOut" } },
+  };
+
   return (
     <AnimatePresence>
       {visible && (
         <motion.div
-          key="cotton-loader"
+          key="curtain-open"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.45, ease: "easeOut" } }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/92"
-          role="status"
-          aria-live="polite"
+          exit={{ opacity: 0, transition: { duration: 0.45 } }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center"
+          aria-hidden={!visible}
         >
-          <div className="relative w-full max-w-[760px] px-4 sm:px-0" style={{ height: "320px" }}>
-            {/* Logo (below blobs) - will fade into view when blobs disperse */}
+          {/* revealed background (visible underneath panels) */}
+          <div className={`absolute inset-0`} />
+
+          {/* center logo (under panels) */}
+          <motion.div
+            className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+            variants={logoVariant}
+            initial="initial"
+            animate="animate"
+          >
+            <Image src={logo} alt="logo" width={160} height={160} priority />
+          </motion.div>
+
+          {/* panels layer */}
+          <div className="absolute inset-0 z-30 pointer-events-none">
+            {/* left panel */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: totalSec * 0.6, duration: 0.48, ease: "easeOut" }}
-              className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
-            >
-              <Image src={logo} alt="SPACES logo" width={160} height={160} priority />
-            </motion.div>
-
-            {/* blobs container - above logo */}
-            <div className="absolute inset-0 z-20 pointer-events-none">
-              {blobs.map((b, i) => {
-                // keyframe animation: start at blob.x/blob.y -> move to center (50%,50%) while growing & then expand/fade out
-                const startLeft = `${b.x}%`;
-                const startTop = `${b.y}%`;
-
-                return (
-                  <motion.div
-                    key={i}
-                    initial={{ left: startLeft, top: startTop, scale: 0.9, opacity: 0 }}
-                    animate={{
-                      left: ["", "50%", "50%"], // animate left to center then remain
-                      top: ["", "50%", "50%"],
-                      scale: [b.scale * 0.9, b.scale, 6], // small -> converge -> big burst
-                      opacity: [0, 0.92, 0],
-                    }}
-                    transition={{
-                      times,
-                      duration: totalSec,
-                      delay: b.delay * 0.18, // micro staggering
-                      ease: "easeInOut",
-                    }}
-                    style={{
-                      position: "absolute",
-                      transform: "translate(-50%, -50%)",
-                      // give each blob a slightly different size
-                      width: `${90 + i * 18}px`,
-                      height: `${60 + i * 18}px`,
-                      borderRadius: "50%",
-                      zIndex: 30,
-                      filter: "blur(20px)",
-                    }}
-                    className="bg-white/92 mix-blend-screen"
-                  />
-                );
-              })}
-            </div>
-
-            {/* subtle vignette for cinematic feel */}
-            <motion.div
-              aria-hidden="true"
-              className="absolute inset-0 z-5 pointer-events-none"
-              initial={{ opacity: 0.05 }}
-              animate={{ opacity: 0.06 }}
+              className="absolute top-0 h-[100vh]"
               style={{
-                background:
-                  "radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.75) 70%)",
+                // apply the panel background via style so the caller can pass any CSS gradient/color
+                background: panelLeftBg,
+                boxShadow: "0 8px 40px rgba(0,0,0,0.6)",
               }}
+              variants={leftVariant}
+              initial="initial"
+              animate="animate"
+            />
+
+            {/* right panel */}
+            <motion.div
+              className="absolute top-0 h-[100vh]"
+              style={{
+                background: panelRightBg,
+                boxShadow: "0 8px 40px rgba(0,0,0,0.6)",
+              }}
+              variants={rightVariant}
+              initial="initial"
+              animate="animate"
             />
           </div>
         </motion.div>
