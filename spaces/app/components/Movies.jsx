@@ -88,7 +88,7 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
                         <div className="mt-3 flex items-center justify-between">
                           <div className="text-xs text-gray-400">{m.rating} • {m.score}</div>
                           <div className="flex gap-2">
-                            <CTAButton>Buy Tickets</CTAButton>
+                            <CTAButton className="text-xs px-3 py-1.5 md:text-sm md:px-4 md:py-2">Buy Tickets</CTAButton>
                           </div>
                         </div>
                       </div>
