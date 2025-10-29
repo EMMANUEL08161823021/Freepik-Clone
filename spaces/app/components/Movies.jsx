@@ -4,6 +4,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import Image from "next/image";
 import CTAButton from "./ui/button";
 import { ImageWithFallback } from "./ui/ImageWithFallback";
+import Link from "next/link";
 
 const movies = [
   { id: 1, title: "HAVOC", year: 2025, rating: "PG-13", score: "8.2", poster: "/assets/Havoc.jpg", synopsis: "A cinematic journey where imagination becomes reality." },
@@ -29,9 +30,9 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
           <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6] ">Latest Movies</h2>
           <p className="text-sm hidden sm:block text-gray-400">Now playing · Coming soon · Top rated</p>
         </div>
-        <div className="flex gap-2">
+        {/* <div className="flex gap-2">
           <CTAButton className="text-xs px-3 py-1.5 md:text-sm md:px-4 md:py-2">View All Showtimes</CTAButton>
-        </div>
+        </div> */}
       </div>
 
       <Tabs defaultValue="now">
@@ -107,7 +108,11 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
                           <div className="flex items-center gap-3">
                             <CTAButton variant="white" size="sm">Watch Trailer</CTAButton>
                             {/* <button className="text-sm px-3 py-2 rounded-md bg-white text-black hover:scale-[1.01] transition">Watch Trailer</button> */}
-                            <CTAButton size="sm">Buy Tickets</CTAButton>
+                            <CTAButton href={"/login"} size="sm">
+                             
+                              Buy Tickets
+                           
+                            </CTAButton>
                           </div>
                         </div>
                       </div>

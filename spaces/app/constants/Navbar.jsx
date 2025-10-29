@@ -1,9 +1,10 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Search from "../components/ui/Search";
 import { CTAButton } from "../components/ui/button";
+import Link from "next/link";
 
 const exampleSuggestions = [
   "React components",
@@ -13,8 +14,27 @@ const exampleSuggestions = [
   "FFmpeg tutorial",
 ];
 
+
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const shouldReduce = useReducedMotion();
+
+    const logoVariants = {
+      initial: { scale: 0.75, opacity: 0.4 },
+      animate: {
+        scale: 1.03,
+        // rotate: 0,
+        opacity: 1,
+        transition: {
+          duration: 1.5,
+          ease: 'easeInOut',
+          repeat: shouldReduce ? 0 : Infinity,
+          repeatType: 'loop',
+        },
+      },
+      // exit: { opacity: 0, scale: 1.08, transition: { duration: 0.95, ease: 'easeInOut' } },
+    }
+
 
     // Close on Escape and prevent body scroll when sidebar is open
 
@@ -43,10 +63,19 @@ export default function Navbar() {
   return (
       <header className="w-[100%] flex justify-center h-16">
         <div className="w-[100%] fixed top-0 bg-background z-50 ">
-          <div className="flex sm:max-w-xl md:max-w-5xl mx-auto px-4 justify-between items-center h-16">
+          <div className="flex w-full md:max-w-5xl mx-auto px-4 justify-between items-center h-16">
             {/* Logo + Brand */}
             <div className="flex items-center gap-4">
-              <img className="" height={70} width={90} src={"/assets/spaces-gold.svg"} alt="logo"/>
+              <Link href={"/"}>
+                <motion.div>
+                  <motion.img
+                  variants={logoVariants} 
+                  initial="initial"
+                  animate="animate"
+                  // exit="exit"
+                  className="" height={70} width={90} src={"/assets/spaces-gold.svg"} alt="logo"/>
+                </motion.div>
+              </Link>
           
               {/* Desktop Nav */}
               <nav className="hidden md:flex items-center gap-4">
@@ -65,7 +94,7 @@ export default function Navbar() {
                 <div className="hidden sm:flex gap-3">
                     <Search placeholder="Search assets or start creating..." onSearch={handleSearch} suggestions={exampleSuggestions} />                
                     {/* <button className="px-3 py-1 text-sm rounded-md text-[#FF553E]">Login</button> */}
-                    <CTAButton>Sign in</CTAButton>
+                    <CTAButton href="/login">Login</CTAButton>
                     {/* <button className="text-sm px-4 py-2 whitespace-nowrap rounded-full bg-gray-600 text-white"></button> */}
                 </div>
 
@@ -142,9 +171,11 @@ export default function Navbar() {
                 </ul>
 
                 <div className="mt-6 flex flex-col gap-3">
+                  <Link href={"/login"}>
                   <CTAButton variant="white" className="w-full border border-white">Login</CTAButton>
+                  </Link>
                   
-                  <CTAButton variant="primary" className="w-full ">SignUp</CTAButton>
+                  <CTAButton variant="primary" className="w-full">SignUp</CTAButton>
                 </div>
 
                 {/* Optional small footer */}

@@ -180,7 +180,8 @@ export default function Hero() {
           </p>
 
           <div className="mt-5 flex items-center justify-center gap-3">
-            <CTAButton href="#" aria-label="Watch featured film">Get started for free</CTAButton>
+            
+            <CTAButton href="/login" aria-label="Watch featured film">Get started for free</CTAButton>
             {/* <a
               href="#lineup"
               className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full border text-sm text-gray-200 hover:bg-white/5 transition"

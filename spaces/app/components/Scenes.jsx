@@ -5,11 +5,12 @@ import Image from "next/image";
 import Brand from "./Brand";
 import { ImageWithFallback } from "./ui/ImageWithFallback";
 import { motion } from "framer-motion";
+import VideoModal from "./ui/VideoModal";
 
 const scenes = [
-  { id: 1, title: "Opening Shot — The City at Dawn", time: "00:02:14", image: "/assets/scene1.jpg", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
-  { id: 2, title: "Chase on the Skybridge", time: "00:28:07", image: "/assets/scene2.jpg", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
-  { id: 3, title: "Quiet Confession", time: "01:02:33", image: "/assets/scene3.jpg", desc: "A tender exchange that changes the characters forever." },
+  { id: 1, title: "Opening Shot — The City at Dawn", time: "00:02:14", image: "/assets/havoc.jpg", video:"/assets/clip-1.mp4", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
+  { id: 2, title: "Chase on the Skybridge", time: "00:28:07", image: "/assets/havoc.jpg", video:"/assets/clip-2.mp4", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
+  { id: 3, title: "Quiet Confession", time: "01:02:33", image: "/assets/havoc.jpg", video:"/assets/clip-3.mp4", desc: "A tender exchange that changes the characters forever." },
   // { id: 4, title: "The Reveal", time: "01:25:10", image: "/assets/scene4.jpg", desc: "A twist that rewrites everything the audience thought they knew." },
   // { id: 5, title: "Finale — Lights Out", time: "01:48:55", image: "/assets/scene5.jpg", desc: "An emotionally charged finale that ties the film's themes together." },
 ];
@@ -33,6 +34,14 @@ const reviews = [
 
 export default function Scenes({photo, placeholder= "/assets/default-image.svg"}) {
   const [imgSrc, setImgSrc] = useState(photo || placeholder);
+  const [activeScene, setActiveScene] = useState(null);
+
+  function openModal(scene) {
+    setActiveScene(scene);
+  }
+  function closeModal() {
+    setActiveScene(null);
+  }
   
   return (
     <section id="scenes" className="">
@@ -50,40 +59,42 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
 
         <Tabs defaultValue="scenes">
           <div className="space-y-6">
-            {/* SCENES */}
+              {/* SCENES */}
             <TabsContent value="scenes" className="p-0">
-              <motion.div                 
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {scenes.map((s, index) => (
                   <motion.article
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: s * 0.06, duration: 0.36 }}
-                    key={s.id} className="rounded-lg overflow-hidden border bg-card shadow">
+                    transition={{ delay: index * 0.06, duration: 0.36 }}
+                    key={s.id}
+                    className="rounded-lg overflow-hidden border bg-card shadow"
+                  >
                     <div className="relative w-full h-48">
                       <ImageWithFallback
                         src={s.image}
                         alt={s.title}
-                        fill // or use width/height for better CLS control
-                        sizes="(max-width: 768px) 100vw, 300px"
-                        loading={index === 0 ? "eager" : "lazy"} // only the first image eager if needed
-                        quality={75} // tradeoff: 70-80 is usually great
-                        style={{ objectFit: "cover" }}
-                      />
-                      {/* <Image
-                        src={imgSrc}
-                        alt={s.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 300px"
-                        style={{ objectFit: "cover" }}
-                      /> */}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        quality={75}
+                        style={{ objectFit: 'cover' }}
+                      />
                     </div>
+
                     <div className="p-4">
                       <h4 className="font-semibold">{s.title}</h4>
                       <p className="text-sm text-gray-400 mt-1">{s.time}</p>
                       <p className="mt-2 text-sm text-gray-300 line-clamp-3">{s.desc}</p>
+
                       <div className="mt-4 flex items-center justify-between">
-                        <button className="text-sm px-3 py-2 rounded-md bg-white text-black hover:scale-[1.01] transition">Watch Clip</button>
+                        <button
+                          onClick={() => openModal(s)}
+                          className="text-sm px-3 py-2 rounded-md bg-white text-black hover:scale-[1.01] transition"
+                        >
+                          Watch Clip
+                        </button>
+
                         <span className="text-xs text-gray-400">Scene</span>
                       </div>
                     </div>
@@ -91,6 +102,9 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
                 ))}
               </motion.div>
             </TabsContent>
+
+            {/* modal */}
+            <VideoModal scene={activeScene} open={!!activeScene} onClose={closeModal} />
 
             {/* TRAILER */}
             <TabsContent value="trailer" className="p-0">
