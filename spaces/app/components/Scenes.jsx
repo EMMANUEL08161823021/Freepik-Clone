@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 import VideoModal from "./ui/VideoModal";
 
 const scenes = [
-  { id: 1, title: "Opening Shot — The City at Dawn", time: "00:02:14", image: "/assets/havoc.jpg", video:"/assets/clip-1.mp4", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
-  { id: 2, title: "Chase on the Skybridge", time: "00:28:07", image: "/assets/havoc.jpg", video:"/assets/clip-2.mp4", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
-  { id: 3, title: "Quiet Confession", time: "01:02:33", image: "/assets/havoc.jpg", video:"/assets/clip-3.mp4", desc: "A tender exchange that changes the characters forever." },
+  { id: 1, title: "Opening Shot — The City at Dawn", time: "00:02:14", image: "/assets/havoc-1.jpg", video:"/assets/clip-1.mp4", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
+  { id: 2, title: "Chase on the Skybridge", time: "00:28:07", image: "/assets/havoc-1.jpg", video:"/assets/clip-2.mp4", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
+  { id: 3, title: "Quiet Confession", time: "01:02:33", image: "/assets/havoc-1.jpg", video:"/assets/clip-3.mp4", desc: "A tender exchange that changes the characters forever." },
   // { id: 4, title: "The Reveal", time: "01:25:10", image: "/assets/scene4.jpg", desc: "A twist that rewrites everything the audience thought they knew." },
   // { id: 5, title: "Finale — Lights Out", time: "01:48:55", image: "/assets/scene5.jpg", desc: "An emotionally charged finale that ties the film's themes together." },
 ];
