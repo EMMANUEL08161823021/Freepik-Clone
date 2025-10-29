@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import Image from "next/image";
 import Brand from "./Brand";
-
+import { ImageWithFallback } from "./ui/ImageWithFallback";
 import { motion } from "framer-motion";
 
 const scenes = [
@@ -20,9 +20,9 @@ const placeholderSvg = encodeURIComponent(
 const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
 
 const cast = [
-  { name: "Aisha Bello", role: "Maya (Lead)", photo: "/assets/person.jpg" },
-  { name: "Daniel Okonkwo", role: "Ian (Supporting)", photo: "/assets/person2.jpg" },
-  { name: "Ngozi Eze", role: "Dr. K (Antagonist)", photo: "/assets/person3.jpg" },
+  { name: "Aisha Bello", role: "Maya (Lead)", image: "/assets/person.jpg" },
+  { name: "Daniel Okonkwo", role: "Ian (Supporting)", image: "/assets/person-2.jpg" },
+  { name: "Ngozi Eze", role: "Dr. K (Antagonist)", image: "/assets/person-1.jpg" },
 ];
 
 const reviews = [
@@ -39,8 +39,8 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
       <br />
       <br />
       <div className="px-4 mx-auto max-w-5xl">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6] mb-4">
-          SPACES — Selected Scenes & Exclusive Extras
+        <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">
+          HAVOC — Selected Scenes & Exclusive Extras
         </h2>
 
         {/* Brand row */}
@@ -54,20 +54,29 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
             <TabsContent value="scenes" className="p-0">
               <motion.div                 
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {scenes.map((s) => (
+                {scenes.map((s, index) => (
                   <motion.article
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: s * 0.06, duration: 0.36 }}
                     key={s.id} className="rounded-lg overflow-hidden border bg-card shadow">
                     <div className="relative w-full h-48">
-                      <Image
+                      <ImageWithFallback
+                        src={s.image}
+                        alt={s.title}
+                        fill // or use width/height for better CLS control
+                        sizes="(max-width: 768px) 100vw, 300px"
+                        loading={index === 0 ? "eager" : "lazy"} // only the first image eager if needed
+                        quality={75} // tradeoff: 70-80 is usually great
+                        style={{ objectFit: "cover" }}
+                      />
+                      {/* <Image
                         src={imgSrc}
                         alt={s.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 300px"
                         style={{ objectFit: "cover" }}
-                      />
+                      /> */}
                     </div>
                     <div className="p-4">
                       <h4 className="font-semibold">{s.title}</h4>
@@ -108,10 +117,18 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
               <div className="rounded-lg overflow-hidden border p-4 bg-card">
                 <h3 className="text-lg font-semibold mb-3">Cast</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {cast.map((c) => (
+                  {cast.map((c, index) => (
                     <div key={c.name} className="flex flex-col items-center text-center">
                       <div className="relative w-28 h-28 rounded-full overflow-hidden">
-                        <Image src={imgSrc} alt={c.name} fill style={{ objectFit: "cover" }} />
+                        <ImageWithFallback
+                        src={c.image}
+                        alt={c.name}
+                        fill // or use width/height for better CLS control
+                        loading={index === 0 ? "eager" : "lazy"} // only the first image eager if needed
+                        quality={75} // tradeoff: 70-80 is usually great
+                        style={{ objectFit: "cover" }}
+                      />
+                        {/* <Image src={imgSrc} alt={c.name} fill style={{ objectFit: "cover" }} /> */}
                       </div>
                       <div className="mt-3">
                         <p className="font-semibold">{c.name}</p>
@@ -158,7 +175,7 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
             </TabsContent>
 
             {/* GALLERY */}
-            <TabsContent value="gallery" className="p-0">
+            {/* <TabsContent value="gallery" className="p-0">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {Array.from({ length: 9 }).map((_, i) => (
                   <div key={i} className="relative w-full h-40 rounded overflow-hidden bg-card">
@@ -166,7 +183,7 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
                   </div>
                 ))}
               </div>
-            </TabsContent>
+            </TabsContent> */}
 
           </div>
 
@@ -178,7 +195,7 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
               <TabsTrigger value="cast">Cast</TabsTrigger>
               <TabsTrigger value="reviews">Reviews</TabsTrigger>
               <TabsTrigger value="bts">Behind the Scenes</TabsTrigger>
-              <TabsTrigger value="gallery">Gallery</TabsTrigger>
+              {/* <TabsTrigger value="gallery">Gallery</TabsTrigger> */}
             </div>
           </TabsList>
         </Tabs>

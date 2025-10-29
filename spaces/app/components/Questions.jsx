@@ -1,50 +1,99 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import CTAButton from "./ui/button";
+
+const stats = [
+  {
+    id: "opening",
+    value: "$12.4M",
+    title: "Opening Weekend",
+    desc: "Strong opening across major markets — box office highlights for SPACES.",
+  },
+  {
+    id: "critics",
+    value: "92%",
+    title: "Critics Score",
+    desc: "Certified fresh — praised for visuals, score, and performances.",
+  },
+  {
+    id: "screens",
+    value: "1,200",
+    title: "Screens",
+    desc: "Now showing in theatres across the region — check your local listings.",
+  },
+];
 
 const faqs = [
   {
     question: "What is SPACES?",
     answer:
-      "SPACES is a feature film — a visually ambitious story about creators and an infinite canvas that changes their lives. It blends spectacle with intimate character moments for a cinematic experience.",
+      "SPACES is a cinematic platform that combines movie launches and on-demand streaming. It’s built for filmmakers and audiences — hosting premieres, exclusive releases, trailers, and a curated library you can stream anytime.",
   },
   {
-    question: "When is SPACES playing in theaters?",
+    question: "How can I watch movies on SPACES?",
     answer:
-      "SPACES is now playing in select theaters nationwide. Release dates vary by city — check showtimes at your local cinema or use the 'Buy Tickets' button to find screenings near you.",
+      "Watch on desktop or mobile — stream films directly from the site or buy tickets for partnered physical screenings. Create an account, choose a title, and either stream immediately (if available) or purchase a ticket for a scheduled premiere.",
   },
   {
-    question: "How can I buy tickets or get early access?",
+    question: "When does SPACES launch?",
     answer:
-      "Use the Buy Tickets button to purchase single tickets, or choose a season pass for multiple screenings and special perks. Some theaters offer early access and advance screenings — availability depends on venue.",
+      "The frontend experience launches November 1. We’ll be rolling out premieres and streaming titles gradually — check the homepage or subscribe for launch-day updates and early-access notices.",
   },
   {
-    question: "Are there age restrictions or content warnings?",
+    question: "How do I buy tickets or get early access?",
     answer:
-      "SPACES carries a PG-13 rating for thematic elements and brief intense sequences. Check local listings for any additional theater-specific age or content guidance.",
+      "Use the ‘Buy Tickets’ button on any film page to purchase digital or in-person tickets. For early access, sign up for a season pass or join mailing lists for priority access to premieres, Q&As, and presales.",
   },
   {
-    question: "Is there a trailer or behind-the-scenes footage?",
+    question: "What subscription or pricing options are available?",
     answer:
-      "Yes — watch the official trailer and exclusive behind-the-scenes featurettes on the film's trailer page. Selected screenings will include a director's introduction or Q&A at participating venues.",
+      "We offer flexible options: single-rental purchases, pay-per-premiere tickets, and subscription plans that give unlimited access to the streaming library plus member perks (early access, discounts, and exclusive extras). Pricing details are on the Plans page.",
   },
   {
-    question: "Can I book a private screening or group block?",
+    question: "Are there age ratings or content warnings?",
     answer:
-      "Private screenings, group bookings, and corporate packages are available through the box office. Contact the box office for pricing, availability, and custom experiences.",
+      "Yes — every title shows its official rating and content advisories (violence, language, etc.). Please check the film page for detailed guidance and parental controls available on your account.",
   },
   {
-    question: "What COVID-19 / safety policies should I expect?",
+    question: "Are trailers and behind-the-scenes available?",
     answer:
-      "Theaters may have their own safety policies (masking, proof of vaccination, or capacity limits). We recommend checking the venue's website before attending for the latest guidance.",
+      "Absolutely. Each film page includes trailers, clips, and—where available—behind-the-scenes featurettes, director notes, and cast interviews. Exclusive extras are often unlocked for subscribers or ticket-holders.",
+  },
+  {
+    question: "Can I book private screenings or group bookings?",
+    answer:
+      "Yes — private screenings and group packages are available. Visit our Contact or Bookings page to request pricing, availability and custom experiences for festivals, corporate events, or private showings.",
   },
 ];
 
+
 export default function Questions() {
   const [openIndex, setOpenIndex] = useState(null);
+  const reduce = useReducedMotion();
+
+  // container variant for staggered entrance
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
+
+  // card entrance variant (used when reduced motion is not requested)
+  const card = {
+    hidden: { opacity: 0, y: 10 },
+    show: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut", delay: i * 0.06 },
+    }),
+  };
 
   return (
     <section className="py-12">
@@ -113,25 +162,39 @@ export default function Questions() {
         </div>
 
         {/* Stats row */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <article className="border rounded-lg p-4 bg-card">
-            <div className="text-primary font-extrabold text-2xl">$12.4M</div>
-            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Opening Weekend</h4>
-            <p className="mt-1 text-sm text-gray-400">Strong opening across major markets — box office highlights for SPACES.</p>
-          </article>
-
-          <article className="border rounded-lg p-4 bg-card">
-            <div className="text-primary font-extrabold text-2xl">92%</div>
-            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Critics Score</h4>
-            <p className="mt-1 text-sm text-gray-400">Certified fresh — praised for visuals, score, and performances.</p>
-          </article>
-
-          <article className="border rounded-lg p-4 bg-card">
-            <div className="text-primary font-extrabold text-2xl">1,200</div>
-            <h4 className="mt-2 font-semibold text-[#F3F4F6]">Screens</h4>
-            <p className="mt-1 text-sm text-gray-400">Now showing in theatres across the region — check your local listings.</p>
-          </article>
-        </div>
+       <motion.div
+          className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto"
+          variants={reduce ? undefined : container}
+          initial={reduce ? undefined : "hidden"}
+          whileInView={reduce ? undefined : "show"}
+          viewport={{ once: true, amount: 0.2 }}
+          aria-hidden={false}
+        >
+          {stats.map((s, i) => (
+            <motion.article
+              key={s.id}
+              className="border rounded-lg p-4 bg-card"
+              custom={i}
+              variants={reduce ? undefined : card}
+              initial={reduce ? { opacity: 1, y: 0 } : undefined}
+              animate={reduce ? undefined : undefined}
+              whileHover={
+                reduce
+                  ? {}
+                  : {
+                      y: -6,
+                      scale: 1.01,
+                      boxShadow: "0 20px 40px rgba(0,0,0,0.45)",
+                      transition: { duration: 0.25, ease: "easeOut" },
+                    }
+              }
+            >
+              <div className="text-primary font-extrabold text-2xl">{s.value}</div>
+              <h4 className="mt-2 font-semibold text-[#F3F4F6]">{s.title}</h4>
+              <p className="mt-1 text-sm text-gray-400">{s.desc}</p>
+            </motion.article>
+          ))}
+        </motion.div>
 
         {/* CTA */}
         <div className="mt-10 rounded-lg border bg-card p-6 text-center">

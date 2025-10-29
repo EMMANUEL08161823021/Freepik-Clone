@@ -61,7 +61,7 @@ export default function WorkFlow({
         <br/>
         <div className="max-w-5xl mx-auto">
             <div className="flex items-center justify-between px-4 mb-4">
-                <h2 className="text-2xl font-semibold text-[#F3F4F6]">Main Characters in — <em>HAVOC</em></h2>
+                <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">Main Characters in — <em>HAVOC</em></h2>
                 {/* <div className="flex gap-2">
                     <button onClick={prev} className="w-9 h-9 rounded-full bg-black/60 text-[#F3F4F6] flex items-center justify-center">‹</button>
                     <button onClick={next} className="w-9 h-9 rounded-full bg-black/60 text-[#F3F4F6] flex items-center justify-center">›</button>

@@ -194,7 +194,7 @@ export default function Result({
       <div className="flex flex-col">
         <div className="w-full mx-auto">
           <div className="max-w-5xl mx-auto px-4 flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-semibold text-[#F3F4F6]">What Flimmakers and Viewers Say About — <span className="text-primary">SPACES</span></h2>
+            <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">What Flimmakers and Viewers Say About — <span className="text-primary">SPACES</span></h2>
             <div className="flex gap-2">
               <button onClick={() => changeIndex(-1)} className="p-2 bg-card rounded shadow" aria-label="Previous slide">
                 ←

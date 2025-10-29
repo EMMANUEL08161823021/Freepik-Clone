@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import Image from "next/image";
 import CTAButton from "./ui/button";
+import { ImageWithFallback } from "./ui/ImageWithFallback";
 
 const movies = [
   { id: 1, title: "HAVOC", year: 2025, rating: "PG-13", score: "8.2", poster: "/assets/Havoc.jpg", synopsis: "A cinematic journey where imagination becomes reality." },
@@ -17,25 +18,7 @@ const placeholderSvg = encodeURIComponent(
 );
 // const placeholder = `data:image/svg+xml;utf8,${placeholderSvg}`;
 
-function ImageWithFallback({ src, alt, fallback = "/assets/default-image.svg", ...props }) {
-  const [current, setCurrent] = useState(src || fallback);
 
-  // update when src prop changes (important when mapping items)
-  useEffect(() => {
-    setCurrent(src || fallback);
-  }, [src, fallback]);
-
-  return (
-    <Image
-      src={current}
-      alt={alt}
-      onError={() => {
-        if (current !== fallback) setCurrent(fallback);
-      }}
-      {...props}
-    />
-  );
-}
 
 export default function Movies({ poster, title, placeholder = "/assets/default-image.svg" }) {
   const [imgSrc, setImgSrc] = useState(poster || placeholder);
@@ -43,7 +26,7 @@ export default function Movies({ poster, title, placeholder = "/assets/default-i
     <section id="movies" className="w-full overflow-hidden mx-auto md:max-w-5xl text-[#F3F4F6]">
       <div className="flex items-center px-4 justify-between py-6">
         <div>
-          <h2 className="text-2xl font-semibold">Latest Movies</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6] ">Latest Movies</h2>
           <p className="text-sm hidden sm:block text-gray-400">Now playing · Coming soon · Top rated</p>
         </div>
         <div className="flex gap-2">

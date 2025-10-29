@@ -90,7 +90,7 @@ export default function Stats({ items = movieStats, heading = "Why audiences are
   return (
     <section className="max-w-5xl px-4 mx-auto py-12">
       <div className="mb-6">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#F3F4F6]">{heading}</h2>
+        <h2 className="text-2xl md:text-3xl  font-semibold text-[#F3F4F6]">{heading}</h2>
         <p className="mt-2 text-sm text-gray-400 max-w-2xl">
           Quick, proven reasons moviegoers are lining up — and the numbers that prove it.
         </p>
