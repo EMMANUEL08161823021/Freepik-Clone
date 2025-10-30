@@ -163,7 +163,7 @@ export default function Navbar() {
               </div>
 
               <nav className="p-4">
-                <ul className="flex text-[#F3F4F6] text-sm flex-col gap-4">
+                <ul className="flex text-[#09090a] text-sm flex-col gap-4">
                   <a href="#movies"><li className="hover:text-primary">Movies</li></a>
                   <a href="#scenes"><li className="hover:text-primary">Scenes</li></a>
                   <a href="#casts"><li className="hover:text-primary">Casts</li></a>
@@ -171,9 +171,7 @@ export default function Navbar() {
                 </ul>
 
                 <div className="mt-6 flex flex-col gap-3">
-                  <Link href={"/login"}>
-                  <CTAButton variant="white" className="w-full border border-white">Login</CTAButton>
-                  </Link>
+                  <CTAButton href="/login" variant="white" className="w-full border border-white">Login</CTAButton>
                   
                   <CTAButton variant="primary" className="w-full">SignUp</CTAButton>
                 </div>
