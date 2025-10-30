@@ -9,9 +9,9 @@ import VideoModal from "./ui/VideoModal";
 import CTAButton from "./ui/button";
 
 const scenes = [
-  { id: 1, title: "Opening Shot — The City at Dawn", time: "00:02:14", image: "/assets/havoc-1.jpg", video:"/assets/clip-1.mp4", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
-  { id: 2, title: "Chase on the Skybridge", time: "00:24:00", image: "/assets/havoc-1.jpg", video:"/assets/clip-2.mp4", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
-  { id: 3, title: "Quiet Confession", time: "01:02:33", image: "/assets/havoc-1.jpg", video:"/assets/clip-3.mp4", desc: "A tender exchange that changes the characters forever." },
+  { id: 1, title: "Opening Shot — The City at Dawn", time: "00:00:18", image: "/assets/havoc-1.jpg", video:"/assets/clip-1.mp4", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
+  { id: 2, title: "Chase on the Skybridge", time: "00:00:24", image: "/assets/havoc-1.jpg", video:"/assets/clip-2.mp4", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
+  { id: 3, title: "Quiet Confession", time: "00:00:27", image: "/assets/havoc-1.jpg", video:"/assets/clip-3.mp4", desc: "A tender exchange that changes the characters forever." },
   // { id: 4, title: "The Reveal", time: "01:25:10", image: "/assets/scene4.jpg", desc: "A twist that rewrites everything the audience thought they knew." },
   // { id: 5, title: "Finale — Lights Out", time: "01:48:55", image: "/assets/scene5.jpg", desc: "An emotionally charged finale that ties the film's themes together." },
 ];
@@ -176,13 +176,13 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
               <div className="rounded-lg overflow-hidden border">
                 <video
                   width={1000}
-                  height={450}
-                  className="rounded-xl z-10 object-cover shadow-lg w-full"
+                  height={350}
+                  className="rounded-xl mx-auto z-10 object-contain shadow-lg w-auto"
                   controls
                   preload="metadata"
                 >
-                  <source src="/assets/spaces-bts.webm" type="video/webm" />
-                  <source src="/assets/spaces-bts.mp4" type="video/mp4" />
+                  <source src="/assets/clip-4.mp4" type="video/webm" />
+                  <source src="/assets/clip-4.mp4" type="video/mp4" />
                 </video>
                 <div className="p-4">
                   <p className="text-sm text-gray-300">Behind-the-scenes: interviews with the director and a look at how the key scenes were made.</p>
