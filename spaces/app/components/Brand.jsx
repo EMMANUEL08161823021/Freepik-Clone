@@ -37,7 +37,7 @@ const Brand = ({ speed = 25, height = 120 }) => {
             <div className="relative">
             {/* Motion track: translate X from 0 -> -50% to scroll one full set */}
             <motion.div
-                className="flex w-[200%] items-center"
+                className="flex w-[400%] md:w-[200%] items-center"
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{ repeat: Infinity, ease: "linear", duration: speed }}
                 aria-hidden={false}
@@ -54,7 +54,7 @@ const Brand = ({ speed = 25, height = 120 }) => {
                         src={l.image}
                         alt={l.name}
                         width={320}
-                        height={70}
+                        height={50}
                         className="object-cover"                        
                         priority={i < logos.length}
                     />

@@ -72,18 +72,21 @@ export default function VideoModal({ scene, open, onClose }) {
       >
         {/* top bar with close */}
         <div className="flex items-center justify-end p-2 bg-transparent">
+
           <button
             ref={closeRef}
             onClick={onClose}
             aria-label="Close video"
             className="text-white bg-black/40 hover:bg-black/50 px-3 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           >
-            Close
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </div>
 
         {/* video area */}
-        <div className="bg-black">
+        <div className="bg-black flex flex-col md:flex-row items-center">
           {isYouTube(scene.video) ? (
             <div className="aspect-video w-full">
               <iframe
@@ -100,7 +103,7 @@ export default function VideoModal({ scene, open, onClose }) {
               controls
               autoPlay
               src={scene.video}
-              className="w-full max-h-[80vh] bg-black object-contain"
+              className="w-full max-h-[70vh] md:max-h-[80vh] bg-black object-contain"
               type="video/mp4"
             >
               Your browser does not support the video tag.

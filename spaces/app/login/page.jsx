@@ -60,7 +60,7 @@ export default function Login() {
                 </form>
             </div>
             </div> */}
-            <div className="max-w-3xl px-4 mx-auto h-[90vh] flex items-center">
+            <div className="max-w-2xl px-4 mx-auto h-[90vh] flex items-center">
                 <form className="p-3 flex flex-col gap-3 w-full bg-card rounded-md h-[50vh]" aria-describedby="form-error" noValidate>
                 <h2 className="text-center text-2xl md:text-3xl">Login</h2>
                 <div className="mb-4">
@@ -108,14 +108,11 @@ export default function Login() {
                     </button> */}
                 </div>
 
-
-
                 {/* {error && (
                 <div id="form-error" role="alert" className="mb-4 text-sm text-red-600">
                 {error}
                 </div>
                 )} */}
-
 
                 <CTAButton type="submit">
                     Login

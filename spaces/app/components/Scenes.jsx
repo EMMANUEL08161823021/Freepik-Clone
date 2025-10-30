@@ -6,10 +6,11 @@ import Brand from "./Brand";
 import { ImageWithFallback } from "./ui/ImageWithFallback";
 import { motion } from "framer-motion";
 import VideoModal from "./ui/VideoModal";
+import CTAButton from "./ui/button";
 
 const scenes = [
   { id: 1, title: "Opening Shot — The City at Dawn", time: "00:02:14", image: "/assets/havoc-1.jpg", video:"/assets/clip-1.mp4", desc: "A slow crane reveals the city waking up — fog, neon, and the first hint of the story." },
-  { id: 2, title: "Chase on the Skybridge", time: "00:28:07", image: "/assets/havoc-1.jpg", video:"/assets/clip-2.mp4", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
+  { id: 2, title: "Chase on the Skybridge", time: "00:24:00", image: "/assets/havoc-1.jpg", video:"/assets/clip-2.mp4", desc: "A heart-pounding rooftop chase that pushes the hero to their limits." },
   { id: 3, title: "Quiet Confession", time: "01:02:33", image: "/assets/havoc-1.jpg", video:"/assets/clip-3.mp4", desc: "A tender exchange that changes the characters forever." },
   // { id: 4, title: "The Reveal", time: "01:25:10", image: "/assets/scene4.jpg", desc: "A twist that rewrites everything the audience thought they knew." },
   // { id: 5, title: "Finale — Lights Out", time: "01:48:55", image: "/assets/scene5.jpg", desc: "An emotionally charged finale that ties the film's themes together." },
@@ -53,7 +54,7 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
         </h2>
 
         {/* Brand row */}
-        <div className="mb-6">
+        <div className="my-6">
           <Brand />
         </div>
 
@@ -88,12 +89,13 @@ export default function Scenes({photo, placeholder= "/assets/default-image.svg"}
                       <p className="mt-2 text-sm text-gray-300 line-clamp-3">{s.desc}</p>
 
                       <div className="mt-4 flex items-center justify-between">
-                        <button
+                        <CTAButton
                           onClick={() => openModal(s)}
-                          className="text-sm px-3 py-2 rounded-md bg-white text-black hover:scale-[1.01] transition"
+                          variant="white"
+                          // className="text-sm px-3 py-2 rounded-md bg-white text-black hover:scale-[1.01] transition"
                         >
                           Watch Clip
-                        </button>
+                        </CTAButton>
 
                         <span className="text-xs text-gray-400">Scene</span>
                       </div>

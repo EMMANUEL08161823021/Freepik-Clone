@@ -16,7 +16,7 @@ export const CTAButton = React.forwardRef(function CTAButton(props, ref) {
     ...rest
   } = props;
 
-  const base = 'inline-flex whitespace-nowrap items-center justify-center rounded-full font-semibold transition-shadow';
+  const base = 'inline-flex cursor-pointer whitespace-nowrap items-center justify-center rounded-full font-semibold transition-shadow';
   const variants = {
     primary: 'bg-[#D6862E] text-white hover:bg-gray-800',
     ghost: 'bg-transparent text-[#F3F4F6] hover:bg-gray-50',
@@ -38,6 +38,7 @@ export const CTAButton = React.forwardRef(function CTAButton(props, ref) {
       <Link
         href={href}
         className={classes}
+        // type='button'
         target={rest.target ?? (isExternal ? '_blank' : undefined)}
         rel={rest.rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
         {...rest}
